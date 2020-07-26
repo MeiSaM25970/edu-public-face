@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { AnimationWrapper } from "react-hover-animation";
 export class BottomHeader extends Component {
   state = { hover: true };
   defaultStyle = {
@@ -11,63 +10,88 @@ export class BottomHeader extends Component {
   };
   render() {
     return (
-      <div dir="rtl">
-        <nav
-          className="navbar navbar-expand-lg navbar-light bg-none row"
-          style={{ boxShadow: "0 3px 4px 0 rgba(0,0,0,.14)" }}
-        >
-          <div className="collapse navbar-collapse col-lg-10" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item ">
-                <AnimationWrapper
-                  style={{
-                    textAlign: "center",
-                    borderRadius: "5px",
-                    padding: "5px",
-                    backgroundColor: "lightblue",
-                  }}
-                  config={{
-                    color: {
-                      initial: "black",
-                      onHover: "red",
-                    },
-                  }}
-                  animationConfig="gentle"
-                >
-                  <a
-                    // style={
-                    //   this.state.hover
-                    //     ? this.defaultStyle.style
-                    //     : this.hoverStyle.style
-                    // }
-                    onMouseEnter={this.hover.bind(this)}
-                    onMouseLeave={this.hover.bind(this)}
-                    className="nav-link "
-                    href="#"
-                  >
-                    Home <span className="sr-only">(current)</span>
+      <div className="botton-menu">
+        <div className="container">
+          <div className="navigation">
+            <button
+              type="button"
+              className="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#myNavbar"
+              aria-expanded="false"
+            >
+              {" "}
+              <i className="zmdi zmdi-menu zmdi-hc-lg"></i>{" "}
+            </button>
+            <nav className="collapse navbar-collapse" id="myNavbar">
+              <ul className="">
+                <li>
+                  <a href="/آنلاین-آموزان/دوره-های-آنلاین">دوره های آنلاین</a>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/آزمون-های-آنلاین">آزمون های آنلاین</a>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/اخبار-آنلاین-آموزان">
+                    مقالات آنلاین آموزان
                   </a>
-                </AnimationWrapper>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" href="#">
-                  Disabled
-                </a>
-              </li>
-            </ul>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/پیشنهاد-های-ویژه">پیشنهادهای ویژه</a>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/پلن-های-فروش">تعرفه ها</a>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/آموزشگاه-ها">آموزشگاه های ما</a>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/مدرسان">مدرسان ما</a>
+                </li>
+                <li>
+                  <a href="/آنلاین-آموزان/درباره-ما">درباره ما</a>
+                </li>
+              </ul>
+            </nav>
+            <div className="social-box">
+              <ul className="social">
+                <li>
+                  <a
+                    title="کانال تلگرام آنلاین آموزان"
+                    target="_blank"
+                    href="https://telegram.me/"
+                    style={{
+                      backgroundImage: "url('/images/telegram.png')",
+                      backgroundSize: "cover",
+                    }}
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    title="صفحه اینستاگرام"
+                    target="_blank"
+                    href="https://instagram.com/"
+                    style={{
+                      backgroundImage: "url('/images/instagram.png')",
+                      backgroundSize: "cover",
+                    }}
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    title="آپارات آنلاین آموزان"
+                    target="_blank"
+                    href="https://www.aparat.com/"
+                    style={{
+                      backgroundImage: "url('/images/aparat.webp')",
+                      backgroundSize: "cover",
+                    }}
+                  ></a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="col-lg-2"></div>
-        </nav>
+        </div>
       </div>
     );
   }
