@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class TopHeader extends Component {
   render() {
@@ -6,10 +7,20 @@ export class TopHeader extends Component {
       <div className="top-menu ir-r">
         <div className="container text-center ir-r">
           <h1 className="logo pull-right">
-            <a className="no-text-decoration-white" href="/">
-              <img src="/images/menu-logo.png" alt="لوگو" />
-              <span> لوگو</span>
-            </a>
+            <Link to="/">
+              <div
+                className="no-text-decoration-white"
+                style={{ marginTop: 2, padding: 0 }}
+              >
+                <img
+                  width="100px"
+                  height="100px"
+                  src="/images/menu-logo.png"
+                  alt="لوگو"
+                />
+                <span> لوگو</span>
+              </div>
+            </Link>
           </h1>
           <div className="search-box">
             <form className="search-form">

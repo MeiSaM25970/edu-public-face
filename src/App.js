@@ -6,6 +6,8 @@ import { TopHeader, BottomHeader } from "./component/publicHeader";
 import { Login } from "./component/Auth";
 import { DetailPage } from "./pages/index";
 import "./App.css";
+import { Footer } from "./component/footer";
+import { TelUsPage } from "./pages/telUs";
 
 function App() {
   return (
@@ -13,18 +15,18 @@ function App() {
       <BrowserRouter>
         <TopHeader />
         <BottomHeader />
-        <div className="container">
-          <Switch>
-            <Route path="/" exact>
-              <HomePage />
-            </Route>
-            <Route path="/auth/login" component={Login} />
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+            <Footer />
+          </Route>
 
-            <Route path="/:_id/edu" component={DetailPage} />
+          <Route path="/auth/login" component={Login} />
 
-            <Redirect to="/" />
-          </Switch>
-        </div>
+          <Route path="/edu/telus" exact component={TelUsPage} />
+          <Route path="/edu/:_id" component={DetailPage} />
+          <Redirect to="/" />
+        </Switch>
       </BrowserRouter>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import * as userService from "../service";
 import {
   BodyNavbar,
@@ -7,36 +7,14 @@ import {
   AboutTeacher,
   ProductDetail,
   Description,
+  Period,
 } from "../component/detail/";
 
 export class DetailPage extends Component {
-  state = {
-    data: {
-      schedules: [
-        { date: "" },
-        { time: [{ hours: "1" }, { min: "2" }] },
-        { priod: "" },
-        { _id: "" },
-      ],
-      products: [
-        {
-          image: "",
-          teacher_name: "",
-          teacher_description: "",
-          start_at: "",
-          title: "",
-          price: "",
-          description: ``,
-          schedules: [{ date: "" }, { time: "1" }, { priod: "" }, { _id: "" }],
-        },
-      ],
-    },
-  };
+  state = {};
   componentDidMount() {
     const id = this.props.match.params._id;
-    userService
-      .getProductById(id)
-      .then(({ data }) => this.setState({ data }, console.log(this.state)));
+    userService.getProductById(id).then(({ data }) => this.setState({ data }));
   }
 
   render() {
@@ -52,20 +30,21 @@ export class DetailPage extends Component {
       );
     }
     return (
-      <Fragment>
+      <div className="container">
         <BodyNavbar props={this.props} />
         <div className="row">
           <div className="col-md-3 col-xs-12 left-side">
             <ELogo />
             <ShortLink props={this.props} />
-            <AboutTeacher props={this.props} />
+            <AboutTeacher data={this.state.data} />
           </div>
           <div className="col-md-9 col-xs-12 right-side">
-            <ProductDetail data={this.state.data || ""} />
-            <Description />
+            <ProductDetail data={this.state.data} />
+            <Description data={this.state.data} />
+            <Period data={this.state.data} />
           </div>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

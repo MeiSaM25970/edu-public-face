@@ -1,42 +1,17 @@
 import React, { Component } from "react";
 import "../../css/material-icons.css";
-import * as userService from "../../service";
+import numeral from "numeral";
 export class ProductDetail extends Component {
-  state = {
-    data: {
-      schedules: [{ date: "" }, { time: "1" }, { priod: "" }, { _id: "" }],
-      products: [
-        {
-          image: "",
-          teacher_name: "",
-          teacher_description: "",
-          start_at: "",
-          title: "",
-          price: "",
-          registered: "",
-          price_title: "",
-          strong: "",
-          description: ``,
-        },
-      ],
-    },
-  };
-  componentDidMount() {
-    const id = this.props.data.products._id;
-    userService
-      .getProductById(id)
-      .then(({ data }) => this.setState({ data }, console.log(this.state)));
-  }
   render() {
-    return this.state.data.products.map((item, index) => (
-      <div className="card pricing" key={index}>
+    return (
+      <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
         <div className="card-content">
           <div className="card-header">
             <h1
               className="course-title"
               style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}
             >
-              {item.title}
+              {this.props.data.product.title}
             </h1>
             <p
               className="more-details"
@@ -47,12 +22,12 @@ export class ProductDetail extends Component {
                 (عمومی)
               </span>
               <span className="duration">
-                <i className="zmdi zmdi-time " style={{ marginRight: 10 }}></i>
-                {this.state.data.schedules.time}
+                <i className="zmdi zmdi-time " style={{ paddingRight: 10 }}></i>
+                مدت کلاس {this.props.data.product.schedules[0].time}
               </span>
-              <span className="views">
+              <span className="views" style={{ paddingRight: 10 }}>
                 <i className="zmdi zmdi-eye"></i>
-                {item.registered} ثبت نام
+                {this.props.data.product.registered} ثبت نام
               </span>
             </p>
           </div>
@@ -60,17 +35,22 @@ export class ProductDetail extends Component {
             <div className="col-md-12 col-xs-12 pricing-item ">
               <div className="col-md-4 col-xs-12 price-info">
                 <div className="price-title">
-                  ثبت نام در دوره {item.price_title}
+                  ثبت نام در دوره {this.props.data.product.price_title}
                 </div>
                 <div className="price-date">فعال تا پایان برگزاری دوره</div>
               </div>
               <div className="col-md-4 col-xs-12 text-center price-capacity">
                 <small>ظرفیت باقیمانده : </small>
-                <strong>{item.strong - item.registered}</strong>
+                <strong>
+                  {this.props.data.product.strong -
+                    this.props.data.product.registered}
+                </strong>
               </div>
               <div className="col-md-4 col-xs-12 text-center">
                 <a className="btn-pricing" href="/CoursePay/index/14333">
-                  <span>{item.price}</span>
+                  <span>
+                    {numeral(this.props.data.product.price).format(0, 0)}
+                  </span>
                   ثبت نام
                 </a>
               </div>
@@ -78,6 +58,6 @@ export class ProductDetail extends Component {
           </div>
         </div>
       </div>
-    ));
+    );
   }
 }

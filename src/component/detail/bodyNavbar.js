@@ -7,11 +7,10 @@ export class BodyNavbar extends Component {
   id = this.props.props.match.params._id;
 
   render() {
-    console.log(this.props);
     return (
       <div
         className="course-details-breadcrumb text-center ir-r"
-        style={{ marginTop: 20 }}
+        style={{ marginTop: 40 }}
       >
         <div className="breadcrumb d-block">
           <a className="breadcrumb-item text-green" href="/">
