@@ -53,6 +53,7 @@ export class Footer extends Component {
                   <a
                     title="کانال تلگرام"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://telegram.me/"
                     style={{
                       backgroundImage: 'url("/images/telegram.png")',
@@ -64,6 +65,7 @@ export class Footer extends Component {
                   <a
                     title="اینستاگرام"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://instagram.com/"
                     style={{
                       backgroundImage: 'url("/images/instagram.png")',
@@ -75,6 +77,7 @@ export class Footer extends Component {
                   <a
                     title="آپارات"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.aparat.com/"
                     style={{
                       backgroundImage: 'url("/images/aparat.webp")',
@@ -87,51 +90,21 @@ export class Footer extends Component {
             <div className="col-md-2 col-sm-6 col-xs-12 float-right">
               <h6>راهنمای سایت</h6>
               <ul className="information">
-                <li>
+                {/* <li>
                   <Link to="/راهنمای-ورود-به-کلاس-آنلاین-مخصوص-فراگیران-">
                     <div>راهنمای ورود به کلاس آنلاین (مخصوص فراگیران)</div>
                   </Link>
-                </li>
-                <li>
-                  <Link to="/آموزش-ورود-کلاس-در-ادوبی-کانکت-آنلاین-آموزان">
-                    <div>آموزش ورود کلاس در ادوبی کانکت - آنلاین آموزان</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/دعوت-به-همکاری-14">
-                    <div>دعوت به همکاری</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/قوانین-و-مقررات">
-                    <div>قوانین و مقررات</div>
-                  </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="col-md-2 col-sm-6 col-xs-12 float-right">
               <h6>دسترسی سریع</h6>
               <ul className="information">
-                <li>
+                {/* <li>
                   <Link to="/اخبار">
                     <div>مقالات آنلاین آموزان</div>
                   </Link>
-                </li>
-                <li>
-                  <Link to="/landingPages/کلاس-آنلاین-و-وبینار">
-                    <div>تعرفه ایجاد وبینار و کلاس آنلاین</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/landingPages/آموزش-آنلاین-را-در-سایت-خود-داشته-باشید">
-                    <div>آموزش آنلاین را در سایت خود داشته باشید</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/edu/telus">
-                    <div>تماس با ما</div>
-                  </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="col-md-4 col-sm-6 col-xs-12 float-right text-center">
@@ -157,11 +130,19 @@ export class Footer extends Component {
           <div className="row botbar">
             <div className="col-sm-7 float-right"></div>
             <div className="col-sm-5 float-right copyright text-left">
-              <a href="http://tad-group.ir" target="_blank">
+              <a
+                href="http://tad-group.ir"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {" طراحی وب سایت"}{" "}
               </a>
               {" توسط گروه"}{" "}
-              <a href="http://tad-group.ir" target="_blank">
+              <a
+                href="http://tad-group.ir"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {"تاد  "}{" "}
               </a>
             </div>

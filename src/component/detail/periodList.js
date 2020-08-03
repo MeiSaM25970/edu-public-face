@@ -2,18 +2,19 @@ import React from "react";
 import moment from "moment-jalaali";
 
 export function PeriodList(props) {
-  const startTime = props.data.startTime;
-  return props.data.schedules.map((item, index) => (
-    <li className="option-item" key={index}>
-      <a>
-        در تاریخ{moment(item.date, "jYYYY/jM/jD").format("jYYYY/jM/jD")} / شروع
-        کلاس ساعت {startTime} تا ????
-      </a>
-      <div className="pull-left">
-        {" "}
-        <span className="duration">مدت کلاس : {item.time} ساعت</span>
-        <a href="#"></a>{" "}
-      </div>
-    </li>
-  ));
+  return props.data.schedules.map((item, index) => {
+    return (
+      <li className="option-item" key={index}>
+        <span style={{ fontSize: "12px" }}>
+          {"تاریخ  "}
+          {moment(item.date, "YYYY/MM/DD").format("jYYYY/jM/jD")} - شروع کلاس
+          ساعت {moment(item.time, "LT").format("HH:mm")}
+        </span>
+        <div className="pull-left">
+          {" "}
+          <span className="duration">مدت کلاس : {item.period * 60} دقیقه</span>
+        </div>
+      </li>
+    );
+  });
 }

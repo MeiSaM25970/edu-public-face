@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "../../css/material-icons.css";
 import numeral from "numeral";
+import { SumPeriod } from "./sumPeriod";
+
 export class ProductDetail extends Component {
   render() {
+    console.log();
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
         <div className="card-content">
@@ -11,7 +14,7 @@ export class ProductDetail extends Component {
               className="course-title"
               style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}
             >
-              {this.props.data.product.title}
+              {this.props.data.title}
             </h1>
             <p
               className="more-details"
@@ -23,34 +26,32 @@ export class ProductDetail extends Component {
               </span>
               <span className="duration">
                 <i className="zmdi zmdi-time " style={{ paddingRight: 10 }}></i>
-                مدت کلاس {this.props.data.product.schedules[0].time}
+                مدت کلاس {<SumPeriod data={this.props.data} />} دقیقه
               </span>
               <span className="views" style={{ paddingRight: 10 }}>
                 <i className="zmdi zmdi-eye"></i>
-                {this.props.data.product.registered} ثبت نام
+                {this.props.data.participants.length} ثبت نام
               </span>
             </p>
           </div>
           <div className="card-body">
             <div className="col-md-12 col-xs-12 pricing-item ">
               <div className="col-md-4 col-xs-12 price-info">
-                <div className="price-title">
+                {/* <div className="price-title">
                   ثبت نام در دوره {this.props.data.product.price_title}
-                </div>
+                </div> */}
                 <div className="price-date">فعال تا پایان برگزاری دوره</div>
               </div>
               <div className="col-md-4 col-xs-12 text-center price-capacity">
-                <small>ظرفیت باقیمانده : </small>
-                <strong>
+                {/* <small>ظرفیت باقیمانده : </small> */}
+                {/* <strong>
                   {this.props.data.product.strong -
                     this.props.data.product.registered}
-                </strong>
+                </strong> */}
               </div>
               <div className="col-md-4 col-xs-12 text-center">
                 <a className="btn-pricing" href="/CoursePay/index/14333">
-                  <span>
-                    {numeral(this.props.data.product.price).format(0, 0)}
-                  </span>
+                  <span>{numeral(this.props.data.price).format(0, 0)}</span>
                   ثبت نام
                 </a>
               </div>

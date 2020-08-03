@@ -1,16 +1,22 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export class BottomHeader extends Component {
-  state = { hover: true };
+  state = {
+    click: false,
+  };
   defaultStyle = {
     style: {},
   };
-  hoverStyle = { style: {} };
-  hover = () => {
-    this.setState({ hover: !this.state.hover });
+  onClickClass = "collapse navbar-collapse in";
+  class = "collapse navbar-collapse";
+  click = () => {
+    this.setState({ click: !this.state.click });
+    console.log(this.state);
   };
+
   render() {
     return (
-      <div className="botton-menu">
+      <div className="botton-menu ">
         <div className="container">
           <div className="navigation">
             <button
@@ -19,37 +25,27 @@ export class BottomHeader extends Component {
               data-toggle="collapse"
               data-target="#myNavbar"
               aria-expanded="false"
+              onClick={this.click.bind(this)}
             >
               {" "}
               <i className="zmdi zmdi-menu zmdi-hc-lg"></i>{" "}
             </button>
-            <nav className="collapse navbar-collapse" id="myNavbar">
+            <nav
+              className={this.state.click ? this.onClickClass : this.class}
+              id="myNavbar"
+            >
               <ul className="">
                 <li>
                   <a href="/آنلاین-آموزان/دوره-های-آنلاین">دوره های آنلاین</a>
                 </li>
                 <li>
-                  <a href="/آنلاین-آموزان/آزمون-های-آنلاین">آزمون های آنلاین</a>
-                </li>
-                <li>
-                  <a href="/آنلاین-آموزان/اخبار-آنلاین-آموزان">
-                    مقالات آنلاین آموزان
-                  </a>
-                </li>
-                <li>
                   <a href="/آنلاین-آموزان/پیشنهاد-های-ویژه">پیشنهادهای ویژه</a>
                 </li>
                 <li>
-                  <a href="/آنلاین-آموزان/پلن-های-فروش">تعرفه ها</a>
+                  <Link to="/allteachers">مدرسان ما</Link>
                 </li>
                 <li>
-                  <a href="/آنلاین-آموزان/آموزشگاه-ها">آموزشگاه های ما</a>
-                </li>
-                <li>
-                  <a href="/آنلاین-آموزان/مدرسان">مدرسان ما</a>
-                </li>
-                <li>
-                  <a href="/آنلاین-آموزان/درباره-ما">درباره ما</a>
+                  <Link to="/aboutUs">درباره ما</Link>
                 </li>
               </ul>
             </nav>
@@ -59,6 +55,7 @@ export class BottomHeader extends Component {
                   <a
                     title="کانال تلگرام آنلاین آموزان"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://telegram.me/"
                     style={{
                       backgroundImage: "url('/images/telegram.png')",
@@ -70,6 +67,7 @@ export class BottomHeader extends Component {
                   <a
                     title="صفحه اینستاگرام"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://instagram.com/"
                     style={{
                       backgroundImage: "url('/images/instagram.png')",
@@ -81,6 +79,7 @@ export class BottomHeader extends Component {
                   <a
                     title="آپارات آنلاین آموزان"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.aparat.com/"
                     style={{
                       backgroundImage: "url('/images/aparat.webp')",

@@ -6,7 +6,11 @@ export class Description extends Component {
       <div className="card" style={{ marginTop: 25, marginBottom: 0 }}>
         <div className="card-content">
           <h3 className="sec-title">توضیحات تکمیلی دوره</h3>
-          <div className="abs">{data.product.description}</div>
+          {/* <div className="abs">{{ __html: data.description }}</div> */}
+          <div
+            className="abs"
+            dangerouslySetInnerHTML={{ __html: data.description }}
+          />
           <div className="abs"></div>
         </div>
       </div>

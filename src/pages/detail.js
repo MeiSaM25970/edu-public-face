@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import * as userService from "../service";
 import {
   BodyNavbar,
   ELogo,
-  ShortLink,
   AboutTeacher,
   ProductDetail,
   Description,
   Period,
 } from "../component/detail/";
+import { SuggestedCourse } from "../component/detail/suggestedCourse";
 
 export class DetailPage extends Component {
   state = {};
@@ -30,21 +30,24 @@ export class DetailPage extends Component {
       );
     }
     return (
-      <div className="container">
-        <BodyNavbar props={this.props} />
-        <div className="row">
-          <div className="col-md-3 col-xs-12 left-side">
-            <ELogo />
-            <ShortLink props={this.props} />
-            <AboutTeacher data={this.state.data} />
-          </div>
-          <div className="col-md-9 col-xs-12 right-side">
-            <ProductDetail data={this.state.data} />
-            <Description data={this.state.data} />
-            <Period data={this.state.data} />
+      <Fragment>
+        <div className="container">
+          <BodyNavbar props={this.props} />
+          <div className="row">
+            <div className="col-md-3 col-xs-12 left-side">
+              <ELogo />
+              {/* <ShortLink props={this.props} /> */}
+              <AboutTeacher data={this.state.data} />
+            </div>
+            <div className="col-md-9 col-xs-12 right-side">
+              <ProductDetail data={this.state.data} />
+              <Description data={this.state.data} />
+              <Period data={this.state.data} />
+            </div>
           </div>
         </div>
-      </div>
+        <SuggestedCourse data={this.state.data} />
+      </Fragment>
     );
   }
 }

@@ -8,7 +8,7 @@ export class HomePage extends Component {
   state = { products: [] };
   fetchData() {
     userService.getProducts().then((response) => {
-      this.setState({ products: response.data.products });
+      this.setState({ products: response.data });
     });
   }
   componentDidMount() {
@@ -29,8 +29,8 @@ export class HomePage extends Component {
             </div>
           </div>
           <div className="row">
-            <ProductList products={this.state.products} />
-            <TeacherList products={this.state.products || ""} />
+            <ProductList products={this.state.products || ""} />
+            <TeacherList data={this.state.products || ""} />
           </div>
         </div>
       </Fragment>
