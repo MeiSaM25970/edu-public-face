@@ -1,15 +1,11 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { HomePage } from "./pages/";
 import { TopHeader, BottomHeader } from "./component/publicHeader";
 import { Login } from "./component/Auth";
-import { DetailPage } from "./pages/index";
-import "./App.css";
+import { DetailPage, AboutUs, Teachers, CoursesPage, HomePage } from "./pages/";
 import { Footer } from "./component/footer";
-import { AboutUs } from "./pages/";
-import { AllTeachers } from "./pages";
 import Page from "./component/pageTitle/pageTitle";
+import "./App.css";
 
 function App() {
   return (
@@ -45,19 +41,27 @@ function App() {
             )}
           />
           <Route
-            path="/allteachers"
+            path="/teachers"
             render={(props) => (
               <Page title=" همه مدرسان">
-                <AllTeachers {...props} />
+                <Teachers {...props} />
               </Page>
             )}
           />
 
           <Route
-            path="/edu/:_id"
+            path="/course/:_id"
             render={(props) => (
               <Page title="دوره های آنلاین ">
                 <DetailPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/courses"
+            render={(props) => (
+              <Page title=" همه دوره های آنلاین ">
+                <CoursesPage {...props} />
               </Page>
             )}
           />

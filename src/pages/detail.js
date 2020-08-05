@@ -12,9 +12,19 @@ import { SuggestedCourse } from "../component/detail/suggestedCourse";
 
 export class DetailPage extends Component {
   state = {};
-  componentDidMount() {
-    const id = this.props.match.params._id;
+
+  fetchData(id) {
     userService.getProductById(id).then(({ data }) => this.setState({ data }));
+  }
+  componentDidMount() {
+    this.fetchData(this.props.match.params._id);
+  }
+
+  componentWillReceiveProps(newProps) {
+    const id = newProps.match.params._id;
+    if (this.props.match.params._id !== id) {
+      this.fetchData(id);
+    }
   }
 
   render() {
@@ -32,7 +42,7 @@ export class DetailPage extends Component {
     return (
       <Fragment>
         <div className="container">
-          <BodyNavbar props={this.props} />
+          <BodyNavbar data={this.state.data} />
           <div className="row">
             <div className="col-md-3 col-xs-12 left-side">
               <ELogo />
@@ -46,7 +56,7 @@ export class DetailPage extends Component {
             </div>
           </div>
         </div>
-        <SuggestedCourse data={this.state.data} />
+        <SuggestedCourse data={this.state.data.suggestedCourse} />
       </Fragment>
     );
   }

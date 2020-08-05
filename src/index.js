@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import Favicon from "react-favicon";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Favicon url="/images/menu-logo.jpg" />
   </React.StrictMode>,
   document.getElementById("root")
 );

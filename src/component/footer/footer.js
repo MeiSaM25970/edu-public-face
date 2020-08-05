@@ -12,7 +12,7 @@ export class Footer extends Component {
                 <Link to="/">
                   <div
                     className="no-text-decoration-white col-xs-6 uni-azad-footer-logo"
-                    style={{ height: "108.48px" }}
+                    // style={{ height: "108.48px" }}
                   >
                     <img
                       src="/images/daneshgahAzad.png"
@@ -22,9 +22,9 @@ export class Footer extends Component {
 
                   <div
                     className="no-text-decoration-white col-xs-6 onlineamoozan-footer-logo"
-                    style={{ height: "108.48px" }}
+                    style={{ marginTop: "50px" }}
                   >
-                    <img src="/images/menu-logo.png" alt="تاد" />
+                    <img src="/images/menu-logo.jpg" alt="تاد" />
                   </div>
                 </Link>
               </h1>

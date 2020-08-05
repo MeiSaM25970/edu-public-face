@@ -36,20 +36,18 @@ export class BottomHeader extends Component {
             >
               <ul className="">
                 <li>
-                  <a href="/آنلاین-آموزان/دوره-های-آنلاین">دوره های آنلاین</a>
+                  <Link to="/courses">دوره های آنلاین</Link>
                 </li>
+
                 <li>
-                  <a href="/آنلاین-آموزان/پیشنهاد-های-ویژه">پیشنهادهای ویژه</a>
-                </li>
-                <li>
-                  <Link to="/allteachers">مدرسان ما</Link>
+                  <Link to="/teachers">مدرسان ما</Link>
                 </li>
                 <li>
                   <Link to="/aboutUs">درباره ما</Link>
                 </li>
               </ul>
             </nav>
-            <div className="social-box">
+            <div className="social-box" style={{ marginTop: "auto" }}>
               <ul className="social">
                 <li>
                   <a

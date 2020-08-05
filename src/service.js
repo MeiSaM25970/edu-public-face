@@ -17,5 +17,8 @@ export function getProducts() {
 }
 
 export function getProductById(id) {
-  return axios.get(apiAddress + id + "?suggest_limit=1");
+  return axios.get(apiAddress + id + "?suggest_limit=10");
+}
+export function getCourses(page, count) {
+  return axios.get(apiAddress + "?page=" + page + "&pagesize=" + count);
 }

@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import * as userService from "../service";
-import { BodyNavbarAT } from "../component/allTeachers/bodyNavbarAT";
-import { AllTeachersList } from "../component/allTeachers/allTeachers";
-export class AllTeachers extends Component {
+import { TeachersList, BodyNavbarAT } from "../component/teachers/";
+export class Teachers extends Component {
   state = { data: [] };
   fetchData() {
     userService.getAllTeacher().then((response) => {
@@ -18,7 +17,7 @@ export class AllTeachers extends Component {
     return (
       <Fragment>
         <BodyNavbarAT data={this.state.data} />
-        <AllTeachersList data={this.state.data} />
+        <TeachersList data={this.state.data} />
       </Fragment>
     );
   }

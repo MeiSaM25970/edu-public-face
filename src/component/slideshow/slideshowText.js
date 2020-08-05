@@ -7,14 +7,12 @@ export class SlideShowText extends Component {
         className="slide-overlay"
         style={{ top: "50%", right: 0, transform: "translateY(-50%)" }}
       >
-        <h2>
+        <h2 style={{ textShadow: " 3px 2px 1px black" }}>
           {" "}
-          آنلاین آموزان بستریست برای همه جهت برگزاری کلاس های آنلاین، آزمون های
-          آنلاین، وبینارها و ...
+          به شرط دانستن، خواستن توانستن است.
         </h2>
-        <p>
-          آموزشگاه ها، مدرسان، دانش آموزان و ...رایگان ثبت نام کنید و وارد پنل
-          خود شوید.
+        <p style={{ textShadow: " 2px 2px 2px black" }}>
+          مدرسان، دانش آموزان و ...رایگان ثبت نام کنید و وارد پنل خود شوید.
         </p>
       </div>
     );

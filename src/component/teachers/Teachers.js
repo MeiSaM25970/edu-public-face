@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
-export class AllTeachersList extends Component {
+export class TeachersList extends Component {
   render() {
     console.log(this.props.data);
     return (
@@ -33,7 +33,7 @@ export class AllTeachersList extends Component {
                         دسته ها
                          </h6> */}
                   <h4 className="card-title">
-                    <Link to={"/edu/" + item.firstName + "-" + item.lastName}>
+                    <Link to={item.firstName + "-" + item.lastName}>
                       {" "}
                       {item.firstName + " " + item.lastName}
                     </Link>

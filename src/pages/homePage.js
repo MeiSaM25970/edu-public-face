@@ -3,9 +3,10 @@ import { ProductList } from "../component/Products/productList";
 import * as userService from "../service";
 import { SimpleSlider } from "../component/slideshow/";
 import { TeacherList } from "../component/teacherList/teacherList";
+import { ShowMore } from "./component/showMore/showMore";
 
 export class HomePage extends Component {
-  state = { products: [] };
+  state = { products: { data: [] } };
   fetchData() {
     userService.getProducts().then((response) => {
       this.setState({ products: response.data });
@@ -16,6 +17,7 @@ export class HomePage extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <Fragment>
         <SimpleSlider />
@@ -30,6 +32,7 @@ export class HomePage extends Component {
           </div>
           <div className="row">
             <ProductList products={this.state.products || ""} />
+            <ShowMore />
             <TeacherList data={this.state.products || ""} />
           </div>
         </div>
