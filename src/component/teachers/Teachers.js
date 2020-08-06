@@ -38,7 +38,12 @@ export class TeachersList extends Component {
                       {item.firstName + " " + item.lastName}
                     </Link>
                   </h4>
-                  <p className="description">{item.description}</p>
+                  <p
+                    className="description d-inline-block text-truncate d-inline-block text-truncate"
+                    // style={{ maxWidth: "150px" }}
+                  >
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>

@@ -39,7 +39,10 @@ export function Product(props) {
               </span>
             </div>
             <div className="category-with-bg " style={{ height: "184px" }}>
-              <h5 className="course-title" title={data.title}>
+              <h5
+                className="course-title d-inline-block text-truncate"
+                title={data.title}
+              >
                 {data.title}
               </h5>
               <p>

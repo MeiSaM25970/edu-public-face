@@ -47,7 +47,9 @@ export class TeacherList extends Component {
                     {item.firstName + " " + item.lastName}
                     {/* </Link> */}
                   </h4>
-                  <p className="description">{item.description}</p>
+                  <p className=" description d-inline-block text-truncate">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
