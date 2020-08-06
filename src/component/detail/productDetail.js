@@ -66,7 +66,7 @@ export class ProductDetail extends Component {
                   ثبت نام
                 </Link>
                 <br />
-                <small className="text-info">
+                <small className="text-danger">
                   {this.state.click
                     ? "با شماره تلفن 09335456570 تماس بگیرید."
                     : ""}
