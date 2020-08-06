@@ -14,29 +14,28 @@ export class Footer extends Component {
                     className="no-text-decoration-white col-xs-6 onlineamoozan-footer-logo"
                     style={{ marginTop: "50px" }}
                   >
-                    <img src="/images/menu-logo.jpg" alt="logo" />
+                    <img src="/images/menu-logo.jpg" alt="learning-page" />
                   </div>
                 </Link>
               </h1>
               <ul className="contactinfo">
                 <li className="address">
                   <strong>آدرس: </strong>
-                  ،ساری، خیابان طبرستان، نبش کوچه طلیعه مرکز رشد واحدهای فناور
-                  دانشگاه آزاد اسلامی واحد ساری
+                  خراسان جنوبی – مرکز رشد واحدهای فناور
                 </li>
                 <li className="phone">
-                  <strong>روابط عمومی: </strong>
-                  <span className="ltr">
-                    09025085258 - 09021321881 - 02191302580
+                  <span>
+                    تلفن پشتیبانی : 09335456570 <br /> اس ام اس پنل :
+                    100009335456570
                   </span>
                 </li>
-                <li className="phone">
+                {/* <li className="phone">
                   <strong>پشتیبانی درگاه پرداخت اینترنتی: </strong>
                   <span className="ltr">021-43570</span>
                 </li>
                 <li className="email">
                   <strong>پست الکترونیکی: </strong> info@onlineamooz.ir
-                </li>
+                </li> */}
               </ul>
               <ul className="social">
                 <li>
@@ -92,7 +91,7 @@ export class Footer extends Component {
               <ul className="information">
                 {/* <li>
                   <Link to="/اخبار">
-                    <div>مقالات آنلاین آموزان</div>
+                    <div>مقالات برگ دانش</div>
                   </Link>
                 </li> */}
               </ul>
@@ -102,7 +101,7 @@ export class Footer extends Component {
               <div className="enamad">
                 <img
                   src="/images/e.png"
-                  alt="نماد الکترونیکی سایت آنلاین آموزان"
+                  alt="نماد الکترونیکی سایت برگ دانش"
                   //   onclick={{windowOpen("https://trustseal.enamad.ir/Verify.aspx?id=118698&amp;p=vORmIO0dlasFALFD", "Popup","toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")}}
                   style={{ cursor: "pointer", marginLeft: 10 }}
                   id="vORmIO0dlasFALFD"

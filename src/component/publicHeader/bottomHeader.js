@@ -50,7 +50,7 @@ export class BottomHeader extends Component {
               <ul className="social">
                 <li>
                   <a
-                    title="کانال تلگرام آنلاین آموزان"
+                    title="کانال تلگرام برگ دانش"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://telegram.me/"
@@ -74,7 +74,7 @@ export class BottomHeader extends Component {
                 </li>
                 <li>
                   <a
-                    title="آپارات آنلاین آموزان"
+                    title="آپارات برگ دانش"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://www.aparat.com/"
