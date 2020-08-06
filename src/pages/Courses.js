@@ -17,6 +17,7 @@ export class CoursesPage extends Component {
   handlePageChange(pageNumber) {
     this.setState({ ...this.state, activePage: pageNumber });
     this.fetchData(pageNumber, 12);
+    this.props.history.push("/courses?page=" + pageNumber);
   }
   componentDidMount() {
     this.fetchData(this.state.activePage, 12);
@@ -31,7 +32,7 @@ export class CoursesPage extends Component {
   // }
 
   render() {
-    console.log(this.state.products.data);
+    console.log(this.state.products);
     if (!this.state.products.data) {
       return (
         <div
@@ -57,7 +58,7 @@ export class CoursesPage extends Component {
             <Pagination
               activePage={this.state.activePage}
               itemsCountPerPage={12}
-              totalItemsCount={this.state.products.data.totalCount || 12}
+              totalItemsCount={this.state.products.totalCount || 50}
               pageRangeDisplayed={5}
               onChange={this.handlePageChange.bind(this)}
               getPageUrl={(pageNumber) => "/courses/?page=" + pageNumber}

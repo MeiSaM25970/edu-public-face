@@ -11,20 +11,10 @@ export class Footer extends Component {
               <h1 className="logo float-none">
                 <Link to="/">
                   <div
-                    className="no-text-decoration-white col-xs-6 uni-azad-footer-logo"
-                    // style={{ height: "108.48px" }}
-                  >
-                    <img
-                      src="/images/daneshgahAzad.png"
-                      alt="مرکز رشد دانشگاه آزاد اسلامی"
-                    />
-                  </div>
-
-                  <div
                     className="no-text-decoration-white col-xs-6 onlineamoozan-footer-logo"
                     style={{ marginTop: "50px" }}
                   >
-                    <img src="/images/menu-logo.jpg" alt="تاد" />
+                    <img src="/images/menu-logo.jpg" alt="logo" />
                   </div>
                 </Link>
               </h1>
@@ -80,7 +70,7 @@ export class Footer extends Component {
                     rel="noopener noreferrer"
                     href="https://www.aparat.com/"
                     style={{
-                      backgroundImage: 'url("/images/aparat.webp")',
+                      backgroundImage: 'url("/images/aparat.png")',
                       backgroundSize: "cover",
                     }}
                   ></a>

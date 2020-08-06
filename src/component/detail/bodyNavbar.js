@@ -5,7 +5,10 @@ import DvrIcon from "@material-ui/icons/Dvr";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import { Link } from "react-router-dom";
 export class BodyNavbar extends Component {
+  id = this.props.data._id;
+
   render() {
+    console.log(this.props.data._id);
     return (
       <div
         className="course-details-breadcrumb text-center ir-r"
@@ -30,7 +33,10 @@ export class BodyNavbar extends Component {
               style={{ position: "relative", top: "5px", width: "auto" }}
             />
           </a>
-          <Link className="breadcrumb-item text-warning" to={"/edu/" + this.id}>
+          <Link
+            className="breadcrumb-item text-warning"
+            to={"/course/" + this.id}
+          >
             <CheckBoxIcon style={{ position: "relative", float: "right" }} />
             <span>{this.props.data.title}</span>
           </Link>

@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import "../../css/material-icons.css";
 import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
+import { Link } from "react-router-dom";
 
 export class ProductDetail extends Component {
+  state = { click: false };
+  clickHandler() {
+    if (this.state.click) {
+      return;
+    }
+  }
   render() {
     console.log();
     return (
@@ -20,10 +27,11 @@ export class ProductDetail extends Component {
               className="more-details"
               style={{ fontWeight: 700, fontSize: 13, paddingRight: 10 }}
             >
-              <span className="lessons">
+              {/* <span className="lessons">
                 <i className="zmdi zmdi-assignment"></i> سایر آموزشها - آزاد
                 (عمومی)
               </span>
+               */}
               <span className="duration">
                 <i className="zmdi zmdi-time " style={{ paddingRight: 10 }}></i>
                 مدت کلاس {<SumPeriod data={this.props.data} />} دقیقه
@@ -50,10 +58,19 @@ export class ProductDetail extends Component {
                 </strong> */}
               </div>
               <div className="col-md-4 col-xs-12 text-center">
-                <a className="btn-pricing" href="/CoursePay/index/14333">
+                <Link
+                  className="btn-pricing"
+                  onClick={() => this.setState({ click: !this.state.click })}
+                >
                   <span>{numeral(this.props.data.price).format(0, 0)}</span>
                   ثبت نام
-                </a>
+                </Link>
+                <br />
+                <small className="text-info">
+                  {this.state.click
+                    ? "با شماره تلفن 09335456570 تماس بگیرید."
+                    : ""}
+                </small>
               </div>
             </div>
           </div>

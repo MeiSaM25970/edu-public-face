@@ -11,12 +11,11 @@ export class BottomHeader extends Component {
   class = "collapse navbar-collapse";
   click = () => {
     this.setState({ click: !this.state.click });
-    console.log(this.state);
   };
 
   render() {
     return (
-      <div className="botton-menu ">
+      <div className="botton-menu " style={{ height: 47 }}>
         <div className="container">
           <div className="navigation">
             <button
@@ -47,7 +46,7 @@ export class BottomHeader extends Component {
                 </li>
               </ul>
             </nav>
-            <div className="social-box" style={{ marginTop: "auto" }}>
+            <div className="social-box" style={{ marginTop: "5px" }}>
               <ul className="social">
                 <li>
                   <a
@@ -80,7 +79,7 @@ export class BottomHeader extends Component {
                     rel="noopener noreferrer"
                     href="https://www.aparat.com/"
                     style={{
-                      backgroundImage: "url('/images/aparat.webp')",
+                      backgroundImage: "url('/images/aparat.png')",
                       backgroundSize: "cover",
                     }}
                   ></a>
