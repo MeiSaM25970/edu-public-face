@@ -7,9 +7,9 @@ export class ShowMore extends Component {
       <Fragment>
         <div className="row">
           <div className="col-sm-10 col-sm-offset-1 text-center">
-            <h3 className="section-title">برخی از مدرسان آنلاین آموزان</h3>
+            <h3 className="section-title">برخی از مدرسان برگ دانش</h3>
             <p className="section-description">
-              همه شما مدرسین محترم هم می توانید با ثبت نام در آنلاین آموزان به
+              همه شما مدرسین محترم هم می توانید با ثبت نام در برگ دانش به
               برگزاری دوره های مختلف در زمینه هایی که در آن ها تخصص دارید،
               بپردازید.
             </p>
