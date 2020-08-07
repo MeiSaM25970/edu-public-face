@@ -3,16 +3,22 @@ import { BodyNavbarAC } from "../component/courses/bodyNavbarAC";
 import * as userService from "../service";
 import { ProductList } from "../component/Products/productList";
 import Pagination from "react-js-pagination";
+import { Loading } from "../component/Loading";
+import { Error } from "../component/error";
 // import { Search } from "../component/courses/search";
 
 export class CoursesPage extends Component {
-  state = { products: {}, activePage: 1 };
+  state = { products: {}, activePage: 1, loading: true, error: false };
 
   fetchData(page, count) {
-    userService.getCourses(page, count).then((response) => {
-      this.setState({ products: response.data });
-      console.log(this.state);
-    });
+    userService
+      .getCourses(page, count)
+      .then((response) => {
+        this.setState({ products: response.data, loading: false });
+      })
+      .catch(() => {
+        this.setState({ loading: false, error: true });
+      });
   }
   handlePageChange(pageNumber) {
     this.setState({ ...this.state, activePage: pageNumber });
@@ -23,27 +29,13 @@ export class CoursesPage extends Component {
     this.fetchData(this.state.activePage, 12);
   }
 
-  // getPageNumber(props) {
-  //   const page = props.location.search.replace("?page=", "");
-  //   return page || 1;
-  // }
-  // componentWillReceiveProps(newProps) {
-  //   this.fetchData(this.getPageNumber(newProps), 12);
-  // }
-
   render() {
-    console.log(this.state.products);
-    if (!this.state.products.data) {
-      return (
-        <div
-          className="text-primary spinner-border mx-auto mt-5 d-block"
-          role="status"
-        >
-          <span className="sr-only">بارگیری...</span>
-        </div>
-      );
+    if (this.state.error) {
+      return <Error />;
     }
-    return (
+    return this.state.loading ? (
+      <Loading />
+    ) : (
       <Fragment>
         <div className="container">
           <div className="row">

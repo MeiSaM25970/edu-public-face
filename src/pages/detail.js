@@ -9,12 +9,19 @@ import {
   Period,
 } from "../component/detail/";
 import { SuggestedCourse } from "../component/detail/suggestedCourse";
+import { Error } from "../component/error";
+import { Loading } from "../component/Loading";
 
 export class DetailPage extends Component {
-  state = {};
+  state = { error: false, loading: true };
 
   fetchData(id) {
-    userService.getProductById(id).then(({ data }) => this.setState({ data }));
+    userService
+      .getProductById(id)
+      .then(({ data }) => this.setState({ data, loading: false }))
+      .catch(() => {
+        this.setState({ loading: false, error: true });
+      });
   }
   componentDidMount() {
     this.fetchData(this.props.match.params._id);
@@ -28,18 +35,12 @@ export class DetailPage extends Component {
   }
 
   render() {
-    const data = this.state.data;
-    if (!data) {
-      return (
-        <div
-          className="text-primary spinner-border mx-auto mt-5 d-block"
-          role="status"
-        >
-          <span className="sr-only">بارگیری...</span>
-        </div>
-      );
+    if (this.state.error) {
+      return <Error />;
     }
-    return (
+    return this.state.loading ? (
+      <Loading />
+    ) : (
       <Fragment>
         <div className="container">
           <BodyNavbar data={this.state.data} />
