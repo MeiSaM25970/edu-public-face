@@ -3,6 +3,7 @@ import { ProductList } from "../../component/Products/productList";
 import { SimpleSlider } from "../../component/slideshow/";
 import { TeacherList } from "../../component/teacherList/";
 import { ShowMore } from "../../pages/component/showMore/showMore";
+import { Auth } from "../Auth/auth";
 
 export class Home extends Component {
   scrollTop = () => {
@@ -28,9 +29,10 @@ export class Home extends Component {
             </div>
           </div>
           <div className="row">
-            <ProductList products={this.props.products || ""} />
+            <Auth />
+            <ProductList products={this.props.data || ""} />
             <ShowMore />
-            <TeacherList data={this.props.products || ""} />
+            <TeacherList data={this.props.data || ""} />
           </div>
         </div>
       </Fragment>

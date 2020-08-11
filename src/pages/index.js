@@ -4,3 +4,5 @@ export * from "./aboutUs";
 export * from "./teachers";
 export * from "./telUs";
 export * from "./Courses";
+export * from "./paymentFail";
+export * from "./paymentSuccess";

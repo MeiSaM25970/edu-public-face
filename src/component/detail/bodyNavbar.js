@@ -8,7 +8,6 @@ export class BodyNavbar extends Component {
   id = this.props.data._id;
 
   render() {
-    console.log(this.props.data._id);
     return (
       <div
         className="course-details-breadcrumb text-center ir-r"

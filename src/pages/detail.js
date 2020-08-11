@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import * as userInfo from "../component/detail/service";
 import * as userService from "../service";
 import {
   BodyNavbar,
@@ -12,8 +13,12 @@ import { SuggestedCourse } from "../component/detail/suggestedCourse";
 import { Error } from "../component/error";
 import { Loading } from "../component/Loading";
 
+const queryString = require("query-string");
+
 export class DetailPage extends Component {
-  state = { error: false, loading: true };
+  state = { error: false, loading: true, participant: {} };
+
+  user = queryString.parse(this.props.location.search);
 
   fetchData(id) {
     userService
@@ -23,8 +28,16 @@ export class DetailPage extends Component {
         this.setState({ loading: false, error: true });
       });
   }
+  checkParticipant(id, token) {
+    userInfo
+      .getCheckParticipant(id, token)
+      .then((response) => this.setState({ participant: response.data }));
+  }
   componentDidMount() {
+    const id = this.props.match.params._id;
+    const token = this.user.token;
     this.fetchData(this.props.match.params._id);
+    this.checkParticipant(id, token);
   }
 
   componentWillReceiveProps(newProps) {
@@ -51,7 +64,11 @@ export class DetailPage extends Component {
               <AboutTeacher data={this.state.data} />
             </div>
             <div className="col-md-9 col-xs-12 right-side">
-              <ProductDetail data={this.state.data} />
+              <ProductDetail
+                data={this.state.data}
+                participant={this.state.participant}
+                userInfo={this.user || ""}
+              />
               <Description data={this.state.data} />
               <Period data={this.state.data} />
             </div>

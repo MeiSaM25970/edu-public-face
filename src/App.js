@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { TopHeader, BottomHeader } from "./component/publicHeader";
 import { Login } from "./component/Auth";
-import { DetailPage, AboutUs, Teachers, CoursesPage, HomePage } from "./pages/";
+import {
+  DetailPage,
+  AboutUs,
+  Teachers,
+  CoursesPage,
+  HomePage,
+  PSuccess,
+  PFail,
+} from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
 import "./App.css";
@@ -29,6 +37,22 @@ function App() {
             render={(props) => (
               <Page title="درباره ما">
                 <AboutUs {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/payment/success"
+            render={(props) => (
+              <Page title="پرداخت موفق ">
+                <PSuccess {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/payment/fail"
+            render={(props) => (
+              <Page title="پرداخت ناموفق ">
+                <PFail {...props} />
               </Page>
             )}
           />

@@ -29,7 +29,6 @@ export class SuggestedCourse extends Component {
           </div>
         </div>
         <ProductList products={this.props} />
-        {console.log(this.props.data)}
       </div>
     );
   }

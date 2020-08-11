@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { reactLocalStorage } from "reactjs-localstorage";
 
+const queryString = require("query-string");
 export class TopHeader extends Component {
+  state = { userInfo: {} };
+  componentDidMount() {
+    const user = reactLocalStorage.getObject("userInfo");
+    this.setState({ userInfo: user });
+  }
+
   render() {
     return (
       <div className="top-menu ir-r">
@@ -48,38 +56,21 @@ export class TopHeader extends Component {
            */}
           </div>
           <div className="pull-left">
-            {/* <div className="menu-item">
-              <i className="zmdi zmdi-account"></i>
-              <span>حساب من</span>
+            <div className="menu-item">
               <i
-                className="zmdi zmdi-caret-down"
-                style={{ marginRight: "5px" }}
+                className="zmdi zmdi-account"
+                style={{ transform: "translateY(3px)" }}
               ></i>
-              <ul className="dropdown">
-                <li className="account-name">میثم ولی زاده</li>
-                <li>
-                  <a href="/TeacherPanel/Dashboard/Index" rel="nofollow">
-                    پروفایل من
-                  </a>
-                </li>
-                <li>
-                  <a href="/TeacherPanel/Courses/Index" rel="nofollow">
-                    دوره های من
-                  </a>
-                </li>
-                <li>
-                  <a href="/TeacherPanel/JoinedCourses/Index" rel="nofollow">
-                    دوره های عضو شده
-                  </a>
-                </li>
-                <li>
-                  <a href="/Authentication/Logout" rel="nofollow">
-                    خروج از حساب کاربری
-                  </a>
-                </li>
-              </ul>
+              {!this.state.userInfo.token ? (
+                <a href="http://dashboard.learningpage.ir">ورود/عضویت</a>
+              ) : (
+                <a href="http://dashboard.learningpage.ir">
+                  {this.state.userInfo.firstName +
+                    " " +
+                    this.state.userInfo.lastName}
+                </a>
+              )}
             </div>
-           */}
           </div>
         </div>
       </div>

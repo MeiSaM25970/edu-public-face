@@ -13,6 +13,7 @@ export class Error extends Component {
               transform: "translateY(30px)",
             }}
             src="/images/errors-icon.svg"
+            alt="Server Error"
           />
 
           <h1

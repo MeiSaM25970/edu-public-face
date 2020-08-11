@@ -2,17 +2,25 @@ import React, { Component } from "react";
 import "../../css/material-icons.css";
 import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
-import { Link } from "react-router-dom";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 export class ProductDetail extends Component {
-  state = { click: false };
-  clickHandler() {
-    if (this.state.click) {
-      return;
+  state = { userInfo: { toke: "" } };
+  componentDidMount() {
+    const user = reactLocalStorage.getObject("userInfo");
+    this.setState({ userInfo: user });
+  }
+  participantsLink() {
+    if (this.props.participant.isParticipant) {
+      return "https://www.skyroom.online/ch/reza135/room-5f2ead8c5cb0773abc4ed19e-5f2fb67c7e026b38c0383996/t/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY5NjgwMDYsInVpZCI6MzQ3MDYyMX0.b6dGPDdUGXH1ao0VCjbMd7JUfRLspcd_g4LyhkZT54o/l/fa";
+    } else {
+      return this.state.userInfo.token
+        ? "https://sandbox.zarinpal.com/pg/StartPay/000000000000000000000000000000034485"
+        : "http://dashboard.learningpage.ir";
     }
   }
   render() {
-    console.log();
+    console.log(this.props);
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
         <div className="card-content">
@@ -58,13 +66,14 @@ export class ProductDetail extends Component {
                 </strong> */}
               </div>
               <div className="col-md-4 col-xs-12 text-center">
-                <Link
+                <a
                   className="btn-pricing"
-                  onClick={() => this.setState({ click: !this.state.click })}
+                  // onClick={() => this.setState({ click: !this.state.click })}
+                  href={this.participantsLink()}
                 >
                   <span>{numeral(this.props.data.price).format(0, 0)}</span>
                   ثبت نام
-                </Link>
+                </a>
                 <br />
                 <small className="text-danger">
                   {this.state.click
