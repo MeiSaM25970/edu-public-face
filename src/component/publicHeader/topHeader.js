@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { reactLocalStorage } from "reactjs-localstorage";
 
-const queryString = require("query-string");
 export class TopHeader extends Component {
   state = { userInfo: {} };
   componentDidMount() {

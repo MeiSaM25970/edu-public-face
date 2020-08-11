@@ -3,6 +3,7 @@ import "../../css/material-icons.css";
 import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
 import { reactLocalStorage } from "reactjs-localstorage";
+import { Link } from "react-router-dom";
 
 export class ProductDetail extends Component {
   state = { userInfo: { toke: "" } };
@@ -20,7 +21,6 @@ export class ProductDetail extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
         <div className="card-content">
@@ -66,14 +66,20 @@ export class ProductDetail extends Component {
                 </strong> */}
               </div>
               <div className="col-md-4 col-xs-12 text-center">
-                <a
-                  className="btn-pricing"
-                  // onClick={() => this.setState({ click: !this.state.click })}
-                  href={this.participantsLink()}
-                >
-                  <span>{numeral(this.props.data.price).format(0, 0)}</span>
-                  ثبت نام
-                </a>
+                {this.props.data.isExpired ? (
+                  <Link className="btn-pricing" to="/">
+                    دوره به اتمام رسید.
+                  </Link>
+                ) : (
+                  <a
+                    className="btn-pricing"
+                    // onClick={() => this.setState({ click: !this.state.click })}
+                    href={this.participantsLink()}
+                  >
+                    <span>{numeral(this.props.data.price).format(0, 0)}</span>
+                    ثبت نام
+                  </a>
+                )}
                 <br />
                 <small className="text-danger">
                   {this.state.click

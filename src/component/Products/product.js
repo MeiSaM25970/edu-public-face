@@ -34,9 +34,13 @@ export function Product(props) {
                 style={{ minHeight: "100px", maxHeight: "150px" }}
               />
 
-              <span className="price">
-                {numeral(data.price).format("0,0")} تومان
-              </span>
+              {props.data.isExpired ? (
+                <span className="price">دوره به اتمام رسید.</span>
+              ) : (
+                <span className="price">
+                  {numeral(data.price).format("0,0")} تومان
+                </span>
+              )}
             </div>
             <div className="category-with-bg " style={{ height: "184px" }}>
               <h5
