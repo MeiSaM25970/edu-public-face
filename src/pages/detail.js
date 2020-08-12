@@ -16,7 +16,7 @@ import { Loading } from "../component/Loading";
 const queryString = require("query-string");
 
 export class DetailPage extends Component {
-  state = { error: false, loading: true, participant: {} };
+  state = { error: false, loading: true, participant: {}, paymentLink: {} };
 
   user = queryString.parse(this.props.location.search);
 
@@ -33,11 +33,17 @@ export class DetailPage extends Component {
       .getCheckParticipant(id, token)
       .then((response) => this.setState({ participant: response.data }));
   }
+  paymentLink(id, token) {
+    userInfo
+      .getPaymentLink(id, token)
+      .then((response) => this.setState({ paymentLink: response.data }));
+  }
   componentDidMount() {
     const id = this.props.match.params._id;
     const token = this.user.token;
     this.fetchData(this.props.match.params._id);
     this.checkParticipant(id, token);
+    this.paymentLink(id, token);
   }
 
   componentWillReceiveProps(newProps) {
@@ -68,6 +74,7 @@ export class DetailPage extends Component {
                 data={this.state.data}
                 participant={this.state.participant}
                 userInfo={this.user || ""}
+                paymentLink={this.state.paymentLink}
               />
               <Description data={this.state.data} />
               <Period data={this.state.data} />

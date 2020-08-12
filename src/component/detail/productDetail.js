@@ -13,10 +13,10 @@ export class ProductDetail extends Component {
   }
   participantsLink() {
     if (this.props.participant.isParticipant) {
-      return "https://www.skyroom.online/ch/reza135/room-5f2ead8c5cb0773abc4ed19e-5f2fb67c7e026b38c0383996/t/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY5NjgwMDYsInVpZCI6MzQ3MDYyMX0.b6dGPDdUGXH1ao0VCjbMd7JUfRLspcd_g4LyhkZT54o/l/fa";
+      return this.props.participant.classLink;
     } else {
       return this.state.userInfo.token
-        ? "https://sandbox.zarinpal.com/pg/StartPay/000000000000000000000000000000034485"
+        ? this.props.paymentLink.url
         : "http://dashboard.learningpage.ir";
     }
   }
