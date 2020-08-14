@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
 export class TeachersList extends Component {
   render() {
-    console.log(this.props.data);
     return (
       <div className="container pros">
         <div className="row text-center">

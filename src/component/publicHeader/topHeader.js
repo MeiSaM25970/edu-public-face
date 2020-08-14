@@ -17,7 +17,45 @@ export class TopHeader extends Component {
     const user = reactLocalStorage.getObject("userInfo");
     this.setState({ userInfo: user });
   }
-
+  logout() {
+    reactLocalStorage.clear("userInfo");
+  }
+  myProfile() {
+    if (!this.state.userInfo.token) {
+      return (
+        <div className="menu-item">
+          <i
+            className="zmdi zmdi-account"
+            style={{ transform: "translateY(3px)" }}
+          ></i>{" "}
+          <a href="http://dashboard.learningpage.ir">ورود/عضویت</a>
+        </div>
+      );
+    } else {
+      return (
+        <div className="menu-item">
+          <i
+            className="zmdi zmdi-account"
+            style={{ transform: "translateY(3px)" }}
+          ></i>
+          <span>حساب من</span>
+          <i className="zmdi zmdi-caret-down" style={{ paddingRight: 5 }}></i>
+          <ul className="dropdown">
+            <li className="account-name">
+              {this.state.userInfo.firstName +
+                " " +
+                this.state.userInfo.lastName}
+            </li>
+            <li>
+              <a href="/" onClick={() => this.logout()}>
+                خروج از حساب کاربری
+              </a>
+            </li>
+          </ul>
+        </div>
+      );
+    }
+  }
   render() {
     return (
       <div className="top-menu ir-r">
@@ -63,23 +101,7 @@ export class TopHeader extends Component {
             </form>
            */}
           </div>
-          <div className="pull-left">
-            <div className="menu-item">
-              <i
-                className="zmdi zmdi-account"
-                style={{ transform: "translateY(3px)" }}
-              ></i>
-              {!this.state.userInfo.token ? (
-                <a href="http://dashboard.learningpage.ir">ورود/عضویت</a>
-              ) : (
-                <a href="http://dashboard.learningpage.ir">
-                  {this.state.userInfo.firstName +
-                    " " +
-                    this.state.userInfo.lastName}
-                </a>
-              )}
-            </div>
-          </div>
+          <div className="pull-left">{this.myProfile()}</div>
         </div>
       </div>
     );

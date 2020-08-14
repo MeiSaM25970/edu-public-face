@@ -10,7 +10,6 @@ import {
   HomePage,
   PSuccess,
   PFail,
-  Rules,
   PoliciesPage,
 } from "./pages/";
 import { Footer } from "./component/footer";

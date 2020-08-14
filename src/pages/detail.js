@@ -42,9 +42,18 @@ export class DetailPage extends Component {
       });
   }
   checkParticipant(id, token) {
-    userInfo.getCheckParticipant(id, token).then((response) => {
-      this.setState({ participant: response.data, loadingParticipant: false });
-    });
+    userInfo
+      .getCheckParticipant(id, token)
+      .then((response) => {
+        this.setState({
+          participant: response.data,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+        // namyeshe payam khata
+      })
+      .finally(() => this.setState({ loadingParticipant: false }));
   }
 
   componentDidMount() {
@@ -54,6 +63,8 @@ export class DetailPage extends Component {
     this.fetchData(id);
     if (token) {
       this.checkParticipant(id, token);
+    } else {
+      this.setState({ loadingParticipant: false });
     }
   }
 
@@ -81,14 +92,14 @@ export class DetailPage extends Component {
               <AboutTeacher data={this.state.data} />
             </div>
             <div className="col-md-9 col-xs-12 right-side">
-              {!this.state.loadingParticipant ? (
+              {this.state.loadingParticipant ? (
+                "درحال پردازش..."
+              ) : (
                 <ProductDetail
                   data={this.state.data}
                   participant={this.state.participant}
                   userInfo={this.user || ""}
                 />
-              ) : (
-                "درحال پردازش..."
               )}
               <Description data={this.state.data} />
               <Period data={this.state.data} />

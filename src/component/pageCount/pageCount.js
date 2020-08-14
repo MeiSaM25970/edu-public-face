@@ -9,7 +9,6 @@ export class PageCount extends Component {
   mathRound = Math.ceil(this.divCount);
   countArray = _.range(0, this.mathRound);
   render() {
-    console.log(this.props);
     return (
       <div className="row text-center">
         <div className="col-xs-12">

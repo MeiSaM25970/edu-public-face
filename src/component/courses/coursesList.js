@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Course } from "./course";
-import { Link } from "react-router-dom";
 
 export class CoursesList extends Component {
   render() {
