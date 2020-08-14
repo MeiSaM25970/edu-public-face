@@ -6,3 +6,5 @@ export * from "./telUs";
 export * from "./Courses";
 export * from "./paymentFail";
 export * from "./paymentSuccess";
+export * from "./whyUs";
+export * from "./policies";

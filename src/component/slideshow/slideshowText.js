@@ -18,3 +18,29 @@ export class SlideShowText extends Component {
     );
   }
 }
+{
+  /* <Fragment>
+<div
+  className="slide-overlay text-right container"
+  style={{ top: 10, transform: "translateY(-20%)" }}
+>
+  <h2 style={{ textShadow: " 3px 2px 1px black" }}>
+    {" "}
+    سامانه ما ، بستری مطمئن برای برگزاری کلاس ها ، آزمون ها ، جلسات و
+    وبینارها ...........{" "}
+  </h2>
+</div>
+<div
+  className="slide-overlay container"
+  style={{ left: 0, bottom: 10, transform: "translateY(50%)" }}
+>
+  <h2
+    className="text-left "
+    style={{ textShadow: " 3px 2px 1px black" }}
+  >
+    {" "}
+    بشرط دانستن خواستن توانستن است{" "}
+  </h2>
+</div>
+</Fragment> */
+}

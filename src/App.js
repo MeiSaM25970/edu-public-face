@@ -10,10 +10,14 @@ import {
   HomePage,
   PSuccess,
   PFail,
+  Rules,
+  PoliciesPage,
 } from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
 import "./App.css";
+import { LoginHelp } from "./component/help";
+import Shopping from "./component/shoping/shopping";
 
 function App() {
   return (
@@ -86,6 +90,30 @@ function App() {
             render={(props) => (
               <Page title=" همه دوره های آنلاین ">
                 <CoursesPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/loginhelp"
+            render={(props) => (
+              <Page title="راهنمای ورود ">
+                <LoginHelp {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/policies"
+            render={(props) => (
+              <Page title="قوانین و مقررات">
+                <PoliciesPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/shopping"
+            render={(props) => (
+              <Page title="فروشگاه سامانه">
+                <Shopping {...props} />
               </Page>
             )}
           />

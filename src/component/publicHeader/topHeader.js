@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { reactLocalStorage } from "reactjs-localstorage";
+const queryString = require("query-string");
 
 export class TopHeader extends Component {
   state = { userInfo: {} };
+
   componentDidMount() {
+    const urlUser = window.location.search;
+    if (urlUser) {
+      // save to localStorage;
+      const userObject = queryString.parse(urlUser);
+      reactLocalStorage.setObject("userInfo", userObject);
+    }
+
     const user = reactLocalStorage.getObject("userInfo");
     this.setState({ userInfo: user });
   }

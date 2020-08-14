@@ -2,22 +2,77 @@ import React, { Component } from "react";
 import "../../css/material-icons.css";
 import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
-import { reactLocalStorage } from "reactjs-localstorage";
 import { Link } from "react-router-dom";
+import * as userInfo from "../../component/detail/service";
 
 export class ProductDetail extends Component {
-  state = { userInfo: { toke: "" } };
+  state = {
+    url: "",
+    disableButton: false,
+    participant: {},
+    checkPaymentLink: false,
+  };
+  id = this.props.data._id || "";
+  token = this.props.userInfo.token || "";
+
+  setClassLink() {
+    this.setState({
+      url: this.props.participant.classLink,
+      disableButton: true,
+    });
+  }
+
   componentDidMount() {
-    const user = reactLocalStorage.getObject("userInfo");
-    this.setState({ userInfo: user });
+    if (!this.props.userInfo.token) {
+      this.setState({ url: "http://dashboard.learningpage.ir" });
+      return;
+    } else if (this.props.participant.isParticipant) {
+      this.setClassLink();
+      return;
+    } else {
+      this.setState({ checkPaymentLink: true });
+    }
   }
   participantsLink() {
-    if (this.props.participant.isParticipant) {
-      return this.props.participant.classLink;
+    this.paymentLink(this.id, this.token);
+    this.setState({ disableButton: true });
+  }
+  paymentLink(id, token) {
+    userInfo
+      .getPaymentLink(id, token)
+      .then((response) => (window.location.href = response.data.url));
+  }
+  createButton() {
+    if (this.state.checkPaymentLink) {
+      return (
+        <button
+          disabled={this.state.disableButton}
+          className="btn-pricing"
+          onClick={() => {
+            if (this.state.checkPaymentLink) {
+              this.participantsLink();
+            }
+          }}
+        >
+          {this.state.disableButton ? (
+            "لطفا صبر کنید"
+          ) : (
+            <span>{numeral(this.props.data.price).format(0, 0)}</span>
+          )}
+          {this.state.disableButton ? "" : "ثبت نام"}
+        </button>
+      );
     } else {
-      return this.state.userInfo.token
-        ? this.props.paymentLink.url
-        : "http://dashboard.learningpage.ir";
+      return (
+        <a className="btn-pricing" href={this.state.url}>
+          {this.state.disableButton ? (
+            "لطفا صبر کنید"
+          ) : (
+            <span>{numeral(this.props.data.price).format(0, 0)}</span>
+          )}
+          {this.state.disableButton ? "" : "ثبت نام"}
+        </a>
+      );
     }
   }
   render() {
@@ -71,21 +126,8 @@ export class ProductDetail extends Component {
                     دوره به اتمام رسید.
                   </Link>
                 ) : (
-                  <a
-                    className="btn-pricing"
-                    // onClick={() => this.setState({ click: !this.state.click })}
-                    href={this.participantsLink()}
-                  >
-                    <span>{numeral(this.props.data.price).format(0, 0)}</span>
-                    ثبت نام
-                  </a>
+                  this.createButton()
                 )}
-                <br />
-                <small className="text-danger">
-                  {this.state.click
-                    ? "با شماره تلفن 09335456570 تماس بگیرید."
-                    : ""}
-                </small>
               </div>
             </div>
           </div>

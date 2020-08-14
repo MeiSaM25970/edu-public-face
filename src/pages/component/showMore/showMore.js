@@ -5,7 +5,7 @@ export class ShowMore extends Component {
   render() {
     return (
       <Fragment>
-        <div className="row">
+        <div className="row" style={{ transform: "translateY(17px)" }}>
           <div className="col-sm-10 col-sm-offset-1 text-center">
             <h3 className="section-title">برخی از مدرسان برگ دانش</h3>
             <p className="section-description">

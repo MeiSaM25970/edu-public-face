@@ -43,15 +43,15 @@ export class SimpleSlider extends React.Component {
     return (
       <div style={{ position: "relative" }}>
         <Slider {...settings}>
-          <div>
+          <div className="image-slider">
             <img
               src={"/assets/1.jpg"}
               alt={"slideShow"}
               width="100%"
-              height="250px"
+              height={"250px"}
             />
           </div>
-          <div>
+          <div className="image-slider">
             <img
               src={"/assets/2.jpg"}
               alt={"slideShow"}
@@ -59,7 +59,7 @@ export class SimpleSlider extends React.Component {
               height="250px"
             />
           </div>
-          <div>
+          <div className="image-slider">
             <img
               src={"/assets/3.png"}
               alt={"slideShow"}

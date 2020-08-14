@@ -2505,19 +2505,15 @@ img.loading-img {
 #teacher-single .manager strong {
   font-size: 14px;
 }
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
   .show-on-sm {
     display: none;
   }
-}
-@media (max-width: 992px) {
-  .hide-on-sm {
-    display: none;
-  }
-  .show-on-sm {
-    display: block;
+  .slide-show {
+    height: 250px;
   }
 }
+
 .caret.rotate {
   transform: rotate(180deg);
 }
@@ -2527,3 +2523,28 @@ img.loading-img {
   position: absolute;
   display: block;
 }
+
+.footer-logo {
+  height: "150px" !important;
+}
+@media only screen and (max-width: 992px) {
+  .hide-on-sm {
+    display: none;
+  }
+  .show-on-sm {
+    display: block;
+  }
+  .image-slider img {
+    height: 150px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .footer-logo h1 {
+    width: "400px";
+  }
+}
+/* .image-slider img {
+  height: 250px;
+  width: 100%;
+} */

@@ -3,16 +3,9 @@ import * as userService from "../service";
 import { Loading } from "../component/Loading";
 import { Error } from "../component/error";
 import { Home } from "../component/home/home";
-import { reactLocalStorage } from "reactjs-localstorage";
-
-const queryString = require("query-string");
 
 export class HomePage extends Component {
   state = { products: { data: [] }, loading: true, error: false };
-  fetchLocalStorage() {
-    const user = queryString.parse(this.props.location.search);
-    reactLocalStorage.setObject("userInfo", user);
-  }
 
   fetchData() {
     userService
@@ -28,9 +21,16 @@ export class HomePage extends Component {
         this.setState({ loading: false, error: true });
       });
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   componentDidMount() {
+    this.scrollTop();
     this.fetchData();
-    this.fetchLocalStorage();
   }
   homePage() {
     if (this.state.error) {

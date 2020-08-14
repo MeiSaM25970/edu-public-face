@@ -12,13 +12,20 @@ import {
 import { SuggestedCourse } from "../component/detail/suggestedCourse";
 import { Error } from "../component/error";
 import { Loading } from "../component/Loading";
+import { reactLocalStorage } from "reactjs-localstorage";
 
-const queryString = require("query-string");
+// const queryString = require("query-string");
 
 export class DetailPage extends Component {
   state = { error: false, loading: true, participant: {}, paymentLink: {} };
 
-  user = queryString.parse(this.props.location.search);
+  user = reactLocalStorage.getObject("userInfo");
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   fetchData(id) {
     userService
@@ -33,17 +40,15 @@ export class DetailPage extends Component {
       .getCheckParticipant(id, token)
       .then((response) => this.setState({ participant: response.data }));
   }
-  paymentLink(id, token) {
-    userInfo
-      .getPaymentLink(id, token)
-      .then((response) => this.setState({ paymentLink: response.data }));
-  }
+
   componentDidMount() {
     const id = this.props.match.params._id;
     const token = this.user.token;
-    this.fetchData(this.props.match.params._id);
-    this.checkParticipant(id, token);
-    this.paymentLink(id, token);
+    this.scrollTop();
+    this.fetchData(id);
+    if (token) {
+      this.checkParticipant(id, token);
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -72,9 +77,8 @@ export class DetailPage extends Component {
             <div className="col-md-9 col-xs-12 right-side">
               <ProductDetail
                 data={this.state.data}
-                participant={this.state.participant}
+                participant={this.state.participant || ""}
                 userInfo={this.user || ""}
-                paymentLink={this.state.paymentLink}
               />
               <Description data={this.state.data} />
               <Period data={this.state.data} />

@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 export class TelUs extends Component {
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  componentDidMount() {
+    this.scrollTop();
+  }
   render() {
     return (
       <div className="container">

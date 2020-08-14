@@ -7,14 +7,30 @@ export class Footer extends Component {
       <footer>
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-sm-12 col-xs-12">
-              <h1 className="logo float-none">
+            <div className="col-md-4 col-sm-12 col-xs-12 footer-logo">
+              <h1 className="logo float-none footer-logo">
+                <a
+                  href="http://skstp.ir/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div
+                    className="no-text-decoration-white col-xs-6 onlineamoozan-footer-logo"
+                    style={{ marginTop: "50px", width: 150, height: 145 }}
+                  >
+                    <img src="/images/footerLogo.jpeg" alt="learning-page" />
+                  </div>
+                </a>
                 <Link to="/">
                   <div
                     className="no-text-decoration-white col-xs-6 onlineamoozan-footer-logo"
-                    style={{ marginTop: "50px" }}
+                    style={{ marginTop: "50px", width: 150, height: 145 }}
                   >
-                    <img src="/images/menu-logo.jpg" alt="learning-page" />
+                    <img
+                      className="footer-logo"
+                      src="/images/menu-logo.jpg"
+                      alt="learning-page"
+                    />
                   </div>
                 </Link>
               </h1>
@@ -79,21 +95,41 @@ export class Footer extends Component {
             <div className="col-md-2 col-sm-6 col-xs-12 float-right">
               <h6>راهنمای سایت</h6>
               <ul className="information">
-                {/* <li>
-                  <Link to="/راهنمای-ورود-به-کلاس-آنلاین-مخصوص-فراگیران-">
-                    <div>راهنمای ورود به کلاس آنلاین (مخصوص فراگیران)</div>
+                <li>
+                  <Link to="/loginhelp">
+                    <div>راهنمای ورود به کلاس برای متقاضی</div>
                   </Link>
-                </li> */}
+                </li>
+                <li>
+                  <Link to="/policies">
+                    <div>قوانین و مقررات</div>
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="col-md-2 col-sm-6 col-xs-12 float-right">
               <h6>دسترسی سریع</h6>
               <ul className="information">
-                {/* <li>
-                  <Link to="/اخبار">
-                    <div>مقالات برگ دانش</div>
+                <li>
+                  <Link to="/courses">
+                    <div>دوره های آنلاین</div>
                   </Link>
-                </li> */}
+                </li>
+                <li>
+                  <Link to="/shopping">
+                    <div>فروشگاه سامانه</div>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/teachers">
+                    <div>مدرسان ما</div>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/aboutUs">
+                    <div>درباره ما</div>
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="col-md-4 col-sm-6 col-xs-12 float-right text-center">

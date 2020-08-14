@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "i": "^0.3.6",
+    "import-html-entry": "^1.8.0",
     "lodash": "^4.17.19",
     "material-design-iconic-font": "^2.2.0",
     "material-icons": "^0.3.1",

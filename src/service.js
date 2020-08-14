@@ -13,12 +13,16 @@ export function getLimitTeachers() {
 }
 
 export function getProducts() {
-  return axios.get(apiAddress + "?items_limit=10");
+  return axios.get(apiAddress + "?items_limit=12");
 }
 
 export function getProductById(id) {
-  return axios.get(apiAddress + id + "?suggest_limit=10");
+  return axios.get(apiAddress + id + "?suggest_limit=9");
 }
 export function getCourses(page, count) {
   return axios.get(apiAddress + "?page=" + page + "&pageSize=" + count);
+}
+
+export function getPolicies() {
+  return axios.get("/assets/rules.txt");
 }

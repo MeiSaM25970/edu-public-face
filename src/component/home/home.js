@@ -3,7 +3,10 @@ import { ProductList } from "../../component/Products/productList";
 import { SimpleSlider } from "../../component/slideshow/";
 import { TeacherList } from "../../component/teacherList/";
 import { ShowMore } from "../../pages/component/showMore/showMore";
-import { Auth } from "../Auth/auth";
+import { BodyButtons } from "../bodyButtons";
+import { CoursesList } from "../courses";
+import { Link } from "react-router-dom";
+import { WhyUs } from "../../pages/";
 
 export class Home extends Component {
   scrollTop = () => {
@@ -20,22 +23,56 @@ export class Home extends Component {
       <Fragment>
         <SimpleSlider />
         <div className="container">
-          <div className="row" style={{}}>
-            <div
-              className="col-sm-12 text-center margin-top-50 wow fadeInUpBig"
-              data-wow-delay="0.5s"
-            >
-              <h3 className="section-title">محبوب ترین آموزش های آنلاین</h3>
-            </div>
-          </div>
           <div className="row">
-            <Auth />
+            <Horizontal />
+            <BodyButtons />
+            <Horizontal text="عناوین دوره های در حال برگزاری " />
+            <CoursesList products={this.props.data || ""} />
+          </div>
+
+          <div className="row">
+            <MoreButton />
+            <Horizontal text="محبوب ترین آموزش های آنلاین" />{" "}
             <ProductList products={this.props.data || ""} />
+            <Horizontal />
             <ShowMore />
             <TeacherList data={this.props.data || ""} />
+            <Horizontal text=" Leaningpage  پیشتاز در بستر آموزش مجازی ، چرا؟ " />
+            <WhyUs />{" "}
           </div>
         </div>
       </Fragment>
+    );
+  }
+}
+
+export class Horizontal extends Component {
+  render() {
+    return (
+      <div className="row">
+        <div
+          className="col-sm-12 text-center wow fadeInUpBig"
+          data-wow-delay="0.5s"
+        >
+          <h3 className="section-title">{this.props.text}</h3>
+        </div>
+      </div>
+    );
+  }
+}
+export class MoreButton extends Component {
+  render() {
+    return (
+      <Link
+        style={{
+          display: "block",
+          textAlign: "center",
+          margin: "50px auto",
+        }}
+        to="/courses"
+      >
+        بیشتر...
+      </Link>
     );
   }
 }

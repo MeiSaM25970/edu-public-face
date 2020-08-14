@@ -16,9 +16,18 @@ export class Teachers extends Component {
       })
       .catch(() => this.setState({ error: true, loading: false }));
   }
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   componentDidMount() {
+    this.scrollTop();
     this.fetchData();
   }
+
   render() {
     if (this.state.error) {
       return <Error />;

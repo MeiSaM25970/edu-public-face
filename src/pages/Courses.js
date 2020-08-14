@@ -9,6 +9,12 @@ import { Error } from "../component/error";
 
 export class CoursesPage extends Component {
   state = { products: {}, activePage: 1, loading: true, error: false };
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   fetchData(page, count) {
     userService
@@ -26,6 +32,7 @@ export class CoursesPage extends Component {
     this.props.history.push("/courses?page=" + pageNumber);
   }
   componentDidMount() {
+    this.scrollTop();
     this.fetchData(this.state.activePage, 12);
   }
 
