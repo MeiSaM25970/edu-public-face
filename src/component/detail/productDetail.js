@@ -16,7 +16,6 @@ export class ProductDetail extends Component {
   token = this.props.userInfo.token || "";
 
   setClassLink() {
-    console.log({ link: this.props.participant });
     this.setState({
       url: this.props.participant.classLink,
       disableButton: true,
@@ -24,11 +23,9 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (!this.props.userInfo.token) {
       return this.setState({ url: "http://dashboard.learningpage.ir" });
     } else if (this.props.participant.isParticipant) {
-      console.log("gikhar");
       return this.setClassLink();
     } else {
       this.setState({ checkPaymentLink: true });
@@ -44,7 +41,6 @@ export class ProductDetail extends Component {
       .then((response) => (window.location.href = response.data.url));
   }
   createButton() {
-    console.log("start");
     if (!this.props.userInfo.token) {
       return (
         <a className="btn-pricing" href={this.state.url}>
@@ -53,7 +49,6 @@ export class ProductDetail extends Component {
         </a>
       );
     } else if (this.props.participant.isParticipant) {
-      console.log(this.state.url);
       return (
         <a className="btn-pricing" href={this.state.url}>
           ورود به کلاس

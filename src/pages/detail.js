@@ -43,7 +43,6 @@ export class DetailPage extends Component {
   }
   checkParticipant(id, token) {
     userInfo.getCheckParticipant(id, token).then((response) => {
-      console.log({ res: response });
       this.setState({ participant: response.data, loadingParticipant: false });
     });
   }

@@ -26,6 +26,7 @@ export function getCourses(page, count) {
 export function getPolicies() {
   return axios.get("/assets/rules.txt");
 }
+
 export function getHelp() {
   return axios.get("/assets/help.txt");
 }
