@@ -16,6 +16,7 @@ export class ProductDetail extends Component {
   token = this.props.userInfo.token || "";
 
   setClassLink() {
+    console.log({ link: this.props.participant });
     this.setState({
       url: this.props.participant.classLink,
       disableButton: true,
@@ -23,12 +24,12 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     if (!this.props.userInfo.token) {
-      this.setState({ url: "http://dashboard.learningpage.ir" });
-      return;
+      return this.setState({ url: "http://dashboard.learningpage.ir" });
     } else if (this.props.participant.isParticipant) {
-      this.setClassLink();
-      return;
+      console.log("gikhar");
+      return this.setClassLink();
     } else {
       this.setState({ checkPaymentLink: true });
     }
@@ -43,7 +44,22 @@ export class ProductDetail extends Component {
       .then((response) => (window.location.href = response.data.url));
   }
   createButton() {
-    if (this.state.checkPaymentLink) {
+    console.log("start");
+    if (!this.props.userInfo.token) {
+      return (
+        <a className="btn-pricing" href={this.state.url}>
+          <span>{numeral(this.props.data.price).format(0, 0)}</span>
+          ثبت نام
+        </a>
+      );
+    } else if (this.props.participant.isParticipant) {
+      console.log(this.state.url);
+      return (
+        <a className="btn-pricing" href={this.state.url}>
+          ورود به کلاس
+        </a>
+      );
+    } else {
       return (
         <button
           disabled={this.state.disableButton}
@@ -61,17 +77,6 @@ export class ProductDetail extends Component {
           )}
           {this.state.disableButton ? "" : "ثبت نام"}
         </button>
-      );
-    } else {
-      return (
-        <a className="btn-pricing" href={this.state.url}>
-          {this.state.disableButton ? (
-            "لطفا صبر کنید"
-          ) : (
-            <span>{numeral(this.props.data.price).format(0, 0)}</span>
-          )}
-          {this.state.disableButton ? "" : "ثبت نام"}
-        </a>
       );
     }
   }

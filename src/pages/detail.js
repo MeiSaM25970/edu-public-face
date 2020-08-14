@@ -17,7 +17,13 @@ import { reactLocalStorage } from "reactjs-localstorage";
 // const queryString = require("query-string");
 
 export class DetailPage extends Component {
-  state = { error: false, loading: true, participant: {}, paymentLink: {} };
+  state = {
+    error: false,
+    loading: true,
+    participant: {},
+    paymentLink: {},
+    loadingParticipant: true,
+  };
 
   user = reactLocalStorage.getObject("userInfo");
   scrollTop = () => {
@@ -36,9 +42,10 @@ export class DetailPage extends Component {
       });
   }
   checkParticipant(id, token) {
-    userInfo
-      .getCheckParticipant(id, token)
-      .then((response) => this.setState({ participant: response.data }));
+    userInfo.getCheckParticipant(id, token).then((response) => {
+      console.log({ res: response });
+      this.setState({ participant: response.data, loadingParticipant: false });
+    });
   }
 
   componentDidMount() {
@@ -75,11 +82,15 @@ export class DetailPage extends Component {
               <AboutTeacher data={this.state.data} />
             </div>
             <div className="col-md-9 col-xs-12 right-side">
-              <ProductDetail
-                data={this.state.data}
-                participant={this.state.participant || ""}
-                userInfo={this.user || ""}
-              />
+              {!this.state.loadingParticipant ? (
+                <ProductDetail
+                  data={this.state.data}
+                  participant={this.state.participant}
+                  userInfo={this.user || ""}
+                />
+              ) : (
+                "درحال پردازش..."
+              )}
               <Description data={this.state.data} />
               <Period data={this.state.data} />
             </div>
