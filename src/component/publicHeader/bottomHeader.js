@@ -37,9 +37,14 @@ export class BottomHeader extends Component {
                 <li>
                   <Link to="/courses">دوره های آنلاین</Link>
                 </li>
-
+                <li>
+                  <Link to="/coming-soon">آزمون های آنلاین</Link>
+                </li>
                 <li>
                   <Link to="/teachers">مدرسان ما</Link>
+                </li>
+                <li>
+                  <Link to="/coming-soon">درخواست همکاری مدرس</Link>
                 </li>
                 <li>
                   <Link to="/aboutUs">درباره ما</Link>
@@ -53,7 +58,7 @@ export class BottomHeader extends Component {
                     title="کانال تلگرام برگ دانش"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://telegram.me/"
+                    href="https://telegram.me/learningpage_ir"
                     style={{
                       backgroundImage: "url('/images/telegram.png')",
                       backgroundSize: "cover",

@@ -37,7 +37,7 @@ export class Home extends Component {
             <Horizontal />
             <ShowMore />
             <TeacherList data={this.props.data || ""} />
-            <Horizontal text=" Leaningpage  پیشتاز در بستر آموزش مجازی ، چرا؟ " />
+            <Horizontal text=" Learningpage  پیشتاز در بستر آموزش مجازی ، چرا؟ " />
             <WhyUs />{" "}
           </div>
         </div>

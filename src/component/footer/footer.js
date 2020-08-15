@@ -111,24 +111,19 @@ export class Footer extends Component {
               <h6>دسترسی سریع</h6>
               <ul className="information">
                 <li>
-                  <Link to="/courses">
-                    <div>دوره های آنلاین</div>
-                  </Link>
+                  <Link to="/courses">دوره های آنلاین</Link>
                 </li>
                 <li>
-                  <Link to="/shopping">
-                    <div>فروشگاه سامانه</div>
-                  </Link>
+                  <Link to="/coming-soon">آزمون های آنلاین</Link>
                 </li>
                 <li>
-                  <Link to="/teachers">
-                    <div>مدرسان ما</div>
-                  </Link>
+                  <Link to="/teachers">مدرسان ما</Link>
                 </li>
                 <li>
-                  <Link to="/aboutUs">
-                    <div>درباره ما</div>
-                  </Link>
+                  <Link to="/coming-soon">درخواست همکاری مدرس</Link>
+                </li>
+                <li>
+                  <Link to="/aboutUs">درباره ما</Link>
                 </li>
               </ul>
             </div>

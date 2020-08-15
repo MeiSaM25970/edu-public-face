@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { TopHeader, BottomHeader } from "./component/publicHeader";
 import { Login } from "./component/Auth";
 import {
+  ComingSoon,
   DetailPage,
   AboutUs,
   Teachers,
@@ -22,10 +23,21 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <TopHeader />
-        <BottomHeader />
-
+        <div className="pages-header">
+          <TopHeader />
+          <BottomHeader />
+        </div>
         <Switch>
+          <Route
+            path="/coming-soon"
+            exact
+            render={(props) => (
+              <Page title="بزودی">
+                <ComingSoon {...props} />
+              </Page>
+            )}
+          />
+
           <Route
             path="/"
             exact

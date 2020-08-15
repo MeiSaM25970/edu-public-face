@@ -41,7 +41,7 @@ export class SimpleSlider extends React.Component {
       ],
     };
     return (
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", marginTop: 100 }}>
         <Slider {...settings}>
           <div className="image-slider">
             <img
