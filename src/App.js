@@ -12,6 +12,7 @@ import {
   PSuccess,
   PFail,
   PoliciesPage,
+  TariffPage,
 } from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
@@ -121,6 +122,14 @@ function App() {
             )}
           />
           <Route
+            path="/tariff"
+            render={(props) => (
+              <Page title="تعرفه ها">
+                <TariffPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
             path="/shopping"
             render={(props) => (
               <Page title="فروشگاه سامانه">
@@ -128,6 +137,7 @@ function App() {
               </Page>
             )}
           />
+
           <Redirect to="/" />
         </Switch>
         <Footer />

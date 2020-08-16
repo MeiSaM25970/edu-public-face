@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 
 export class BodyButtons extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="text-center">
         <a
           title="عضویت متقاضی و یا مدرسین در برگ دانش"
-          href="http://dashboard.learningpage.ir"
+          href={
+            this.props.userLocalStorage.token
+              ? "http://dashboard.learningpage.ir/courses"
+              : "http://dashboard.learningpage.ir/login"
+          }
           className="btn btn-success"
           style={{ fontSize: 16 }}
         >
@@ -19,8 +24,9 @@ export class BodyButtons extends Component {
           className="btn btn-success"
           style={{ margin: "0px 20px" }}
         >
-          <h4 style={{ fontSize: 20, display: "block" }}>
-            فروشگاه سامانه<h4 style={{ fontSize: 18 }}></h4>
+          {" "}
+          <h4 style={{ fontSize: 20 }}>فروشگاه سامانه</h4>
+          <h4 style={{ fontSize: 16, display: "block" }}>
             (محصولات : آموزشی ، علمی و فرهنگی )
           </h4>
         </Link>

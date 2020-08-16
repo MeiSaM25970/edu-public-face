@@ -6,7 +6,7 @@ export class Loading extends Component {
     return (
       <div
         className="container text-center"
-        style={{ width: "100%", height: "200px" }}
+        style={{ width: "100%", height: "500px" }}
       >
         <div
           className="container  m-auto "

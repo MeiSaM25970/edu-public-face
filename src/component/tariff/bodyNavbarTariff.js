@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-export class BodyNavbarAT extends Component {
+export class BodyNavbarTariff extends Component {
   render() {
     return (
       <div
@@ -8,16 +8,11 @@ export class BodyNavbarAT extends Component {
         style={{ marginTop: 140 }}
       >
         <div className="breadcrumb text-center">
-          <i
-            className="breadcrumb-item text-green zmdi zmdi-home zmdi-hc-2x"
-            style={{
-              paddingLeft: 2,
-              width: 20,
-              height: 20,
-              transform: "translateY(4px)",
-            }}
-          ></i>
           <Link to="/">
+            <i
+              className="breadcrumb-item text-green zmdi zmdi-home zmdi-hc-2x"
+              style={{ transform: "translateY(4px)" }}
+            ></i>
             <span
               className="breadcrumb-item text-green"
               style={{ paddingLeft: 5, paddingRight: 5 }}
@@ -31,19 +26,19 @@ export class BodyNavbarAT extends Component {
             style={{ paddingRight: 5 }}
           ></i>
           <i
-            className="breadcrumb-item text-red zmdi zmdi-account zmdi-hc-2x"
+            className="breadcrumb-item text-red zmdi zmdi-money-box zmdi-hc-2x"
             style={{
               paddingRight: 10,
               width: 18,
               height: 18,
-              transform: "translateY(4px)",
+              transform: "translateY(6px)",
             }}
           ></i>
           <span
             className="breadcrumb-item text-red"
             style={{ paddingRight: 17 }}
           >
-            همه مدرسان{" "}
+            تعرفه ها
           </span>
         </div>
       </div>

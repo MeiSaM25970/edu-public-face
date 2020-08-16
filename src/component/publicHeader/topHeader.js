@@ -28,7 +28,7 @@ export class TopHeader extends Component {
             className="zmdi zmdi-account"
             style={{ transform: "translateY(3px)" }}
           ></i>{" "}
-          <a href="http://dashboard.learningpage.ir">ورود/عضویت</a>
+          <a href="http://dashboard.learningpage.ir/login">ورود/عضویت</a>
         </div>
       );
     } else {
@@ -41,10 +41,26 @@ export class TopHeader extends Component {
           <span>حساب من</span>
           <i className="zmdi zmdi-caret-down" style={{ paddingRight: 5 }}></i>
           <ul className="dropdown">
-            <li className="account-name">
-              {this.state.userInfo.firstName +
-                " " +
-                this.state.userInfo.lastName}
+            <li
+              className="account-name"
+              style={{ marginBottom: 3, paddingBottom: 3 }}
+            >
+              {" "}
+              <h4>
+                {this.state.userInfo.firstName +
+                  " " +
+                  this.state.userInfo.lastName}{" "}
+              </h4>
+            </li>
+            <li>
+              {" "}
+              <a href="http://dashboard.learningpage.ir/courses">دوره های من</a>
+            </li>
+            <li>
+              {" "}
+              <a href="http://dashboard.learningpage.ir/user/change-password">
+                تغییر پسورد
+              </a>
             </li>
             <li>
               <a href="/" onClick={() => this.logout()}>

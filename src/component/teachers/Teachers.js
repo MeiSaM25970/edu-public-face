@@ -4,7 +4,7 @@ import { API_SERVER_ADDRESS } from "../../env";
 export class TeachersList extends Component {
   render() {
     return (
-      <div className="container pros">
+      <div className="container pros" style={{ minHeight: 400 }}>
         <div className="row text-center">
           {this.props.data.map((item, index) => (
             <div className="col-md-3 col-sm-6 col-xs-12" key={index}>

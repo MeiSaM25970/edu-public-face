@@ -44,7 +44,7 @@ export class CoursesPage extends Component {
       <Loading />
     ) : (
       <Fragment>
-        <div className="container">
+        <div className="container" style={{ marginTop: 100 }}>
           <div className="row">
             <BodyNavbarAC />
           </div>

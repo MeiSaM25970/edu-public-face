@@ -83,7 +83,7 @@ export class DetailPage extends Component {
       <Loading />
     ) : (
       <Fragment>
-        <div className="container">
+        <div className="container" style={{ marginTop: 100 }}>
           <BodyNavbar data={this.state.data} />
           <div className="row">
             <div className="col-md-3 col-xs-12 left-side">

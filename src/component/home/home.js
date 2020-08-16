@@ -25,7 +25,7 @@ export class Home extends Component {
         <div className="container">
           <div className="row">
             <Horizontal />
-            <BodyButtons />
+            <BodyButtons userLocalStorage={this.props.userLocalStorage} />
             <Horizontal text="عناوین دوره های در حال برگزاری " />
             <CoursesList products={this.props.data || ""} />
           </div>

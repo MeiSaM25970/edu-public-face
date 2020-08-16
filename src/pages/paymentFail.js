@@ -7,7 +7,7 @@ export class PFail extends Component {
     return (
       <div
         className="container text-center "
-        style={{ marginTop: "5%", marginBottom: "5%" }}
+        style={{ marginTop: 250, marginBottom: "5%", minHeight: 300 }}
       >
         <h1
           className="text-danger"

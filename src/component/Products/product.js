@@ -38,7 +38,10 @@ export function Product(props) {
                 <span className="price">دوره به اتمام رسید.</span>
               ) : (
                 <span className="price">
-                  {numeral(data.price).format("0,0")} تومان
+                  {data.price === 0
+                    ? "رایگان"
+                    : numeral(data.price).format("0,0")}{" "}
+                  تومان
                 </span>
               )}
             </div>

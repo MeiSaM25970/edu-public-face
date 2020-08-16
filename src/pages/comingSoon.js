@@ -8,7 +8,7 @@ export function ComingSoon() {
     });
   };
   return (
-    <div className="coming-soon">
+    <div className="coming-soon" style={{ minHeight: 300 }}>
       {scrollTop()}
       <img src="./images/coming-soon.svg" />
       <span className="text-center ir-r">بزودی...</span>

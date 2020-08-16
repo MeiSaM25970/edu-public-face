@@ -12,7 +12,7 @@ export class About extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container" style={{ marginTop: 20 }}>
         <p className="page-help">
           لطفاً آموزشگاهها، مدارس، مدرسان، دانش پذیران و والدین هرکدام مطالب
           مربوط به خود در انتهای همین صفحه را نیز مطالعه نمایند.
@@ -151,9 +151,8 @@ export class About extends Component {
         <br />
 
         <h5 className="text-center">
-          نام شرکت: آرتین برخط سایا آموزان
           <br />
-          آدرس اینترنتی: onlineamoozan.ir و onlineamoozan.com
+          آدرس اینترنتی: learningpage.ir
         </h5>
       </div>
     );

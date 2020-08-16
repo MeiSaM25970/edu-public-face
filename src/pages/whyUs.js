@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class WhyUs extends Component {
   render() {
     return (
-      <div className="whyus row">
+      <div className="whyus row" style={{ minHeight: 500 }}>
         <div className="container why-us">
           <div className="row">
             <div className="featured text-center">

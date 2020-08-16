@@ -24,7 +24,7 @@ export class ProductDetail extends Component {
 
   componentDidMount() {
     if (!this.props.userInfo.token) {
-      return this.setState({ url: "http://dashboard.learningpage.ir" });
+      return this.setState({ url: "http://dashboard.learningpage.ir/login" });
     } else if (this.props.participant.isParticipant) {
       return this.setClassLink();
     } else {
@@ -44,7 +44,11 @@ export class ProductDetail extends Component {
     if (!this.props.userInfo.token) {
       return (
         <a className="btn-pricing" href={this.state.url}>
-          <span>{numeral(this.props.data.price).format(0, 0)}</span>
+          <span>
+            {this.props.data.price === 0
+              ? "رایگان"
+              : numeral(this.props.data.price).format(0, 0)}
+          </span>
           ثبت نام
         </a>
       );
@@ -68,7 +72,11 @@ export class ProductDetail extends Component {
           {this.state.disableButton ? (
             "لطفا صبر کنید"
           ) : (
-            <span>{numeral(this.props.data.price).format(0, 0)}</span>
+            <span>
+              {this.props.data.price === 0
+                ? "رایگان"
+                : numeral(this.props.data.price).format(0, 0)}
+            </span>
           )}
           {this.state.disableButton ? "" : "ثبت نام"}
         </button>

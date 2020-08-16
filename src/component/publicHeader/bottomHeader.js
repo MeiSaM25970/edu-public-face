@@ -47,6 +47,9 @@ export class BottomHeader extends Component {
                   <Link to="/coming-soon">درخواست همکاری مدرس</Link>
                 </li>
                 <li>
+                  <Link to="/tariff">تعرفه ها</Link>
+                </li>
+                <li>
                   <Link to="/aboutUs">درباره ما</Link>
                 </li>
               </ul>

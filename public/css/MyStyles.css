@@ -399,11 +399,11 @@ input + span {
   margin-top: 30px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
   cursor: pointer;
-  background: #fff;
   padding: 10px;
   padding-bottom: 20px;
   position: relative;
   transition: 500ms;
+  background: #fff;
 }
 .course-item:hover {
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
@@ -2541,10 +2541,42 @@ img.loading-img {
 
 @media only screen and (min-width: 1020px) {
   .footer-logo h1 {
-    width: "400px";
+    width: 400px;
   }
 }
-/* .image-slider img {
-  height: 250px;
-  width: 100%;
-} */
+.tariff h2 {
+  color: #000;
+  font-size: x-large;
+}
+.tariff-items {
+  -webkit-box-shadow: 6px 10px 21px 3px rgba(176, 221, 255, 1);
+  -moz-box-shadow: 6px 10px 21px 3px rgba(176, 221, 255, 1);
+  box-shadow: 5px 5px 15px #0d47a130;
+  margin-top: 10px;
+  position: relative;
+  transition: 500ms;
+  background-color: #fcfcfc;
+}
+.tariff-items h5 {
+  font-family: iransans-bold;
+  padding-top: 10px;
+}
+.tariff-items .value {
+  display: block;
+  margin-top: 30px;
+  font-size: 35px;
+}
+.tariff-items .sub {
+  display: block;
+  margin-top: 20px;
+}
+.tariff-items .des {
+  display: block;
+  margin-top: 50px;
+}
+.tariff-items .offer {
+  position: absolute;
+  bottom: 10px;
+  transform: translateX(-50%);
+  left: 50%;
+}
