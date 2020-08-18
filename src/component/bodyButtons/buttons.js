@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export class BodyButtons extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="text-center">
         <a
@@ -19,8 +18,8 @@ export class BodyButtons extends Component {
           ثبت نام متقاضی/مدرس
         </a>
         <Link
-          title="بزودی..."
-          to="/coming-soon"
+          title="فروشگاه سامانه"
+          to="/shopping"
           className="btn btn-success"
           style={{ margin: "0px 20px" }}
         >

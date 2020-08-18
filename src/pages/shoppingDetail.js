@@ -2,21 +2,20 @@ import React, { Component, Fragment } from "react";
 import * as userInfo from "../component/detail/service";
 import * as userService from "../service";
 import {
-  BodyNavbar,
-  ELogo,
+  BodyNavbarVideoProduct,
   AboutTeacher,
-  ProductDetail,
+  VideoProductDetail,
   Description,
-  Period,
-} from "../component/detail/";
-import { SuggestedCourse } from "../component/detail/suggestedCourse";
+  SuggestedProduct,
+} from "../component/shoppingDetail";
+import { ELogo } from "../component/detail";
 import { Error } from "../component/error";
 import { Loading } from "../component/Loading";
 import { reactLocalStorage } from "reactjs-localstorage";
 
 // const queryString = require("query-string");
 
-export class DetailPage extends Component {
+export class ShoppingDetailPage extends Component {
   state = {
     error: false,
     loading: true,
@@ -90,7 +89,7 @@ export class DetailPage extends Component {
     ) : (
       <Fragment>
         <div className="container">
-          <BodyNavbar data={this.state.data} />
+          <BodyNavbarVideoProduct data={this.state.data} />
           <div className="row">
             <div className="col-md-3 col-xs-12 left-side">
               <ELogo />
@@ -101,18 +100,17 @@ export class DetailPage extends Component {
               {this.state.loadingParticipant ? (
                 "درحال پردازش..."
               ) : (
-                <ProductDetail
+                <VideoProductDetail
                   data={this.state.data}
                   participant={this.state.participant}
                   userInfo={this.user || ""}
                 />
               )}
               <Description data={this.state.data} />
-              <Period data={this.state.data} />
             </div>
           </div>
         </div>
-        <SuggestedCourse data={this.state.data.suggestedCourse} />
+        <SuggestedProduct data={this.state.data.suggestedCourse} />
       </Fragment>
     );
   }

@@ -4,7 +4,7 @@ import moment from "moment-jalaali";
 import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
 
-export function Product(props) {
+export function VideoProduct(props) {
   const data = props.data;
   const scrollTop = () => {
     window.scrollTo({
@@ -12,39 +12,14 @@ export function Product(props) {
       behavior: "smooth",
     });
   };
-  const courseIsOver = () => {
-    const dateAndTime = Date();
-    const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
-    const windowsTime = moment(dateAndTime, "LLLL").format("kk");
-    const arrayNumber = props.data.schedules.length - 1;
-    const courseDate = props.data.schedules[arrayNumber].date;
-    const courseTime = props.data.schedules[arrayNumber].time;
-    const courseTimeTo24H = moment(courseTime, "LT").format("kk");
-    const courseTimeHourSum = +courseTimeTo24H + 2;
-    if (moment(windowsDate) > moment(courseDate)) {
-      return true;
-    } else {
-      if (moment(windowsDate).isSame(courseDate)) {
-        if (courseTimeHourSum <= windowsTime) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-  };
   return (
     <div className=" text-center tutorials popular ir-r">
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className="course-item ir-r position-product">
           <Link
-            to={"/course/" + data._id}
+            to={"/videos/" + data._id}
             onClick={() => {
-              // if (window.location.pathname !== "/") {
               scrollTop();
-              // }
             }}
           >
             <div className="img-container">
@@ -57,16 +32,12 @@ export function Product(props) {
                 style={{ minHeight: "100px", maxHeight: "150px" }}
               />
 
-              {props.data.isExpired && courseIsOver() ? (
-                <span className="price">دوره به اتمام رسید.</span>
-              ) : (
-                <span className="price">
-                  {data.price === 0
-                    ? "رایگان"
-                    : numeral(data.price).format("0,0")}{" "}
-                  تومان
-                </span>
-              )}
+              <span className="price">
+                {data.price === 0
+                  ? "رایگان"
+                  : numeral(data.price).format("0,0")}{" "}
+                تومان
+              </span>
             </div>
             <div className="category-with-bg " style={{ height: "184px" }}>
               <h5

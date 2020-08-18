@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { PeriodList } from "./periodList";
 export class Period extends Component {
+  data = this.props.data;
+
   render() {
     return (
       <div className="card">
@@ -24,7 +26,7 @@ export class Period extends Component {
               </div>
               <div className="option-wrapper">
                 <ul className="option-items">
-                  <PeriodList data={this.props.data} />
+                  <PeriodList data={this.data} />
                 </ul>
                 {/* <div
                   className="text-center show-more-schedule"

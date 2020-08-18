@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import DvrIcon from "@material-ui/icons/Dvr";
+import ShopIcon from "@material-ui/icons/Shop";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import { Link } from "react-router-dom";
-export class BodyNavbar extends Component {
+export class BodyNavbarVideoProduct extends Component {
   id = this.props.data._id;
 
   render() {
@@ -23,9 +23,13 @@ export class BodyNavbar extends Component {
               style={{ position: "relative", top: "5px", width: "auto" }}
             />
           </a>
-          <Link className="breadcrumb-item text-red" to="/courses">
-            <DvrIcon style={{ position: "relative", float: "right" }} />
-            دوره های آنلاین
+          <Link
+            className="breadcrumb-item text-red"
+            to="/videos"
+            style={{ width: "auto" }}
+          >
+            <ShopIcon style={{ position: "relative", float: "right" }} />
+            <p style={{ paddingRight: 10, width: 110 }}>{"فروشگاه سامانه"}</p>
           </Link>
           <a href="#" className="breadcrumb-seperator" style={{ width: 15 }}>
             <ChevronLeftIcon
@@ -34,7 +38,7 @@ export class BodyNavbar extends Component {
           </a>
           <Link
             className="breadcrumb-item text-warning"
-            to={"/course/" + this.id}
+            to={"/videos/" + this.id}
           >
             <CheckBoxIcon style={{ position: "relative", float: "right" }} />
             <span>{this.props.data.title}</span>

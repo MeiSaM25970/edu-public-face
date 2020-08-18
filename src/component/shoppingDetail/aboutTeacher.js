@@ -32,7 +32,8 @@ export class AboutTeacher extends Component {
               </div>
 
               <div>{data.teacherFirstName + " " + data.teacherLastName} </div>
-              <p>{data.teacherDescription}</p>
+
+              <p className="text-muted">{data.teacherDescription}</p>
             </div>
           </div>
         </div>

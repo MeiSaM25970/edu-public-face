@@ -13,12 +13,13 @@ import {
   PFail,
   PoliciesPage,
   TariffPage,
+  Shopping,
+  ShoppingDetailPage,
 } from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
 import "./App.css";
 import { LoginHelp } from "./component/help";
-import Shopping from "./component/shoping/shopping";
 
 function App() {
   return (
@@ -130,14 +131,22 @@ function App() {
             )}
           />
           <Route
-            path="/shopping"
+            path="/videos"
+            exact
             render={(props) => (
               <Page title="فروشگاه سامانه">
                 <Shopping {...props} />
               </Page>
             )}
           />
-
+          <Route
+            path="/videos/:_id"
+            render={(props) => (
+              <Page title="فروشگاه سامانه">
+                <ShoppingDetailPage {...props} />
+              </Page>
+            )}
+          />
           <Redirect to="/" />
         </Switch>
         <Footer />

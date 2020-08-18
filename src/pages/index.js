@@ -10,3 +10,5 @@ export * from "./whyUs";
 export * from "./policies";
 export * from "./comingSoon";
 export * from "./tariff";
+export * from "./shopping";
+export * from "./shoppingDetail";

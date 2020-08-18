@@ -114,6 +114,9 @@ export class Footer extends Component {
                   <Link to="/courses">دوره های آنلاین</Link>
                 </li>
                 <li>
+                  <Link to="/videos">فروشگاه سامانه</Link>
+                </li>
+                <li>
                   <Link to="/coming-soon">آزمون های آنلاین</Link>
                 </li>
                 <li>
@@ -121,6 +124,9 @@ export class Footer extends Component {
                 </li>
                 <li>
                   <Link to="/coming-soon">درخواست همکاری مدرس</Link>
+                </li>
+                <li>
+                  <Link to="/tariff">تعرفه ها</Link>
                 </li>
                 <li>
                   <Link to="/aboutUs">درباره ما</Link>

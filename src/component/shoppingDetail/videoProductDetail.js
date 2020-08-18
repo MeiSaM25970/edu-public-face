@@ -4,30 +4,39 @@ import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
 import { Link } from "react-router-dom";
 import * as userInfo from "../../component/detail/service";
-import moment from "moment-jalaali";
+import { DownloadLinks } from "./downloadLinks";
 
-export class ProductDetail extends Component {
+const data = {
+  isParticipant: true,
+  urls: [
+    { url: "http://www.learningpage.ir" },
+    { url: "http://www.google.com" },
+    { url: "http://www.msn.com" },
+  ],
+};
+export class VideoProductDetail extends Component {
   state = {
     url: "",
     disableButton: false,
-    participant: {},
     checkPaymentLink: false,
+    isParticipant: false,
+    showLinks: false,
   };
   id = this.props.data._id || "";
   token = this.props.userInfo.token || "";
 
-  setClassLink() {
-    this.setState({
-      url: this.props.participant.classLink,
-      disableButton: true,
-    });
-  }
+  // setClassLink() {
+  //   this.setState({
+  //     url: this.props.participant.classLink,
+  //     disableButton: true,
+  //   });
+  // }
 
   componentDidMount() {
     if (!this.props.userInfo.token) {
       return this.setState({ url: "http://dashboard.learningpage.ir/login" });
     } else if (this.props.participant.isParticipant) {
-      return this.setClassLink();
+      return this.setState({ isParticipant: true });
     } else {
       this.setState({ checkPaymentLink: true });
     }
@@ -41,30 +50,9 @@ export class ProductDetail extends Component {
       .getPaymentLink(id, token)
       .then((response) => (window.location.href = response.data.url));
   }
-  timeIsOver() {
-    const dateAndTime = Date();
-    const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
-    const windowsTime = moment(dateAndTime, "LLLL").format("kk");
-    const arrayNumber = this.props.data.schedules.length - 1;
-    const courseDate = this.props.data.schedules[arrayNumber].date;
-    const courseTime = this.props.data.schedules[arrayNumber].time;
-    const courseTimeTo24H = moment(courseTime, "LT").format("kk");
-    const courseTimeHourSum = +courseTimeTo24H + 2;
-    if (moment(windowsDate) > moment(courseDate)) {
-      return true;
-    } else {
-      if (moment(windowsDate).isSame(courseDate)) {
-        if (courseTimeHourSum <= windowsTime) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-  }
-
+  onclickShowLinks = () => {
+    this.setState({ showLinks: !this.state.showLinks });
+  };
   createButton() {
     if (!this.props.userInfo.token) {
       return (
@@ -77,11 +65,11 @@ export class ProductDetail extends Component {
           ثبت نام
         </a>
       );
-    } else if (this.props.participant.isParticipant) {
+    } else if (this.state.isParticipant) {
       return (
-        <a className="btn-pricing" href={this.state.url}>
-          ورود به کلاس
-        </a>
+        <button className="btn-pricing" onClick={this.onclickShowLinks}>
+          مشاهده لینک دانلود{" "}
+        </button>
       );
     } else {
       return (
@@ -103,7 +91,7 @@ export class ProductDetail extends Component {
                 : numeral(this.props.data.price).format(0, 0)}
             </span>
           )}
-          {this.state.disableButton ? "" : "ثبت نام"}
+          {this.state.disableButton ? "" : " خرید"}
         </button>
       );
     }
@@ -123,11 +111,6 @@ export class ProductDetail extends Component {
               className="more-details"
               style={{ fontWeight: 700, fontSize: 13, paddingRight: 10 }}
             >
-              {/* <span className="lessons">
-                <i className="zmdi zmdi-assignment"></i> سایر آموزشها - آزاد
-                (عمومی)
-              </span>
-               */}
               <span className="duration">
                 <i className="zmdi zmdi-time " style={{ paddingRight: 10 }}></i>
                 مدت کلاس {<SumPeriod data={this.props.data} />} دقیقه
@@ -141,9 +124,6 @@ export class ProductDetail extends Component {
           <div className="card-body">
             <div className="col-md-12 col-xs-12 pricing-item ">
               <div className="col-md-4 col-xs-12 price-info">
-                {/* <div className="price-title">
-                  ثبت نام در دوره {this.props.data.product.price_title}
-                </div> */}
                 <div className="price-date">فعال تا پایان برگزاری دوره</div>
               </div>
               <div className="col-md-4 col-xs-12 text-center price-capacity">
@@ -154,17 +134,12 @@ export class ProductDetail extends Component {
                 </strong> */}
               </div>
               <div className="col-md-4 col-xs-12 text-center">
-                {this.props.data.isExpired && this.timeIsOver() ? (
-                  <Link className="btn-pricing" to="/">
-                    دوره به اتمام رسید.
-                  </Link>
-                ) : (
-                  this.createButton()
-                )}
+                {this.createButton()}
               </div>
             </div>
           </div>
         </div>
+        {this.state.showLinks ? <DownloadLinks data={data} /> : ""}
       </div>
     );
   }

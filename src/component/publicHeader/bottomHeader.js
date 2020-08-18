@@ -38,6 +38,9 @@ export class BottomHeader extends Component {
                   <Link to="/courses">دوره های آنلاین</Link>
                 </li>
                 <li>
+                  <Link to="/videos">فروشگاه سامانه</Link>
+                </li>
+                <li>
                   <Link to="/coming-soon">آزمون های آنلاین</Link>
                 </li>
                 <li>
