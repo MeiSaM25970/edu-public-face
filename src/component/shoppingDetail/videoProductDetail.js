@@ -41,6 +41,7 @@ export class VideoProductDetail extends Component {
       this.setState({ checkPaymentLink: true });
     }
   }
+
   participantsLink() {
     this.paymentLink(this.id, this.token);
     this.setState({ disableButton: true });
@@ -50,9 +51,9 @@ export class VideoProductDetail extends Component {
       .getPaymentLink(id, token)
       .then((response) => (window.location.href = response.data.url));
   }
-  onclickShowLinks = () => {
+  onclickShowLinks() {
     this.setState({ showLinks: !this.state.showLinks });
-  };
+  }
   createButton() {
     if (!this.props.userInfo.token) {
       return (
@@ -65,9 +66,9 @@ export class VideoProductDetail extends Component {
           ثبت نام
         </a>
       );
-    } else if (this.state.isParticipant) {
+    } else if (this.props.participant.isParticipant) {
       return (
-        <button className="btn-pricing" onClick={this.onclickShowLinks}>
+        <button className="btn-pricing" onClick={() => this.onclickShowLinks()}>
           مشاهده لینک دانلود{" "}
         </button>
       );

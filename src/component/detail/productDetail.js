@@ -22,6 +22,14 @@ export class ProductDetail extends Component {
       disableButton: true,
     });
   }
+  setInitialState() {
+    this.setState({
+      url: "",
+      disableButton: false,
+      participant: {},
+      checkPaymentLink: false,
+    });
+  }
 
   componentDidMount() {
     if (!this.props.userInfo.token) {
@@ -32,6 +40,7 @@ export class ProductDetail extends Component {
       this.setState({ checkPaymentLink: true });
     }
   }
+
   participantsLink() {
     this.paymentLink(this.id, this.token);
     this.setState({ disableButton: true });

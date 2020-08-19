@@ -1,8 +1,19 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-
+const queryString = require("query-string");
 export class PSuccess extends Component {
+  state = { courseId: "" };
+  componentDidMount() {
+    const courseIdQueryString = window.location.search;
+    if (courseIdQueryString) {
+      const courseIdObject = queryString.parse(courseIdQueryString);
+      this.setState({ courseId: courseIdObject.id });
+      console.log(courseIdObject);
+    } else {
+      console.log("آی دی دوره وارد نشده و یا اشتباه است.");
+    }
+  }
   render() {
     return (
       <div
@@ -17,7 +28,7 @@ export class PSuccess extends Component {
           پرداخت با موفقیت انجام شد.
         </h1>
         <br />
-        <Link to="/">
+        <Link to={"/course/" + this.state.courseId}>
           <span
             style={{
               padding: "10px 20px",
@@ -29,7 +40,7 @@ export class PSuccess extends Component {
               position: "relative",
             }}
           >
-            صفحه اصلی
+            بازگشت به دوره{" "}
           </span>{" "}
         </Link>
       </div>

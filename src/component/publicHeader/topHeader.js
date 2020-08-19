@@ -8,10 +8,13 @@ export class TopHeader extends Component {
 
   componentDidMount() {
     const urlUser = window.location.search;
+
     if (urlUser) {
       // save to localStorage;
       const userObject = queryString.parse(urlUser);
-      reactLocalStorage.setObject("userInfo", userObject);
+      if (userObject.firstName && userObject.lastName && userObject.token) {
+        reactLocalStorage.setObject("userInfo", userObject);
+      }
     }
 
     const user = reactLocalStorage.getObject("userInfo");
