@@ -65,7 +65,7 @@ export class PoliciesPage extends Component {
         </div>
         <div className="container" style={{ minHeight: 500 }}>
           <h1 class="page-title" style={{ marginTop: 10 }}>
-            قوانین و مقررات
+            بسمه تعالی{" "}
           </h1>
           <p
             dir="RTL"
@@ -73,7 +73,12 @@ export class PoliciesPage extends Component {
           >
             <span style={{ fontSize: "14.0pt" }}>
               <span style={{ fontFamily: "iransans-bold" }}>
-                قوانین سایت برگ دانش
+                اصل اول : تمام فعالیت های این سامانه ، براساس قوانین جمهوری
+                اسلامی ایران بوده و رعایت آن برای تمام کابران این سامانه اعم از
+                مدرس و متقاضی و سایرین الزامی میباشد ، لذا هرگونه فعالیت مغایر
+                با موازین قانونی ، مستوجب تعقیب قضایی خواهد بود .
+                <br />
+                <br />
               </span>
             </span>
           </p>
