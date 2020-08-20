@@ -12,12 +12,12 @@ export class About extends Component {
   }
   render() {
     return (
-      <div className="container" style={{ marginTop: 20 }}>
+      <div className="container mt-100">
         <h3 className="titr">بسمه تعالی </h3>
 
         <h3
+          className=" fsize"
           style={{
-            fontSize: "30px",
             textAlign: "center",
             lineHeight: "45px",
             color: "#000",

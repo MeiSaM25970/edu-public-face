@@ -2537,6 +2537,12 @@ img.loading-img {
   .image-slider img {
     height: 150px;
   }
+  .mt-100 {
+    margin-top: 100px !important;
+  }
+  .mt-100 h3 {
+    font-size: 12pt;
+  }
 }
 
 @media only screen and (min-width: 1020px) {
@@ -2579,4 +2585,7 @@ img.loading-img {
   bottom: 10px;
   transform: translateX(-50%);
   left: 50%;
+}
+.fsize {
+  font-size: 20pt;
 }

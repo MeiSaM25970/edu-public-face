@@ -15,7 +15,11 @@ export class BottomHeader extends Component {
 
   render() {
     return (
-      <div className="botton-menu " style={{ height: 47 }}>
+      <div
+        onMouseLeave={this.click.bind(this)}
+        className="botton-menu "
+        style={{ height: 47 }}
+      >
         <div className="container">
           <div className="navigation">
             <button
@@ -33,27 +37,41 @@ export class BottomHeader extends Component {
               className={this.state.click ? this.onClickClass : this.class}
               id="myNavbar"
             >
-              <ul className="">
+              <ul>
                 <li>
-                  <Link to="/courses">دوره های آنلاین</Link>
+                  <Link to="/courses" onClick={this.click.bind(this)}>
+                    دوره های آنلاین
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/videos">فروشگاه سامانه</Link>
+                  <Link to="/videos" onClick={this.click.bind(this)}>
+                    فروشگاه سامانه{" "}
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/coming-soon">آزمون های آنلاین</Link>
+                  <Link to="/coming-soon" onClick={this.click.bind(this)}>
+                    آزمون های آنلاین
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/teachers">مدرسان ما</Link>
+                  <Link to="/teachers" onClick={this.click.bind(this)}>
+                    مدرسان ما
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/coming-soon">درخواست همکاری مدرس</Link>
+                  <Link to="/coming-soon" onClick={this.click.bind(this)}>
+                    درخواست همکاری مدرس
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/tariff">تعرفه ها</Link>
+                  <Link to="/tariff" onClick={this.click.bind(this)}>
+                    تعرفه ها
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/aboutUs">درباره ما</Link>
+                  <Link to="/aboutUs" onClick={this.click.bind(this)}>
+                    درباره ما
+                  </Link>
                 </li>
               </ul>
             </nav>
