@@ -14,16 +14,18 @@ export class DownloadLinks extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.data.urls.map((item, index) => (
-                <tr key={index}>
-                  <th scope="row">
-                    <a href={item.url} target="_blank">
-                      {" "}
-                      دانلود لینک قسمت {index + 1} {console.log(item.url)}
-                    </a>
-                  </th>
-                </tr>
-              ))}
+              {this.props.data.url
+                ? this.props.data.urls.map((item, index) => (
+                    <tr key={index}>
+                      <th scope="row">
+                        <a href={item.url} target="_blank">
+                          {" "}
+                          دانلود لینک قسمت {index + 1} {console.log(item.url)}
+                        </a>
+                      </th>
+                    </tr>
+                  ))
+                : "ویدئویی آپلود نشده است."}
             </tbody>
           </table>
 

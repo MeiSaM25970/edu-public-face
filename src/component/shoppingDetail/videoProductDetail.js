@@ -112,10 +112,10 @@ export class VideoProductDetail extends Component {
               className="more-details"
               style={{ fontWeight: 700, fontSize: 13, paddingRight: 10 }}
             >
-              <span className="duration">
+              {/* <span className="duration">
                 <i className="zmdi zmdi-time " style={{ paddingRight: 10 }}></i>
                 مدت کلاس {<SumPeriod data={this.props.data} />} دقیقه
-              </span>
+              </span> */}
               <span className="views" style={{ paddingRight: 10 }}>
                 <i className="zmdi zmdi-eye"></i>
                 {this.props.data.participants.length} ثبت نام

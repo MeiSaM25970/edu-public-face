@@ -16,8 +16,8 @@ export class BottomHeader extends Component {
   render() {
     return (
       <div
-        onMouseLeave={this.click.bind(this)}
         className="botton-menu "
+        onMouseLeave={() => this.setState({ click: false })}
         style={{ height: 47 }}
       >
         <div className="container">

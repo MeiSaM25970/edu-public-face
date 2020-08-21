@@ -30,6 +30,3 @@ export function getPolicies() {
 export function getHelp() {
   return axios.get("/assets/help.txt");
 }
-export function getShoppingData() {
-  return axios.get(apiAddress);
-}

@@ -3,9 +3,11 @@ import numeral from "numeral";
 import moment from "moment-jalaali";
 import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
+import { DownloadLinks } from "../shoppingDetail/downloadLinks";
 
 export function Product(props) {
   const data = props.data;
+  console.log({ data: data });
   const scrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -13,27 +15,29 @@ export function Product(props) {
     });
   };
   const courseIsOver = () => {
-    const dateAndTime = Date();
-    const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
-    const windowsTime = moment(dateAndTime, "LLLL").format("kk");
-    const arrayNumber = props.data.schedules.length - 1;
-    const courseDate = props.data.schedules[arrayNumber].date;
-    const courseTime = props.data.schedules[arrayNumber].time;
-    const courseTimeTo24H = moment(courseTime, "LT").format("kk");
-    const courseTimeHourSum = +courseTimeTo24H + 2;
-    if (moment(windowsDate) > moment(courseDate)) {
-      return true;
-    } else {
-      if (moment(windowsDate).isSame(courseDate)) {
-        if (courseTimeHourSum <= windowsTime) {
-          return true;
+    if (props.data.schedules && props.data.schedules.date) {
+      const dateAndTime = Date();
+      const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
+      const windowsTime = moment(dateAndTime, "LLLL").format("kk");
+      const arrayNumber = props.data.schedules.length - 1;
+      const courseDate = props.data.schedules[arrayNumber].date;
+      const courseTime = props.data.schedules[arrayNumber].time;
+      const courseTimeTo24H = moment(courseTime, "LT").format("kk");
+      const courseTimeHourSum = +courseTimeTo24H + 2;
+      if (moment(windowsDate) > moment(courseDate)) {
+        return true;
+      } else {
+        if (moment(windowsDate).isSame(courseDate)) {
+          if (courseTimeHourSum <= windowsTime) {
+            return true;
+          } else {
+            return false;
+          }
         } else {
           return false;
         }
-      } else {
-        return false;
       }
-    }
+    } else return false;
   };
   return (
     <div className=" text-center tutorials popular ir-r">
@@ -61,10 +65,11 @@ export function Product(props) {
                 <span className="price">دوره به اتمام رسید.</span>
               ) : (
                 <span className="price">
-                  {data.price === 0
-                    ? "رایگان"
-                    : numeral(data.price).format("0,0")}{" "}
-                  تومان
+                  {data.price === 0 ? (
+                    "رایگان"
+                  ) : (
+                    <div> {numeral(data.price).format("0,0")} تومان</div>
+                  )}
                 </span>
               )}
             </div>
@@ -89,9 +94,11 @@ export function Product(props) {
                   شروع دوره:{" "}
                 </span>
                 <span className="value">
-                  {moment(data.schedules[0].date, "YYYY/MM/DD").format(
-                    "jYYYY/jM/jD"
-                  )}
+                  {data.schedules
+                    ? moment(data.schedules[0].date, "YYYY/MM/DD").format(
+                        "jYYYY/jM/jD"
+                      )
+                    : " بزودی"}
                 </span>
               </p>
             </div>

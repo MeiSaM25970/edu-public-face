@@ -108,7 +108,11 @@ export class DetailPage extends Component {
                 />
               )}
               <Description data={this.state.data} />
-              <Period data={this.state.data} />
+              {this.state.data.schedules ? (
+                <Period data={this.state.data} />
+              ) : (
+                "تاریخ دوره ثبت نشده است"
+              )}
             </div>
           </div>
         </div>

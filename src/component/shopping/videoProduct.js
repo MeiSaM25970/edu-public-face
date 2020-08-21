@@ -33,10 +33,11 @@ export function VideoProduct(props) {
               />
 
               <span className="price">
-                {data.price === 0
-                  ? "رایگان"
-                  : numeral(data.price).format("0,0")}{" "}
-                تومان
+                {data.price === 0 ? (
+                  "رایگان"
+                ) : (
+                  <div>{numeral(data.price).format("0,0")} تومان</div>
+                )}
               </span>
             </div>
             <div className="category-with-bg " style={{ height: "184px" }}>
@@ -53,16 +54,10 @@ export function VideoProduct(props) {
                 <span className="value">
                   {data.teacherId.firstName + " " + data.teacherId.lastName}{" "}
                 </span>
-              </p>
-              <p>
-                <span className="title">
-                  <i className="zmdi zmdi-time"></i>
-                  شروع دوره:{" "}
-                </span>
+                <br />
                 <span className="value">
-                  {moment(data.schedules[0].date, "YYYY/MM/DD").format(
-                    "jYYYY/jM/jD"
-                  )}
+                  <i className="zmdi zmdi-movie" style={{ marginTop: 30 }}></i>
+                  فیلم آموزشی{" "}
                 </span>
               </p>
             </div>

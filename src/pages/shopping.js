@@ -7,7 +7,7 @@ export class Shopping extends Component {
   state = { data: {} };
   fetchData() {
     userService
-      .getShoppingData()
+      .getAllProducts()
       .then((res) => this.setState({ data: res.data }));
   }
   componentDidMount() {
