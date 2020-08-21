@@ -4,7 +4,6 @@ import { API_SERVER_ADDRESS } from "../../env";
 export class DownloadLinks extends Component {
   state = {};
   showDownloadLinks() {
-    console.log(this.props.data);
     if (this.props.data.length) {
       return this.props.data.map((item, index) => (
         <tr key={index}>

@@ -125,7 +125,6 @@ export class ProductDetail extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
         <div className="card-content">
