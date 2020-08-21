@@ -23,7 +23,6 @@ export class Shopping extends Component {
     this.props.history.push("/videos?page=" + pageNumber);
   }
   render() {
-    console.log(this.state);
     return (
       <Fragment>
         <BodyNavbarShopping />

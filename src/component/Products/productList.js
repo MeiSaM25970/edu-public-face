@@ -3,7 +3,6 @@ import { Product } from "./product";
 import { VideoProduct } from "../shopping/videoProduct";
 
 export function ProductList(props) {
-  console.log({ products: props.products });
   if (!props.products) {
     return (
       <div

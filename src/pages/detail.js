@@ -13,6 +13,7 @@ import { SuggestedCourse } from "../component/detail/suggestedCourse";
 import { Error } from "../component/error";
 import { Loading } from "../component/Loading";
 import { reactLocalStorage } from "reactjs-localstorage";
+import { DownloadLinks } from "../component/shoppingDetail/downloadLinks";
 
 // const queryString = require("query-string");
 
@@ -108,10 +109,12 @@ export class DetailPage extends Component {
                 />
               )}
               <Description data={this.state.data} />
-              {this.state.data.schedules ? (
+              {!this.state.data.isOffline ? (
                 <Period data={this.state.data} />
+              ) : this.state.participant.isParticipant ? (
+                <DownloadLinks data={this.state.data.videos} />
               ) : (
-                "تاریخ دوره ثبت نشده است"
+                ""
               )}
             </div>
           </div>

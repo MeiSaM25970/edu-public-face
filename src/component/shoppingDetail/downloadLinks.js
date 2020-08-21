@@ -1,9 +1,30 @@
 import React, { Component } from "react";
+import { API_SERVER_ADDRESS } from "../../env";
 
 export class DownloadLinks extends Component {
   state = {};
+  showDownloadLinks() {
+    console.log(this.props.data);
+    if (this.props.data.length) {
+      return this.props.data.map((item, index) => (
+        <tr key={index}>
+          <th scope="row">
+            <a href={API_SERVER_ADDRESS + item} target="_blank">
+              {" "}
+              دانلود لینک قسمت {index + 1}
+            </a>
+          </th>
+        </tr>
+      ));
+    } else {
+      return (
+        <tr style={{ paddingTop: 20, paddingRight: 10 }}>
+          <td> ویدئویی آپلود نشده است.</td>
+        </tr>
+      );
+    }
+  }
   render() {
-    console.log(this.props.data.urls);
     return (
       <div className="card" style={{ marginTop: "25px", marginBottom: "0px" }}>
         <div className="card-content">
@@ -13,20 +34,7 @@ export class DownloadLinks extends Component {
                 <th>لینک های دانلود</th>
               </tr>
             </thead>
-            <tbody>
-              {this.props.data.url
-                ? this.props.data.urls.map((item, index) => (
-                    <tr key={index}>
-                      <th scope="row">
-                        <a href={item.url} target="_blank">
-                          {" "}
-                          دانلود لینک قسمت {index + 1} {console.log(item.url)}
-                        </a>
-                      </th>
-                    </tr>
-                  ))
-                : "ویدئویی آپلود نشده است."}
-            </tbody>
+            <tbody>{this.showDownloadLinks()}</tbody>
           </table>
 
           <div className="abs"></div>

@@ -1,18 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 import numeral from "numeral";
 import moment from "moment-jalaali";
 import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
-import { DownloadLinks } from "../shoppingDetail/downloadLinks";
 
 export function Product(props) {
   const data = props.data;
-  console.log({ data: data });
   const scrollTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  };
+  const schedulesDate = () => {
+    if (data.schedules.length) {
+      return moment(data.schedules[0].date, "YYYY/MM/DD").format("jYYYY/jM/jD");
+    } else {
+      return " بزودی";
+    }
   };
   const courseIsOver = () => {
     if (props.data.schedules && props.data.schedules.date) {
@@ -38,6 +43,14 @@ export function Product(props) {
         }
       }
     } else return false;
+  };
+  const OfflineMode = () => {
+    return (
+      <span className="value">
+        <i className="zmdi zmdi-movie" style={{ marginTop: 30 }}></i>
+        فیلم آموزشی{" "}
+      </span>
+    );
   };
   return (
     <div className=" text-center tutorials popular ir-r">
@@ -89,17 +102,20 @@ export function Product(props) {
                 </span>
               </p>
               <p>
-                <span className="title">
-                  <i className="zmdi zmdi-time"></i>
-                  شروع دوره:{" "}
-                </span>
-                <span className="value">
-                  {data.schedules
-                    ? moment(data.schedules[0].date, "YYYY/MM/DD").format(
-                        "jYYYY/jM/jD"
-                      )
-                    : " بزودی"}
-                </span>
+                {data.isOffline ? (
+                  OfflineMode()
+                ) : (
+                  <Fragment>
+                    <span className="title">
+                      <i
+                        className="zmdi zmdi-time"
+                        style={{ marginTop: 5 }}
+                      ></i>
+                      شروع دوره:{" "}
+                    </span>
+                    <span className="value">{schedulesDate()}</span>
+                  </Fragment>
+                )}
               </p>
             </div>
           </Link>

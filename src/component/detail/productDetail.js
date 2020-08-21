@@ -73,21 +73,28 @@ export class ProductDetail extends Component {
       }
     }
   }
-
+  scrollToY = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   createButton() {
     if (!this.props.userInfo.token) {
       return (
         <a className="btn-pricing" href={this.state.url}>
           <span>
             {this.props.data.price === 0
-              ? "رایگان"
+              ? " رایگان "
               : numeral(this.props.data.price).format(0, 0)}
           </span>
           ثبت نام
         </a>
       );
     } else if (this.props.participant.isParticipant) {
-      return (
+      return this.props.data.isOffline ? (
+        ""
+      ) : (
         <a className="btn-pricing" href={this.state.url}>
           ورود به کلاس
         </a>
@@ -108,7 +115,7 @@ export class ProductDetail extends Component {
           ) : (
             <span>
               {this.props.data.price === 0
-                ? "رایگان"
+                ? "رایگان "
                 : numeral(this.props.data.price).format(0, 0)}
             </span>
           )}
@@ -118,6 +125,7 @@ export class ProductDetail extends Component {
     }
   }
   render() {
+    console.log(this.props);
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
         <div className="card-content">
