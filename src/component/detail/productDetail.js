@@ -5,16 +5,77 @@ import { SumPeriod } from "./sumPeriod";
 import { Link } from "react-router-dom";
 import * as userInfo from "../../component/detail/service";
 import moment from "moment-jalaali";
-
+import { ReactDOM } from "react-dom";
+const momentTimeZone = require("moment-timezone");
 export class ProductDetail extends Component {
   state = {
     url: "",
     disableButton: false,
     participant: {},
     checkPaymentLink: false,
+    timeIsOverLoading: true,
   };
   id = this.props.data._id || "";
   token = this.props.userInfo.token || "";
+  // async timeIsOver2() {
+  //   const lastIndex = this.props.data.schedules.length - 1;
+  //   const lastSchedule = this.props.data.schedules[lastIndex];
+  //   const date = lastSchedule.date;
+
+  //   let currentDate = moment().format("YYYY/MM/DD");
+
+  //   if (moment(currentDate) > moment(date)) {
+  //     this.setState({ timeIsOverLoading: false });
+  //     return true;
+  //   } else {
+  //     if (moment(currentDate).isSame(date)) {
+  //       console.log("hear");
+  //       const currentHour = Number(
+  //         await momentTimeZone().tz("Asia/Tehran").format("HH")
+  //       );
+  //       const currentMinutes = Number(
+  //         await momentTimeZone().tz("Asia/Tehran").format("mm")
+  //       );
+  //       const totalCurrentMinutes = currentHour * 60 + currentMinutes;
+
+  //       const time = lastSchedule.time;
+  //       const period = Number(lastSchedule.period) * 60;
+  //       //calculate total amount of  schedule start time in minuets.
+  //       const scheduleHour = Number(moment(time, "LT").format("HH"));
+  //       const scheduleMinutes = Number(moment(time, "LT").format("mm"));
+  //       const totalStartScheduleMinuts = scheduleHour * 60 + scheduleMinutes;
+  //       const allowedTime = totalStartScheduleMinuts + period;
+  //       if (totalCurrentMinutes > allowedTime) {
+  //         console.log("2");
+
+  //         this.setState({ timeIsOverLoading: false });
+
+  //         return true;
+  //       } else {
+  //         this.setState({ timeIsOverLoading: false });
+  //         return false;
+  //       }
+  //     } else {
+  //       this.setState({ timeIsOverLoading: false });
+  //       return false;
+  //     }
+  //   }
+  // }
+  async timeIsOver2() {
+    const lastIndex = this.props.data.schedules.length - 1;
+    const lastSchedule = this.props.data.schedules[lastIndex];
+    const date = lastSchedule.date;
+
+    const currentDate = moment().format("YYYY/MM/DD");
+
+    if (moment(currentDate) > moment(date)) {
+      console.log("1");
+      return true;
+    } else {
+      console.log(2);
+      return false;
+    }
+  }
 
   setClassLink() {
     this.setState({
@@ -50,29 +111,30 @@ export class ProductDetail extends Component {
       .getPaymentLink(id, token)
       .then((response) => (window.location.href = response.data.url));
   }
-  timeIsOver() {
-    const dateAndTime = Date();
-    const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
-    const windowsTime = moment(dateAndTime, "LLLL").format("kk");
-    const arrayNumber = this.props.data.schedules.length - 1;
-    const courseDate = this.props.data.schedules[arrayNumber].date;
-    const courseTime = this.props.data.schedules[arrayNumber].time;
-    const courseTimeTo24H = moment(courseTime, "LT").format("kk");
-    const courseTimeHourSum = +courseTimeTo24H + 2;
-    if (moment(windowsDate) > moment(courseDate)) {
-      return true;
-    } else {
-      if (moment(windowsDate).isSame(courseDate)) {
-        if (courseTimeHourSum <= windowsTime) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-  }
+  //  timeIsOver() {
+  //   const dateAndTime = Date();
+  //   const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
+  //   const windowsTime = moment(dateAndTime, "LLLL").format("kk");
+  //   const arrayNumber = this.props.data.schedules.length - 1;
+  //   const courseDate = this.props.data.schedules[arrayNumber].date;
+  //   const courseTime = this.props.data.schedules[arrayNumber].time;
+  //   const courseTimeTo24H = moment(courseTime, "LT").format("kk");
+  //   const courseTimeHourSum = +courseTimeTo24H + 2;
+  //   console.log(this.props.data.schedules[arrayNumber]);
+  //   if (moment(windowsDate) > moment(courseDate)) {
+  //     return true;
+  //   } else {
+  //     if (moment(windowsDate).isSame(courseDate)) {
+  //       if (courseTimeHourSum <= windowsTime) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  // }
   scrollToY = () => {
     window.scrollTo({
       top: 0,
@@ -124,6 +186,15 @@ export class ProductDetail extends Component {
       );
     }
   }
+  isExpired() {
+    this.timeIsOver2().then((res) => {
+      if (res) {
+        return <div> دوره به اتمام رسید.</div>;
+      } else {
+        return this.createButton();
+      }
+    });
+  }
   render() {
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
@@ -169,14 +240,9 @@ export class ProductDetail extends Component {
                     this.props.data.product.registered}
                 </strong> */}
               </div>
+
               <div className="col-md-4 col-xs-12 text-center">
-                {this.props.data.isExpired && this.timeIsOver() ? (
-                  <Link className="btn-pricing" to="/">
-                    دوره به اتمام رسید.
-                  </Link>
-                ) : (
-                  this.createButton()
-                )}
+                {this.createButton()}
               </div>
             </div>
           </div>
