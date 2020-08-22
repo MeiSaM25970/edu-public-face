@@ -2,21 +2,30 @@ import React, { Component } from "react";
 import "../../css/material-icons.css";
 import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
-import { Link } from "react-router-dom";
 import * as userInfo from "../../component/detail/service";
 import moment from "moment-jalaali";
-import { ReactDOM } from "react-dom";
-const momentTimeZone = require("moment-timezone");
+// const momentTimeZone = require("moment-timezone");
 export class ProductDetail extends Component {
   state = {
     url: "",
     disableButton: false,
     participant: {},
     checkPaymentLink: false,
-    timeIsOverLoading: true,
+    timeIsOver: false,
   };
   id = this.props.data._id || "";
   token = this.props.userInfo.token || "";
+  timeIsOver2() {
+    const lastIndex = this.props.data.schedules.length - 1;
+    const lastSchedule = this.props.data.schedules[lastIndex];
+    const date = lastSchedule.date;
+
+    let currentDate = moment().format("YYYY/MM/DD");
+
+    if (moment(currentDate) > moment(date)) {
+      this.setState({ timeIsOver: true });
+    }
+  }
   // async timeIsOver2() {
   //   const lastIndex = this.props.data.schedules.length - 1;
   //   const lastSchedule = this.props.data.schedules[lastIndex];
@@ -27,7 +36,8 @@ export class ProductDetail extends Component {
   //   if (moment(currentDate) > moment(date)) {
   //     this.setState({ timeIsOverLoading: false });
   //     return true;
-  //   } else {
+  //   }
+  //   else {
   //     if (moment(currentDate).isSame(date)) {
   //       console.log("hear");
   //       const currentHour = Number(
@@ -61,21 +71,21 @@ export class ProductDetail extends Component {
   //     }
   //   }
   // }
-  async timeIsOver2() {
-    const lastIndex = this.props.data.schedules.length - 1;
-    const lastSchedule = this.props.data.schedules[lastIndex];
-    const date = lastSchedule.date;
+  // async timeIsOver2() {
+  //   const lastIndex = this.props.data.schedules.length - 1;
+  //   const lastSchedule = this.props.data.schedules[lastIndex];
+  //   const date = lastSchedule.date;
 
-    const currentDate = moment().format("YYYY/MM/DD");
+  //   const currentDate = moment().format("YYYY/MM/DD");
 
-    if (moment(currentDate) > moment(date)) {
-      console.log("1");
-      return true;
-    } else {
-      console.log(2);
-      return false;
-    }
-  }
+  //   if (moment(currentDate) > moment(date)) {
+  //     console.log("1");
+  //     return true;
+  //   } else {
+  //     console.log(2);
+  //     return false;
+  //   }
+  // }
 
   setClassLink() {
     this.setState({
@@ -93,6 +103,8 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
+    this.timeIsOver2();
+
     if (!this.props.userInfo.token) {
       return this.setState({ url: "http://dashboard.learningpage.ir/login" });
     } else if (this.props.participant.isParticipant) {
@@ -186,15 +198,15 @@ export class ProductDetail extends Component {
       );
     }
   }
-  isExpired() {
-    this.timeIsOver2().then((res) => {
-      if (res) {
-        return <div> دوره به اتمام رسید.</div>;
-      } else {
-        return this.createButton();
-      }
-    });
-  }
+  // isExpired() {
+  //   this.timeIsOver2().then((res) => {
+  //     if (res) {
+  //       return <div> دوره به اتمام رسید.</div>;
+  //     } else {
+  //       return this.createButton();
+  //     }
+  //   });
+  // }
   render() {
     return (
       <div className="card pricing" style={{ marginTop: 10, marginBottom: 0 }}>
@@ -240,10 +252,15 @@ export class ProductDetail extends Component {
                     this.props.data.product.registered}
                 </strong> */}
               </div>
-
-              <div className="col-md-4 col-xs-12 text-center">
-                {this.createButton()}
-              </div>
+              {this.state.timeIsOver &&
+              this.props.data.isExpired &&
+              !this.props.data.isOffline ? (
+                "دوره به اتمام رسیده است."
+              ) : (
+                <div className="col-md-4 col-xs-12 text-center">
+                  {this.createButton()}
+                </div>
+              )}
             </div>
           </div>
         </div>

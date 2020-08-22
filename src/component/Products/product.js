@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import numeral from "numeral";
 import moment from "moment-jalaali";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ export function Product(props) {
       behavior: "smooth",
     });
   };
+
   const schedulesDate = () => {
     if (data.schedules.length) {
       return moment(data.schedules[0].date, "YYYY/MM/DD").format("jYYYY/jM/jD");
@@ -19,39 +20,55 @@ export function Product(props) {
       return " بزودی";
     }
   };
-  const courseIsOver = () => {
-    if (props.data.schedules && props.data.schedules.date) {
-      const dateAndTime = Date();
-      const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
-      const windowsTime = moment(dateAndTime, "LLLL").format("kk");
-      const arrayNumber = props.data.schedules.length - 1;
-      const courseDate = props.data.schedules[arrayNumber].date;
-      const courseTime = props.data.schedules[arrayNumber].time;
-      const courseTimeTo24H = moment(courseTime, "LT").format("kk");
-      const courseTimeHourSum = +courseTimeTo24H + 2;
-      if (moment(windowsDate) > moment(courseDate)) {
-        return true;
-      } else {
-        if (moment(windowsDate).isSame(courseDate)) {
-          if (courseTimeHourSum <= windowsTime) {
-            return true;
-          } else {
-            return false;
-          }
-        } else {
-          return false;
-        }
+  const [state, setState] = useState({ timeIsOver: false });
+  const timeIsOver2 = () => {
+    if (props.data.schedules.length) {
+      const lastIndex = props.data.schedules.length - 1;
+      const lastSchedule = props.data.schedules[lastIndex];
+      const date = lastSchedule.date;
+
+      let currentDate = moment().format("YYYY/MM/DD");
+
+      if (moment(currentDate) > moment(date)) {
+        setState({ timeIsOver: true });
       }
-    } else return false;
+    }
   };
+
+  // const courseIsOver = () => {
+  //   if (props.data.schedules && props.data.schedules.date) {
+  //     const dateAndTime = Date();
+  //     const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
+  //     const windowsTime = moment(dateAndTime, "LLLL").format("kk");
+  //     const arrayNumber = props.data.schedules.length - 1;
+  //     const courseDate = props.data.schedules[arrayNumber].date;
+  //     const courseTime = props.data.schedules[arrayNumber].time;
+  //     const courseTimeTo24H = moment(courseTime, "LT").format("kk");
+  //     const courseTimeHourSum = +courseTimeTo24H + 2;
+  //     if (moment(windowsDate) > moment(courseDate)) {
+  //       return true;
+  //     } else {
+  //       if (moment(windowsDate).isSame(courseDate)) {
+  //         if (courseTimeHourSum <= windowsTime) {
+  //           return true;
+  //         } else {
+  //           return false;
+  //         }
+  //       } else {
+  //         return false;
+  //       }
+  //     }
+  //   } else return false;
+  // };
   const OfflineMode = () => {
     return (
       <span className="value">
-        <i className="zmdi zmdi-movie" style={{ marginTop: 30 }}></i>
+        <i className="zmdi zmdi-movie" style={{ marginTop: 5 }}></i>
         فیلم آموزشی{" "}
       </span>
     );
   };
+
   return (
     <div className=" text-center tutorials popular ir-r">
       <div className="col-md-4 col-sm-6 col-xs-12">
@@ -73,18 +90,13 @@ export function Product(props) {
                 alt={data.title}
                 style={{ minHeight: "100px", maxHeight: "150px" }}
               />
-
-              {props.data.isExpired && courseIsOver() ? (
-                <span className="price">دوره به اتمام رسید.</span>
-              ) : (
-                <span className="price">
-                  {data.price === 0 ? (
-                    "رایگان"
-                  ) : (
-                    <div> {numeral(data.price).format("0,0")} تومان</div>
-                  )}
-                </span>
-              )}
+              <span className="price">
+                {data.price === 0 ? (
+                  "رایگان"
+                ) : (
+                  <div> {numeral(data.price).format("0,0")} تومان</div>
+                )}
+              </span>
             </div>
             <div className="category-with-bg " style={{ height: "184px" }}>
               <h5

@@ -9,7 +9,6 @@ export class PSuccess extends Component {
     if (courseIdQueryString) {
       const courseIdObject = queryString.parse(courseIdQueryString);
       this.setState({ courseId: courseIdObject.id });
-      console.log(courseIdObject);
     } else {
       console.log("آی دی دوره وارد نشده و یا اشتباه است.");
     }

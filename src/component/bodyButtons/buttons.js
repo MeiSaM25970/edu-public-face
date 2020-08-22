@@ -19,7 +19,7 @@ export class BodyButtons extends Component {
         </a>
         <Link
           title="فروشگاه سامانه"
-          to="/shopping"
+          to="/videos"
           className="btn btn-success"
           style={{ margin: "0px 20px" }}
         >
