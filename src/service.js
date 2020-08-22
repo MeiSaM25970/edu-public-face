@@ -30,3 +30,6 @@ export function getPolicies() {
 export function getHelp() {
   return axios.get("/assets/help.txt");
 }
+export function getPricing() {
+  return axios.get(API_SERVER_ADDRESS + "pricing");
+}
