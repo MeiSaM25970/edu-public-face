@@ -5,7 +5,7 @@ import { DownloadLinks } from "../shoppingDetail/downloadLinks";
 export function PeriodList(props) {
   return props.data.isOffline ? (
     <DownloadLinks />
-  ) : props.data.schedules ? (
+  ) : props.data.schedules.length ? (
     props.data.schedules.map((item, index) => {
       return (
         <li className="option-item" key={index}>

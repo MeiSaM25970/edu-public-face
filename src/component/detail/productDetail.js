@@ -103,7 +103,9 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    this.timeIsOver2();
+    if (this.props.data.schedules.length) {
+      this.timeIsOver2();
+    }
 
     if (!this.props.userInfo.token) {
       return this.setState({ url: "http://dashboard.learningpage.ir/login" });

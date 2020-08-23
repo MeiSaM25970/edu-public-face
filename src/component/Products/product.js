@@ -14,26 +14,27 @@ export function Product(props) {
   };
 
   const schedulesDate = () => {
+    console.log(data);
     if (data.schedules.length) {
       return moment(data.schedules[0].date, "YYYY/MM/DD").format("jYYYY/jM/jD");
     } else {
       return " بزودی";
     }
   };
-  const [state, setState] = useState({ timeIsOver: false });
-  const timeIsOver2 = () => {
-    if (props.data.schedules.length) {
-      const lastIndex = props.data.schedules.length - 1;
-      const lastSchedule = props.data.schedules[lastIndex];
-      const date = lastSchedule.date;
+  // const [state, setState] = useState({ timeIsOver: false });
+  // const timeIsOver2 = () => {
+  //   if (props.data.schedules.length) {
+  //     const lastIndex = props.data.schedules.length - 1;
+  //     const lastSchedule = props.data.schedules[lastIndex];
+  //     const date = lastSchedule.date;
 
-      let currentDate = moment().format("YYYY/MM/DD");
+  //     let currentDate = moment().format("YYYY/MM/DD");
 
-      if (moment(currentDate) > moment(date)) {
-        setState({ timeIsOver: true });
-      }
-    }
-  };
+  //     if (moment(currentDate) > moment(date)) {
+  //       setState({ timeIsOver: true });
+  //     }
+  //   }
+  // };
 
   // const courseIsOver = () => {
   //   if (props.data.schedules && props.data.schedules.date) {
