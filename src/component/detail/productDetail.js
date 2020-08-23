@@ -16,16 +16,19 @@ export class ProductDetail extends Component {
   id = this.props.data._id || "";
   token = this.props.userInfo.token || "";
   timeIsOver2() {
-    const lastIndex = this.props.data.schedules.length - 1;
-    const lastSchedule = this.props.data.schedules[lastIndex];
-    const date = lastSchedule.date;
+    if (this.props.data.schedules.length) {
+      const lastIndex = this.props.data.schedules.length - 1;
+      const lastSchedule = this.props.data.schedules[lastIndex];
+      const date = lastSchedule.date;
 
-    let currentDate = moment().format("YYYY/MM/DD");
+      let currentDate = moment().format("YYYY/MM/DD");
 
-    if (moment(currentDate) > moment(date)) {
-      this.setState({ timeIsOver: true });
+      if (moment(currentDate) > moment(date)) {
+        this.setState({ timeIsOver: true });
+      }
     }
   }
+
   // async timeIsOver2() {
   //   const lastIndex = this.props.data.schedules.length - 1;
   //   const lastSchedule = this.props.data.schedules[lastIndex];
@@ -103,7 +106,7 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    if (this.props.data.schedules.length) {
+    if (this.props.data.schedules) {
       this.timeIsOver2();
     }
 
