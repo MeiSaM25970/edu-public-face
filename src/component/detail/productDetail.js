@@ -194,11 +194,11 @@ export class ProductDetail extends Component {
           ) : (
             <span>
               {this.props.data.price === 0
-                ? "رایگان "
+                ? " رایگان "
                 : numeral(this.props.data.price).format(0, 0)}
             </span>
           )}
-          {this.state.disableButton ? "" : "ثبت نام"}
+          {this.state.disableButton ? "" : " ثبت نام "}
         </button>
       );
     }
@@ -238,7 +238,7 @@ export class ProductDetail extends Component {
               </span>
               <span className="views" style={{ paddingRight: 10 }}>
                 <i className="zmdi zmdi-eye"></i>
-                {this.props.data.participants.length} ثبت نام
+                {this.props.data.participants.length} {" ثبت نام "}
               </span>
             </p>
           </div>

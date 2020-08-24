@@ -17,7 +17,7 @@ export function VideoProduct(props) {
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className="course-item ir-r position-product">
           <Link
-            to={"/videos/" + data._id}
+            to={"/course/" + data._id}
             onClick={() => {
               scrollTop();
             }}
@@ -34,7 +34,7 @@ export function VideoProduct(props) {
 
               <span className="price">
                 {data.price === 0 ? (
-                  "رایگان"
+                  " رایگان "
                 ) : (
                   <div>{numeral(data.price).format("0,0")} تومان</div>
                 )}

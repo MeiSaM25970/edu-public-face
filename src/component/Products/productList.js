@@ -13,10 +13,14 @@ export function ProductList(props) {
       </div>
     );
   } else {
-    return props.products.data.map((data, index) => (
-      <div key={index}>
-        <Product data={data} />
-      </div>
-    ));
+    return props.products.data.map((data, index) => {
+      if (!data.isOffline) {
+        return (
+          <div key={index}>
+            <Product data={data} />
+          </div>
+        );
+      }
+    });
   }
 }
