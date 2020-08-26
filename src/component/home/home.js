@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { WhyUs } from "../../pages/";
 
 export class Home extends Component {
+  state = { show: true };
   scrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -18,6 +19,7 @@ export class Home extends Component {
   componentDidMount() {
     this.scrollTop();
   }
+
   render() {
     return (
       <Fragment>
@@ -27,6 +29,7 @@ export class Home extends Component {
             <Horizontal />
             <BodyButtons userLocalStorage={this.props.userLocalStorage} />
             <Horizontal text="عناوین دوره های در حال برگزاری " />
+
             <CoursesList products={this.props.data || ""} />
           </div>
 

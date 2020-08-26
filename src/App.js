@@ -15,6 +15,7 @@ import {
   TariffPage,
   Shopping,
   ShoppingDetailPage,
+  TeacherDetailPage,
 } from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
@@ -78,6 +79,14 @@ function App() {
             render={(props) => (
               <Page title=" ورود">
                 <Login {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/teachers/:name/:id"
+            render={(props) => (
+              <Page title=" همه مدرسان">
+                <TeacherDetailPage {...props} />
               </Page>
             )}
           />
@@ -147,7 +156,7 @@ function App() {
               </Page>
             )}
           />
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
         </Switch>
         <Footer />
       </BrowserRouter>

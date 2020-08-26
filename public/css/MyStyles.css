@@ -2589,3 +2589,12 @@ img.loading-img {
 .fsize {
   font-size: 20pt;
 }
+.holder {
+  height: 100px;
+  overflow-y: hidden;
+}
+.opened {
+  min-height: 100px;
+  height: auto;
+  overflow-y: auto;
+}

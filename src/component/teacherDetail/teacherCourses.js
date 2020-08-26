@@ -4,7 +4,7 @@ import moment from "moment-jalaali";
 import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
 
-export function Product(props) {
+export function TeacherCourses(props) {
   const data = props.data;
   const scrollTop = () => {
     window.scrollTo({
@@ -20,46 +20,7 @@ export function Product(props) {
       return " بزودی";
     }
   };
-  // const [state, setState] = useState({ timeIsOver: false });
-  // const timeIsOver2 = () => {
-  //   if (props.data.schedules.length) {
-  //     const lastIndex = props.data.schedules.length - 1;
-  //     const lastSchedule = props.data.schedules[lastIndex];
-  //     const date = lastSchedule.date;
 
-  //     let currentDate = moment().format("YYYY/MM/DD");
-
-  //     if (moment(currentDate) > moment(date)) {
-  //       setState({ timeIsOver: true });
-  //     }
-  //   }
-  // };
-
-  // const courseIsOver = () => {
-  //   if (props.data.schedules && props.data.schedules.date) {
-  //     const dateAndTime = Date();
-  //     const windowsDate = moment(dateAndTime, "LLLL").format("YYYY/M/D");
-  //     const windowsTime = moment(dateAndTime, "LLLL").format("kk");
-  //     const arrayNumber = props.data.schedules.length - 1;
-  //     const courseDate = props.data.schedules[arrayNumber].date;
-  //     const courseTime = props.data.schedules[arrayNumber].time;
-  //     const courseTimeTo24H = moment(courseTime, "LT").format("kk");
-  //     const courseTimeHourSum = +courseTimeTo24H + 2;
-  //     if (moment(windowsDate) > moment(courseDate)) {
-  //       return true;
-  //     } else {
-  //       if (moment(windowsDate).isSame(courseDate)) {
-  //         if (courseTimeHourSum <= windowsTime) {
-  //           return true;
-  //         } else {
-  //           return false;
-  //         }
-  //       } else {
-  //         return false;
-  //       }
-  //     }
-  //   } else return false;
-  // };
   const OfflineMode = () => {
     return (
       <span className="value">
@@ -76,9 +37,7 @@ export function Product(props) {
           <Link
             to={"/course/" + data._id}
             onClick={() => {
-              // if (window.location.pathname !== "/") {
               scrollTop();
-              // }
             }}
           >
             <div className="img-container">
@@ -110,7 +69,7 @@ export function Product(props) {
                   <i className="zmdi zmdi-account"></i> مدرس:
                 </span>
                 <span className="value">
-                  {data.teacherId.firstName + " " + data.teacherId.lastName}{" "}
+                  {props.teacherId.firstName + " " + props.teacherId.lastName}{" "}
                 </span>
               </p>
               <p>

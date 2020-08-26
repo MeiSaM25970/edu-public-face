@@ -12,3 +12,4 @@ export * from "./comingSoon";
 export * from "./tariff";
 export * from "./shopping";
 export * from "./shoppingDetail";
+export * from "./teacherDetailPage";
