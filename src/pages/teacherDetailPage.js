@@ -17,25 +17,10 @@ export class TeacherDetailPage extends Component {
   async componentDidMount() {
     const id = this.props.match.params.id;
     this.scrollTop();
-
     await this.fetchData(id);
     await this.filterCourses(this.state.activePage);
-
-    // this.coursesLength();
   }
-  // async componentDidUpdate() {
-  //   const id = this.props.match.params.id;
-  //   console.log(this.state.activePage);
-  //   if (this.state.coursesLength !== this.state.data.courses.length) {
-  //     await this.fetchData(id);
-  //     this.filterCourses(this.state.activePage).then(console.log(this.state));
-  //     console.log("component update");
-  //   }
-  // }
-  // coursesLength() {
-  //   this.setState({ coursesLength: this.state.data.courses.length });
-  //   console.log({ length: this.state.coursesLength });
-  // }
+
   fetchData(id) {
     userService
       .getTeacher(id)
