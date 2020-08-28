@@ -2608,9 +2608,12 @@ img.loading-img {
   margin-top: 100px;
   position: fixed;
   z-index: 100;
+  bottom: 0px;
+  width: 150px;
+  overflow: hidden;
 }
 .ad-center {
-  /* position: absolute; */
+  position: fixed;
   top: 50px;
   left: 50%;
   transform: translateX(-53%);
@@ -2625,76 +2628,71 @@ img.loading-img {
   cursor: pointer;
   margin-right: 0px;
   position: absolute;
+  top: 10px;
   right: 10px;
   z-index: 10;
-  width: 2%;
-  height: 10%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 100%;
   padding-bottom: 0px;
-  top: 0px;
   font-size: 12pt;
   color: #ca0404;
   text-shadow: rgba(34, 11, 9, 0.5);
 }
 
 .ad-right {
-  bottom: 0px;
-  transform: translateX(0%);
-  width: 50%;
   right: 5px;
-  width: 50px;
-  height: 150px;
-  min-height: 250px;
 }
-.ad-right div {
-  transform: translateY(-118px);
+
+.ad img {
+  width: 100%;
 }
-.ad-right img {
-  width: 75px;
-  height: 150px;
+
+.ad-holder {
+  position: relative;
 }
+
 .ad-right span {
   cursor: pointer;
-  position: relative;
-  right: 3px;
+  position: absolute;
+  right: 5px;
   z-index: 100;
-  width: 2%;
-  height: 10%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
   top: 0px;
   font-size: 12pt;
   color: #ca0404;
-  transform: translateY(23px);
   display: block;
-  top: -3px;
+  top: 5px;
+  border-radius: 100%;
+  background: #fff;
 }
 .ad-left {
-  bottom: 0px;
-  transform: translateX(0%);
-  width: 50px;
-  height: 150px;
-  min-height: 250px;
-  left: 30px;
+  left: 5px;
 }
 .ad-left span {
   cursor: pointer;
-  position: relative;
-  right: 3px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
   z-index: 100;
-  width: 2%;
-  height: 10%;
-  top: 0px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background: #fff;
+  border-radius: 100%;
+  text-align: center;
   font-size: 12pt;
   color: #ca0404;
-  transform: translateY(23px);
+  /* transform: translateY(23px); */
   display: block;
-  top: -3px;
 }
-.ad-left img {
-  width: 75px;
-  height: 150px;
-}
-.ad-left div {
-  transform: translateY(-118px);
-}
+
 .tariff-background {
   background-color: rgb(233, 248, 255);
 }
