@@ -11,7 +11,7 @@ class Ad extends Component {
         >
           x
         </span>
-        <a href={this.props.url} target="_blank">
+        <a href={this.props.link} target="_blank">
           <img
             width="100%"
             height="100%"

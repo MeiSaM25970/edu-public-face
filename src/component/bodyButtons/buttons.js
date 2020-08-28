@@ -9,7 +9,7 @@ export class BodyButtons extends Component {
           title="عضویت متقاضی و یا مدرسین در برگ دانش"
           href={
             this.props.userLocalStorage.token
-              ? "http://dashboard.learningpage.ir/courses"
+              ? "http://dashboard.learningpage.ir/login"
               : "http://dashboard.learningpage.ir/login"
           }
           className="btn btn-success"

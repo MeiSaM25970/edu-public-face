@@ -22,23 +22,23 @@ export class Home extends Component {
   }
 
   render() {
-    const centerAd = this.props.ads.find((ad) => ad.position === "center");
+    const centerAd = this.props.ads.find((ad) => ad.position === "main-center");
     return (
       <Fragment>
         <SimpleSlider />
         <div className="ad ad-center">{centerAd && <Ad {...centerAd} />}</div>
         <div className="ad ad-left">
           {this.props.ads
-            .filter((ad) => ad.position === "left")
+            .filter((ad) => ad.position === "left-side")
             .map((ad) => (
-              <Ad url={ad.url} imageAddress={ad.imageAddress} />
+              <Ad link={ad.link} imageAddress={ad.imageAddress} />
             ))}
         </div>
         <div className="ad ad-right ">
           {this.props.ads
-            .filter((ad) => ad.position === "right")
+            .filter((ad) => ad.position === "right-side")
             .map((ad) => (
-              <Ad url={ad.url} imageAddress={ad.imageAddress} />
+              <Ad link={ad.link} imageAddress={ad.imageAddress} />
             ))}
         </div>
 

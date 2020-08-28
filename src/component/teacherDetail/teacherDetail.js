@@ -9,9 +9,12 @@ export class TeacherDetail extends Component {
       <div className="col-sm-3">
         <div className="text-center">
           <img
+            width="200px"
+            height="200px"
             src={API_SERVER_ADDRESS + this.teacher.imageAddress || ""}
             alt={this.teacher.firstName + " " + this.teacher.lastName}
             className="teacher-avatar"
+            style={{ maxWidth: "100%", display: "block", maxHeight: "200px" }}
           />
         </div>
 

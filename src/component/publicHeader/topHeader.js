@@ -57,6 +57,12 @@ export class TopHeader extends Component {
             </li>
             <li>
               {" "}
+              <a href="http://dashboard.learningpage.ir/user/edit-user-info">
+                پروفایل من
+              </a>
+            </li>
+            <li>
+              {" "}
               <a href="http://dashboard.learningpage.ir/courses">دوره های من</a>
             </li>
             <li>

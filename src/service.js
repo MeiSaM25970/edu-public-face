@@ -39,39 +39,3 @@ export function getTeacher(id) {
 export function getNotification() {
   return axios.get(API_SERVER_ADDRESS + "notification");
 }
-// export function getNotification() {
-//   return Promise.resolve({ status: 200, data: data });
-// }
-// const data = [
-//   {
-//     position: "left",
-//     url: "http://google.com",
-//     enable: "true",
-//     imageAddress: "/uploads/ads/RL.jpg",
-//   },
-//   {
-//     position: "left",
-//     url: "http://google.com",
-//     enable: "true",
-//     imageAddress: "/uploads/ads/RL.jpg",
-//   },
-
-//   {
-//     position: "right",
-//     url: "http://yahoo.com",
-//     enable: "true",
-//     imageAddress: "/uploads/ads/RL.jpg",
-//   },
-//   {
-//     position: "right",
-//     url: "http://yahoo.com",
-//     enable: "true",
-//     imageAddress: "/uploads/ads/RL.jpg",
-//   },
-//   {
-//     position: "center",
-//     url: "http://google.com",
-//     enable: "true",
-//     imageAddress: "/uploads/ads/center.jpg",
-//   },
-// ];
