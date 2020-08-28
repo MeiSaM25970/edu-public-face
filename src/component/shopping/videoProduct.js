@@ -1,6 +1,5 @@
 import React from "react";
 import numeral from "numeral";
-import moment from "moment-jalaali";
 import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
 
@@ -52,7 +51,9 @@ export function VideoProduct(props) {
                   <i className="zmdi zmdi-account"></i> مدرس:
                 </span>
                 <span className="value">
-                  {data.teacherId.firstName + " " + data.teacherId.lastName}{" "}
+                  {data.teacherId
+                    ? data.teacherId.firstName + " " + data.teacherId.lastName
+                    : ""}{" "}
                 </span>
                 <br />
                 <span className="value">

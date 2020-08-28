@@ -5,7 +5,7 @@ export class BodyNavbarTariff extends Component {
     return (
       <div
         className="course-details-breadcrumb text-center ir-r container d-block"
-        style={{ marginTop: 140 }}
+        style={{ marginTop: 100 }}
       >
         <div className="breadcrumb text-center">
           <Link to="/">

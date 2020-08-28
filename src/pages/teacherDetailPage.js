@@ -18,7 +18,6 @@ export class TeacherDetailPage extends Component {
     const id = this.props.match.params.id;
     this.scrollTop();
     await this.fetchData(id);
-    await this.filterCourses(this.state.activePage);
   }
 
   fetchData(id) {
@@ -30,6 +29,7 @@ export class TeacherDetailPage extends Component {
           data: res.data,
           coursesLength: res.data.courses.length,
         });
+        this.filterCourses(this.state.activePage);
       })
 
       .catch(() => {
@@ -51,12 +51,16 @@ export class TeacherDetailPage extends Component {
       await this.setState({
         current: data.courses.slice(beginIndex, endIndex),
       });
-      await console.log({ setCurrent: this.state });
     } else {
       await this.fetchData(id);
-      await this.setState({
-        current: this.state.data.courses.slice(beginIndex, endIndex),
-      });
+      if (
+        this.state.data.courses.length &&
+        this.state.data.courses[beginIndex]
+      ) {
+        await this.setState({
+          current: this.state.data.courses.slice(beginIndex, endIndex),
+        });
+      }
     }
   }
   handlePageChange(pageNumber) {

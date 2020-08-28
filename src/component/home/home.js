@@ -7,6 +7,7 @@ import { BodyButtons } from "../bodyButtons";
 import { CoursesList } from "../courses";
 import { Link } from "react-router-dom";
 import { WhyUs } from "../../pages/";
+import Ad from "../ads/ads";
 
 export class Home extends Component {
   state = { show: true };
@@ -21,9 +22,26 @@ export class Home extends Component {
   }
 
   render() {
+    const centerAd = this.props.ads.find((ad) => ad.position === "center");
     return (
       <Fragment>
         <SimpleSlider />
+        <div className="ad ad-center">{centerAd && <Ad {...centerAd} />}</div>
+        <div className="ad ad-left">
+          {this.props.ads
+            .filter((ad) => ad.position === "left")
+            .map((ad) => (
+              <Ad url={ad.url} imageAddress={ad.imageAddress} />
+            ))}
+        </div>
+        <div className="ad ad-right ">
+          {this.props.ads
+            .filter((ad) => ad.position === "right")
+            .map((ad) => (
+              <Ad url={ad.url} imageAddress={ad.imageAddress} />
+            ))}
+        </div>
+
         <div className="container">
           <div className="row">
             <Horizontal />

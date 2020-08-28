@@ -17,7 +17,7 @@ export class TariffPage extends Component {
     return !this.state.data ? (
       <Loading />
     ) : (
-      <Fragment>
+      <div className="tariff-background" style={{ marginTop: 100 }}>
         <BodyNavbarTariff />
         <div
           className="section-heading text-center tariff container"
@@ -29,7 +29,7 @@ export class TariffPage extends Component {
           </div>
         </div>
         <TelUsForTariff />
-      </Fragment>
+      </div>
     );
   }
 }

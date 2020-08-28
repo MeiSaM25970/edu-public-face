@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 export class Tariff extends Component {
+  state = { mouseHover: false };
+  initialClass = "col-md-4 col-sm-6 col-xs-12 ";
+  hoverClass = "col-md-4 col-sm-6 col-xs-12 tariff-hover";
+
   render() {
     return (
       <div
-        className="col-md-4 col-sm-6 col-xs-12 "
+        className={this.state.mouseHover ? this.hoverClass : this.initialClass}
         style={{ marginTop: 20, marginBottom: 20 }}
+        onMouseEnter={
+          (() => this.setState({ mouseHover: true }), console.log("hover"))
+        }
       >
         <div className="tariff-items ir-r position-product">
           <div

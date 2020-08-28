@@ -10,7 +10,14 @@ export class HomePage extends Component {
     loading: true,
     error: false,
     userLocalStorage: {},
+    ads: [],
   };
+  fetchAd() {
+    userService
+      .getNotification()
+      .then((res) => this.setState({ ads: res.data }))
+      .catch((e) => console.log(e));
+  }
   fetchData() {
     userService
       .getProducts()
@@ -39,6 +46,7 @@ export class HomePage extends Component {
     this.scrollTop();
     this.fetchData();
     this.getLocalStorage();
+    this.fetchAd();
   }
   homePage() {
     if (this.state.error) {
@@ -48,6 +56,7 @@ export class HomePage extends Component {
         <Home
           data={this.state.products}
           userLocalStorage={this.state.userLocalStorage || ""}
+          ads={this.state.ads}
         />
       );
     }

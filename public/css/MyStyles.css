@@ -2543,12 +2543,18 @@ img.loading-img {
   .mt-100 h3 {
     font-size: 12pt;
   }
+  .responsive-mode {
+    margin-top: 100px;
+  }
 }
 
 @media only screen and (min-width: 1020px) {
   .footer-logo h1 {
     width: 400px;
   }
+  /* .ad-left {
+    left: 0%;
+  } */
 }
 .tariff h2 {
   color: #000;
@@ -2597,4 +2603,98 @@ img.loading-img {
   min-height: 100px;
   height: auto;
   overflow-y: auto;
+}
+.ad {
+  margin-top: 100px;
+  position: fixed;
+  z-index: 100;
+}
+.ad-center {
+  /* position: absolute; */
+  top: 50px;
+  left: 50%;
+  transform: translateX(-53%);
+  width: 50%;
+}
+
+.ad-center img {
+  box-shadow: rgba(117, 117, 117, 0.4);
+}
+
+.ad-center span {
+  cursor: pointer;
+  margin-right: 0px;
+  position: absolute;
+  right: 10px;
+  z-index: 10;
+  width: 2%;
+  height: 10%;
+  padding-bottom: 0px;
+  top: 0px;
+  font-size: 12pt;
+  color: #ca0404;
+  text-shadow: rgba(34, 11, 9, 0.5);
+}
+
+.ad-right {
+  bottom: 0px;
+  transform: translateX(0%);
+  width: 50%;
+  right: 5px;
+  width: 50px;
+  height: 150px;
+  min-height: 250px;
+}
+.ad-right div {
+  transform: translateY(-118px);
+}
+.ad-right img {
+  width: 75px;
+  height: 150px;
+}
+.ad-right span {
+  cursor: pointer;
+  position: relative;
+  right: 3px;
+  z-index: 100;
+  width: 2%;
+  height: 10%;
+  top: 0px;
+  font-size: 12pt;
+  color: #ca0404;
+  transform: translateY(23px);
+  display: block;
+  top: -3px;
+}
+.ad-left {
+  bottom: 0px;
+  transform: translateX(0%);
+  width: 50px;
+  height: 150px;
+  min-height: 250px;
+  left: 30px;
+}
+.ad-left span {
+  cursor: pointer;
+  position: relative;
+  right: 3px;
+  z-index: 100;
+  width: 2%;
+  height: 10%;
+  top: 0px;
+  font-size: 12pt;
+  color: #ca0404;
+  transform: translateY(23px);
+  display: block;
+  top: -3px;
+}
+.ad-left img {
+  width: 75px;
+  height: 150px;
+}
+.ad-left div {
+  transform: translateY(-118px);
+}
+.tariff-background {
+  background-color: rgb(233, 248, 255);
 }
