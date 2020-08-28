@@ -2616,7 +2616,7 @@ img.loading-img {
   position: fixed;
   top: 50px;
   left: 50%;
-  transform: translateX(-53%);
+  transform: translateX(-50%);
   width: 50%;
 }
 
