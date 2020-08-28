@@ -2609,7 +2609,7 @@ img.loading-img {
   position: fixed;
   z-index: 100;
   bottom: 0px;
-  width: 150px;
+  width: 300px;
   overflow: hidden;
 }
 .ad-center {
@@ -2653,6 +2653,7 @@ img.loading-img {
 
 .ad-holder {
   position: relative;
+  margin-top: 3px;
 }
 
 .ad-right span {
