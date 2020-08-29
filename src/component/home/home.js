@@ -26,7 +26,9 @@ export class Home extends Component {
     return (
       <Fragment>
         <SimpleSlider />
-        <div className="ad ad-center">{centerAd && <Ad {...centerAd} />}</div>
+        <div className="ad ad-center">
+          {centerAd && <Ad {...centerAd} className="ad-center" />}
+        </div>
         <div className="ad ad-left">
           {this.props.ads
             .filter((ad) => ad.position === "left-side")
@@ -43,7 +45,7 @@ export class Home extends Component {
         </div>
 
         <div className="container">
-          <div className="row">
+          <div className="row ">
             <Horizontal />
             <BodyButtons userLocalStorage={this.props.userLocalStorage} />
             <Horizontal text="عناوین دوره های در حال برگزاری " />
@@ -51,7 +53,7 @@ export class Home extends Component {
             <CoursesList products={this.props.data || ""} />
           </div>
 
-          <div className="row">
+          <div className="row ">
             <MoreButton />
             <Horizontal text="محبوب ترین آموزش های آنلاین" />{" "}
             <ProductList products={this.props.data || ""} />

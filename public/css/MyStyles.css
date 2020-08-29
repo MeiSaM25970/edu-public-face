@@ -2476,7 +2476,7 @@ img.loading-img {
     width: 60%;
   }
 }
-@media (max-width: 768px) {
+@media only screen and(max-width: 768px) {
   #oct-popup {
     width: 90%;
   }
@@ -2509,6 +2509,7 @@ img.loading-img {
   .show-on-sm {
     display: none;
   }
+
   .slide-show {
     height: 250px;
   }
@@ -2531,6 +2532,7 @@ img.loading-img {
   .hide-on-sm {
     display: none;
   }
+
   .show-on-sm {
     display: block;
   }
@@ -2606,18 +2608,17 @@ img.loading-img {
 }
 .ad {
   margin-top: 100px;
-  position: fixed;
-  z-index: 100;
   bottom: 0px;
   width: 300px;
   overflow: hidden;
+  z-index: 100;
 }
 .ad-center {
   position: fixed;
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50%;
+  width: 45%;
 }
 
 .ad-center img {
@@ -2644,9 +2645,15 @@ img.loading-img {
 }
 
 .ad-right {
+  position: fixed;
+  width: 25%;
   right: 5px;
 }
-
+/* @media only screen and (max-width: 768px) {
+  .ad img {
+    width: 100%;
+  }
+} */
 .ad img {
   width: 100%;
 }
@@ -2654,13 +2661,14 @@ img.loading-img {
 .ad-holder {
   position: relative;
   margin-top: 3px;
+  z-index: 100;
 }
 
 .ad-right span {
   cursor: pointer;
   position: absolute;
   right: 5px;
-  z-index: 100;
+  z-index: 10;
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -2675,6 +2683,8 @@ img.loading-img {
 }
 .ad-left {
   left: 5px;
+  position: fixed;
+  width: 25%;
 }
 .ad-left span {
   cursor: pointer;

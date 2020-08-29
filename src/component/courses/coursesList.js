@@ -6,7 +6,7 @@ export class CoursesList extends Component {
     if (!this.props.products) {
       return (
         <div
-          className="text-primary spinner-border mx-auto mt-5 d-block"
+          className="text-primary spinner-border mx-auto mt-5 d-block responsive-z-index"
           role="status"
         >
           <span className="sr-only">بارگیری...</span>

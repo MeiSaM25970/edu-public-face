@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { API_SERVER_ADDRESS } from "../../env";
 class Ad extends Component {
   state = { closeStyle: { display: "block" } };
@@ -7,7 +6,12 @@ class Ad extends Component {
     return (
       <div className="ad-holder" style={this.state.closeStyle}>
         <span
-          onClick={() => this.setState({ closeStyle: { display: "none" } })}
+          onClick={() => {
+            this.props.className === "ad-center"
+              ? (document.getElementsByClassName("ad-center")[0].style.display =
+                  "none")
+              : this.setState({ closeStyle: { display: "none" } });
+          }}
         >
           x
         </span>
@@ -17,7 +21,7 @@ class Ad extends Component {
           target="_blank"
         >
           <img
-            style={{ display: "block", width: "100%" }}
+            style={{ display: "block" }}
             height="100%"
             src={API_SERVER_ADDRESS + this.props.imageAddress}
           />
