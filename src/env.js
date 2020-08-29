@@ -1,1 +1,1 @@
-export const API_SERVER_ADDRESS = "http://learningpage.ir/";
+export const API_SERVER_ADDRESS = "http://api.learningpage.ir/";
