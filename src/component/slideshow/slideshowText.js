@@ -18,8 +18,8 @@ export class SlideShowText extends Component {
     );
   }
 }
-{
-  /* <Fragment>
+
+/* <Fragment>
 <div
   className="slide-overlay text-right container"
   style={{ top: 10, transform: "translateY(-20%)" }}
@@ -43,4 +43,3 @@ export class SlideShowText extends Component {
   </h2>
 </div>
 </Fragment> */
-}

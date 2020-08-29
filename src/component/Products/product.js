@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import numeral from "numeral";
 import moment from "moment-jalaali";
 import { Link } from "react-router-dom";

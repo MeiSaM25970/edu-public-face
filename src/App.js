@@ -156,7 +156,7 @@ function App() {
               </Page>
             )}
           />
-          {/* <Redirect to="/" /> */}
+          <Redirect to="/" />
         </Switch>
         <Footer />
       </BrowserRouter>

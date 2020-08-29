@@ -3,7 +3,6 @@ import { VideoProduct } from "./videoProduct";
 import { Loading } from "../Loading";
 
 export function VideoProductList(props) {
-  console.log(props);
   return !props.shoppingData.data ? (
     <Loading />
   ) : (

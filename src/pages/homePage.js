@@ -78,8 +78,6 @@ export class HomePage extends Component {
   }
 
   render() {
-    console.log(this.state);
-
     return this.state.loading ? <Loading /> : this.homePage();
   }
 }

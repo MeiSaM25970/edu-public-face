@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { BodyNavbarTariff } from "../component/tariff";
 import { Loading } from "../component/Loading";
 import { TariffList } from "../component/tariff/tariffList";

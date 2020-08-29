@@ -19,11 +19,13 @@ class Ad extends Component {
           style={{ display: "block", width: "100%" }}
           href={this.props.link}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img
             style={{ display: "block" }}
             height="100%"
             src={API_SERVER_ADDRESS + this.props.imageAddress}
+            alt="تبلیغات"
           />
         </a>
       </div>

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "../../css/material-icons.css";
 import numeral from "numeral";
-import { SumPeriod } from "./sumPeriod";
-import { Link } from "react-router-dom";
 import * as userInfo from "../../component/detail/service";
 import { DownloadLinks } from "./downloadLinks";
 

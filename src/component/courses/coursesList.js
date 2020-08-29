@@ -3,7 +3,6 @@ import { Course } from "./course";
 
 export class CoursesList extends Component {
   render() {
-    console.log({ coursesList: this.props });
     if (!this.props.products) {
       return (
         <div

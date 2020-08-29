@@ -8,7 +8,11 @@ export class DownloadLinks extends Component {
       return this.props.data.map((item, index) => (
         <tr key={index}>
           <th scope="row">
-            <a href={API_SERVER_ADDRESS + item} target="_blank">
+            <a
+              href={API_SERVER_ADDRESS + item}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {" "}
               دانلود لینک قسمت {index + 1}
             </a>
