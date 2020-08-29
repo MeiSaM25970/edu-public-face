@@ -2574,6 +2574,7 @@ img.loading-img {
 .tariff-items h5 {
   font-family: iransans-bold;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 .tariff-items .value {
   display: block;

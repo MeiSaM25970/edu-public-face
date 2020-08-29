@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { random } from "lodash";
+
 export class Tariff extends Component {
   state = { mouseHover: false };
   initialClass = "col-md-4 col-sm-6 col-xs-12 ";
