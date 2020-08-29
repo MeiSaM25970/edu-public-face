@@ -4,22 +4,27 @@ import * as userService from "../service";
 import Pagination from "react-js-pagination";
 
 export class Shopping extends Component {
-  state = { data: {} };
-  fetchData() {
+  state = { data: {}, activePage: 1 };
+  fetchData(page, count, type) {
     userService
-      .getAllProducts()
-      .then((res) => this.setState({ data: res.data }));
+      .getCourses(page, count, type)
+      .then((response) => {
+        this.setState({ data: response.data, loading: false });
+      })
+      .catch(() => {
+        this.setState({ loading: false, error: true });
+      });
   }
   componentDidMount() {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-    this.fetchData();
+    this.fetchData(this.state.activePage, 12, "&type=offline");
   }
   handlePageChange(pageNumber) {
     this.setState({ ...this.state, activePage: pageNumber });
-    this.fetchData(pageNumber, 12);
+    this.fetchData(pageNumber, 12, "&type=offline");
     this.props.history.push("/videos?page=" + pageNumber);
   }
   render() {

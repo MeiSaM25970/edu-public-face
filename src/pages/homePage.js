@@ -6,7 +6,8 @@ import { Home } from "../component/home/home";
 import { reactLocalStorage } from "reactjs-localstorage";
 export class HomePage extends Component {
   state = {
-    products: { data: [] },
+    onlineData: { data: [] },
+    offlineData: { data: [] },
     loading: true,
     error: false,
     userLocalStorage: {},
@@ -18,12 +19,25 @@ export class HomePage extends Component {
       .then((res) => this.setState({ ads: res.data }))
       .catch((e) => console.log(e));
   }
-  fetchData() {
+  fetchDataOnline(type) {
     userService
-      .getProducts()
+      .getProducts(type)
       .then((response) => {
         this.setState({
-          products: response.data,
+          onlineData: response.data,
+          loading: false,
+        });
+      })
+      .catch(() => {
+        this.setState({ loading: false, error: true });
+      });
+  }
+  fetchDataOffline(type) {
+    userService
+      .getProducts(type)
+      .then((response) => {
+        this.setState({
+          offlineData: response.data,
           loading: false,
         });
       })
@@ -44,7 +58,8 @@ export class HomePage extends Component {
 
   componentDidMount() {
     this.scrollTop();
-    this.fetchData();
+    this.fetchDataOnline("");
+    this.fetchDataOffline("&type=offline");
     this.getLocalStorage();
     this.fetchAd();
   }
@@ -54,7 +69,8 @@ export class HomePage extends Component {
     } else {
       return (
         <Home
-          data={this.state.products}
+          onlineData={this.state.onlineData}
+          offlineData={this.state.offlineData}
           userLocalStorage={this.state.userLocalStorage || ""}
           ads={this.state.ads}
         />
@@ -63,6 +79,8 @@ export class HomePage extends Component {
   }
 
   render() {
+    console.log(this.state);
+
     return this.state.loading ? <Loading /> : this.homePage();
   }
 }

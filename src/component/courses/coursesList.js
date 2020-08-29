@@ -3,6 +3,7 @@ import { Course } from "./course";
 
 export class CoursesList extends Component {
   render() {
+    console.log({ coursesList: this.props });
     if (!this.props.products) {
       return (
         <div
@@ -12,11 +13,15 @@ export class CoursesList extends Component {
           <span className="sr-only">بارگیری...</span>
         </div>
       );
-    }
-    return this.props.products.data.map((data, index) => (
-      <div key={index}>
-        <Course data={data} />
-      </div>
-    ));
+    } else
+      return this.props.products.data.map((data, index) =>
+        data.isOffline ? (
+          ""
+        ) : (
+          <div key={index}>
+            <Course data={data} />
+          </div>
+        )
+      );
   }
 }

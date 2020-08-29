@@ -26,23 +26,35 @@ export class Home extends Component {
     return (
       <Fragment>
         <SimpleSlider />
-        <div className="ad ad-center">
-          {centerAd && <Ad {...centerAd} className="ad-center" />}
-        </div>
-        <div className="ad ad-left">
-          {this.props.ads
-            .filter((ad) => ad.position === "left-side")
-            .map((ad) => (
-              <Ad link={ad.link} imageAddress={ad.imageAddress} />
-            ))}
-        </div>
-        <div className="ad ad-right ">
-          {this.props.ads
-            .filter((ad) => ad.position === "right-side")
-            .map((ad) => (
-              <Ad link={ad.link} imageAddress={ad.imageAddress} />
-            ))}
-        </div>
+        {this.props.ads.length ? (
+          <div className="ad ad-center">
+            {centerAd && <Ad {...centerAd} className="ad-center" />}
+          </div>
+        ) : (
+          ""
+        )}
+        {this.props.ads.length ? (
+          <div className="ad ad-left">
+            {this.props.ads
+              .filter((ad) => ad.position === "left-side")
+              .map((ad) => (
+                <Ad link={ad.link} imageAddress={ad.imageAddress} />
+              ))}
+          </div>
+        ) : (
+          ""
+        )}
+        {this.props.ads.length ? (
+          <div className="ad ad-right ">
+            {this.props.ads
+              .filter((ad) => ad.position === "right-side")
+              .map((ad) => (
+                <Ad link={ad.link} imageAddress={ad.imageAddress} />
+              ))}
+          </div>
+        ) : (
+          ""
+        )}
 
         <div className="container">
           <div className="row ">
@@ -50,16 +62,16 @@ export class Home extends Component {
             <BodyButtons userLocalStorage={this.props.userLocalStorage} />
             <Horizontal text="عناوین دوره های در حال برگزاری " />
 
-            <CoursesList products={this.props.data || ""} />
+            <CoursesList products={this.props.onlineData || ""} />
           </div>
 
           <div className="row ">
             <MoreButton />
             <Horizontal text="محبوب ترین آموزش های آنلاین" />{" "}
-            <ProductList products={this.props.data || ""} />
+            <ProductList products={this.props.onlineData || ""} />
             <Horizontal />
             <ShowMore />
-            <TeacherList data={this.props.data || ""} />
+            <TeacherList />
             <Horizontal text=" Learningpage  پیشتاز در بستر آموزش مجازی ، چرا؟ " />
             <WhyUs />{" "}
           </div>

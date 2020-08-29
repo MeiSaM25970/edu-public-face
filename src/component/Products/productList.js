@@ -1,6 +1,5 @@
 import React from "react";
 import { Product } from "./product";
-import { VideoProduct } from "../shopping/videoProduct";
 
 export function ProductList(props) {
   if (!props.products) {

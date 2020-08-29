@@ -12,7 +12,7 @@ export class ShowMore extends Component {
           <div className="col-sm-10 col-sm-offset-1 text-center">
             <h3 className="section-title">برخی از مدرسان Learningpage</h3>
             <p className="section-description ">
-              همه شما مدرسین محترم هم می توانید با ثبت نام در برگ دانش به
+              همه شما مدرسین محترم هم می توانید با ثبت نام در Learningpage به
               برگزاری دوره های مختلف در زمینه هایی که در آن ها تخصص دارید،
               بپردازید.
             </p>

@@ -16,9 +16,9 @@ export class CoursesPage extends Component {
     });
   };
 
-  fetchData(page, count) {
+  fetchData(page, count, type) {
     userService
-      .getCourses(page, count)
+      .getCourses(page, count, type)
       .then((response) => {
         this.setState({ products: response.data, loading: false });
       })
@@ -28,12 +28,12 @@ export class CoursesPage extends Component {
   }
   handlePageChange(pageNumber) {
     this.setState({ ...this.state, activePage: pageNumber });
-    this.fetchData(pageNumber, 12);
+    this.fetchData(pageNumber, 12, "");
     this.props.history.push("/courses?page=" + pageNumber);
   }
   componentDidMount() {
     this.scrollTop();
-    this.fetchData(this.state.activePage, 12);
+    this.fetchData(this.state.activePage, 12, "");
   }
 
   render() {

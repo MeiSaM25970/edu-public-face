@@ -110,7 +110,9 @@ export function Product(props) {
                   <i className="zmdi zmdi-account"></i> مدرس:
                 </span>
                 <span className="value">
-                  {data.teacherId.firstName + " " + data.teacherId.lastName}{" "}
+                  {data.teacherId
+                    ? data.teacherId.firstName + " " + data.teacherId.lastName
+                    : ""}
                 </span>
               </p>
               <p>
