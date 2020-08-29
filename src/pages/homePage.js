@@ -59,7 +59,6 @@ export class HomePage extends Component {
   componentDidMount() {
     this.scrollTop();
     this.fetchDataOnline("");
-    this.fetchDataOffline("&type=offline");
     this.getLocalStorage();
     this.fetchAd();
   }
