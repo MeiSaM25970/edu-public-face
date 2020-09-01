@@ -59,7 +59,7 @@ export class BottomHeader extends Component {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/coming-soon" onClick={this.click.bind(this)}>
+                  <Link to="/job-request" onClick={this.click.bind(this)}>
                     درخواست همکاری مدرس
                   </Link>
                 </li>

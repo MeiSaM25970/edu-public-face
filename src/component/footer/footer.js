@@ -123,7 +123,7 @@ export class Footer extends Component {
                   <Link to="/teachers">مدرسان ما</Link>
                 </li>
                 <li>
-                  <Link to="/coming-soon">درخواست همکاری مدرس</Link>
+                  <Link to="/job-request">درخواست همکاری مدرس</Link>
                 </li>
                 <li>
                   <Link to="/tariff">تعرفه ها</Link>

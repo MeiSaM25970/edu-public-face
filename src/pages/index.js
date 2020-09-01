@@ -13,3 +13,4 @@ export * from "./tariff";
 export * from "./shopping";
 export * from "./shoppingDetail";
 export * from "./teacherDetailPage";
+export * from "./invitedToCooperatePage";

@@ -39,3 +39,9 @@ export function getTeacher(id) {
 export function getNotification() {
   return axios.get(API_SERVER_ADDRESS + "notification");
 }
+export function uploadResume(data) {
+  return axios.post(API_SERVER_ADDRESS + "job-request/upload-resume", data);
+}
+export function addITC(data) {
+  return axios.post(API_SERVER_ADDRESS + "job-request/add", data);
+}

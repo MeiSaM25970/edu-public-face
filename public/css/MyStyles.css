@@ -2481,6 +2481,12 @@ img.loading-img {
     width: 90%;
   }
 }
+.responsive-itc input {
+  width: 80% !important;
+}
+.responsive-cv {
+  width: 80%;
+}
 .popular .tutorials {
   margin-top: 0;
 }
@@ -2707,4 +2713,41 @@ img.loading-img {
 
 .tariff-background {
   background-color: rgb(233, 248, 255);
+}
+.fname {
+  width: 100px !important;
+  padding: 0px 5px;
+  margin-right: 20px;
+}
+.lname {
+  width: 200px !important;
+  margin-right: 20px;
+  padding: 0px 5px;
+}
+.mob {
+  width: 250px !important;
+  margin-right: 20px;
+  padding: 0px 5px;
+}
+.cv {
+  margin-right: 20px;
+  display: "inline" !important;
+  transform: "translateY(0px)";
+  padding: 0px 5px;
+}
+.itc-des {
+  width: 70% !important;
+  padding: 0px 5px;
+  margin-right: 20px;
+}
+.back {
+  background-image: linear-gradient(#9c27b0, #9c27b0),
+    linear-gradient(#d2d2d2, #d2d2d2) !important;
+  margin-right: 20px;
+}
+.back-error {
+  background-image: linear-gradient(#fa0828, #f71023),
+    linear-gradient(#fc0101, #fc0909) !important;
+  background-image: linear-gradient(#ff0);
+  margin-right: 20px;
 }

@@ -16,6 +16,7 @@ import {
   Shopping,
   ShoppingDetailPage,
   TeacherDetailPage,
+  InviteToCooperatePage,
 } from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
@@ -153,6 +154,14 @@ function App() {
             render={(props) => (
               <Page title="فروشگاه سامانه">
                 <ShoppingDetailPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/job-request"
+            render={(props) => (
+              <Page title="درخواست همکاری مدرس">
+                <InviteToCooperatePage {...props} />
               </Page>
             )}
           />
