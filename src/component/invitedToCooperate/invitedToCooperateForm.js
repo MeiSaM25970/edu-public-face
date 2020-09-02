@@ -17,6 +17,7 @@ export class InvitedToCooperateForm extends Component {
     mobileError: false,
     descriptionError: false,
     isValid: true,
+    done: false,
   };
   changeHandler(e) {
     const teacher = {};
@@ -27,19 +28,23 @@ export class InvitedToCooperateForm extends Component {
   }
   inputHandler(event) {
     if (!event.target.files.length) {
-      this.setState({ chooseFile: false });
+      this.setState({ chooseFile: false, load: false });
     } else
-      this.setState({ selectedFile: event.target.files[0], chooseFile: true });
+      this.setState({
+        selectedFile: event.target.files[0],
+        chooseFile: true,
+        load: false,
+      });
   }
 
   async submitHandler(event) {
     await event.preventDefault();
     await this.validationInput();
     if (this.state.chooseFile && this.state.selectedFile !== null) {
-      this.setState({ resumeError: false });
+      this.setState({ resumeError: false, load: false });
       await this.uploadFile();
     } else {
-      this.setState({ resumeError: true, isValid: false });
+      this.setState({ resumeError: true, isValid: false, load: false });
     }
     const data = {
       firstName: this.state.firstName,
@@ -49,7 +54,13 @@ export class InvitedToCooperateForm extends Component {
       description: this.state.description,
     };
     if (this.state.isValid) {
-      await userService.addITC(data).then(this.setState({ loading: false }));
+      await userService
+        .addITC(data)
+        .then(this.setState({ done: true, load: false }))
+        .catch((e) => {
+          console.log(e);
+          this.setState({ load: false });
+        });
     }
   }
   validationInput() {
@@ -95,8 +106,11 @@ export class InvitedToCooperateForm extends Component {
 
     await userService
       .uploadResume(uploadData)
-      .then((res) => this.setState({ resume: res.data.path, load: false }))
-      .catch((e) => console.log(e));
+      .then((res) => this.setState({ load: false, resume: res.data.path }))
+      .catch((e) => {
+        console.log(e);
+        this.setState({ load: false });
+      });
   }
   render() {
     return (
@@ -185,7 +199,11 @@ export class InvitedToCooperateForm extends Component {
                   ? " form-group responsive-itc has-error"
                   : "form-group responsive-itc"
               }
-              style={{ transform: "translateY(13px)", marginRight: 20 }}
+              style={{
+                transform: "translateY(13px)",
+                marginRight: 20,
+                width: 250,
+              }}
             >
               <input
                 type="number"
@@ -284,9 +302,13 @@ export class InvitedToCooperateForm extends Component {
               className="btn btn-success "
               style={{ margin: "50px 50%" }}
               onClick={() => this.setState({ load: true })}
+              disabled={this.state.done}
             >
-              {" "}
-              ثبت درخواست
+              {this.state.load
+                ? "صبرکنید..."
+                : this.state.done
+                ? "درخواست ارسال شد"
+                : " ثبت درخواست"}
             </button>
           </form>
         </div>
