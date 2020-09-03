@@ -36,7 +36,7 @@ export class TopHeader extends Component {
       );
     } else {
       return (
-        <div className="menu-item">
+        <div className="menu-item collapse">
           <i
             className="zmdi zmdi-account"
             style={{ transform: "translateY(3px)" }}

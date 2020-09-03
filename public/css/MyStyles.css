@@ -2476,17 +2476,18 @@ img.loading-img {
     width: 60%;
   }
 }
-@media only screen and(max-width: 768px) {
+@media only screen and (max-width: 768px) {
   #oct-popup {
     width: 90%;
   }
+  .responsive-itc input {
+    width: 80% !important;
+  }
+  .responsive-cv {
+    width: 80%;
+  }
 }
-.responsive-itc input {
-  width: 80% !important;
-}
-.responsive-cv {
-  width: 80%;
-}
+
 .popular .tutorials {
   margin-top: 0;
 }
@@ -2622,14 +2623,15 @@ img.loading-img {
 }
 .ad-center {
   position: fixed;
-  top: 50px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 45%;
 }
 
 .ad-center img {
   box-shadow: rgba(117, 117, 117, 0.4);
+  max-height: calc(100vh - 100px);
+  /* max-width: 50%; */
 }
 
 .ad-center span {
@@ -2656,11 +2658,7 @@ img.loading-img {
   width: 25%;
   right: 5px;
 }
-/* @media only screen and (max-width: 768px) {
-  .ad img {
-    width: 100%;
-  }
-} */
+
 .ad img {
   width: 100%;
 }
@@ -2692,6 +2690,12 @@ img.loading-img {
   left: 5px;
   position: fixed;
   width: 25%;
+}
+.ad-left img {
+  max-height: 280px;
+}
+.ad-right img {
+  max-height: 280px;
 }
 .ad-left span {
   cursor: pointer;
@@ -2726,17 +2730,17 @@ img.loading-img {
 }
 .mob {
   width: 250px !important;
-  margin-right: 20px;
   padding: 0px 5px;
 }
 .cv {
-  margin-right: 20px;
+  margin-right: 40px;
   display: "inline" !important;
   transform: "translateY(0px)";
   padding: 0px 5px;
+  width: 250px !important;
 }
 .itc-des {
-  width: 70% !important;
+  width: 80% !important;
   padding: 0px 5px;
   margin-right: 20px;
 }
@@ -2750,4 +2754,11 @@ img.loading-img {
     linear-gradient(#fc0101, #fc0909) !important;
   background-image: linear-gradient(#ff0);
   margin-right: 20px;
+}
+@media only screen and (max-width: 650px) {
+  .ad-center {
+    width: 45% !important;
+    height: auto;
+    /* max-height: 70% !important; */
+  }
 }

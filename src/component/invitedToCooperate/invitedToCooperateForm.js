@@ -202,12 +202,11 @@ export class InvitedToCooperateForm extends Component {
               style={{
                 transform: "translateY(13px)",
                 marginRight: 20,
-                width: 250,
               }}
             >
               <input
                 type="number"
-                className="form-control mob"
+                className="form-control mob responsive-cv"
                 placeholder="موبایل"
                 aria-describedby="sizing-addon2 "
                 name="mobile"
