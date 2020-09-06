@@ -26,9 +26,9 @@ export class Home extends Component {
     return (
       <Fragment>
         <SimpleSlider />
-        {this.props.ads.length ? (
+        {centerAd ? (
           <div className="ad ad-center">
-            {centerAd && <Ad {...centerAd} className="ad-center" />}
+            {<Ad {...centerAd} className="ad-center" />}
           </div>
         ) : (
           ""
