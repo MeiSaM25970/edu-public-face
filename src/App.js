@@ -17,11 +17,14 @@ import {
   ShoppingDetailPage,
   TeacherDetailPage,
   InviteToCooperatePage,
+  ExamPage,
+  ExamDetailPage,
 } from "./pages/";
 import { Footer } from "./component/footer";
 import Page from "./component/pageTitle/pageTitle";
 import "./App.css";
 import { LoginHelp } from "./component/help";
+import { Certificate } from "./component/certificate";
 
 function App() {
   return (
@@ -60,6 +63,14 @@ function App() {
             )}
           />
           <Route
+            path="/certificate"
+            render={(props) => (
+              <Page title="راهنمای صدور گواهی داخلی">
+                <Certificate {...props} />
+              </Page>
+            )}
+          />
+          <Route
             path="/payment/success"
             render={(props) => (
               <Page title="پرداخت موفق ">
@@ -80,6 +91,14 @@ function App() {
             render={(props) => (
               <Page title=" ورود">
                 <Login {...props} />
+              </Page>
+            )}
+          />
+          <Route
+            path="/OnlineExam"
+            render={(props) => (
+              <Page title=" آزمون آنلاین">
+                <ExamPage {...props} />
               </Page>
             )}
           />
@@ -109,6 +128,14 @@ function App() {
             )}
           />
           <Route
+            path="/exam/:_id"
+            render={(props) => (
+              <Page title="دوره های آنلاین ">
+                <ExamDetailPage {...props} />
+              </Page>
+            )}
+          />
+          <Route
             path="/courses"
             render={(props) => (
               <Page title=" همه دوره های آنلاین ">
@@ -117,7 +144,7 @@ function App() {
             )}
           />
           <Route
-            path="/loginhelp"
+            path="/help"
             render={(props) => (
               <Page title="راهنمای ورود ">
                 <LoginHelp {...props} />

@@ -18,16 +18,20 @@ export class BodyNavbar extends Component {
             <HomeIcon style={{ position: "relative", float: "right" }} />
             <i></i> <span>خانه</span>
           </Link>
-          <a href="#" className="breadcrumb-seperator " style={{ width: 15 }}>
+          <a href="/" className="breadcrumb-seperator " style={{ width: 15 }}>
             <ChevronLeftIcon
               style={{ position: "relative", top: "5px", width: "auto" }}
             />
           </a>
           <Link className="breadcrumb-item text-red" to="/courses">
             <DvrIcon style={{ position: "relative", float: "right" }} />
-            دوره های آنلاین
+            <span style={{ marginRight: 5 }}> {"دوره های آنلاین  "}</span>
           </Link>
-          <a href="#" className="breadcrumb-seperator" style={{ width: 15 }}>
+          <a
+            href="/courses"
+            className="breadcrumb-seperator"
+            style={{ width: 15 }}
+          >
             <ChevronLeftIcon
               style={{ position: "relative", top: "5px", width: "auto" }}
             />

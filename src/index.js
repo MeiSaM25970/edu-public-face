@@ -7,7 +7,7 @@ import Favicon from "react-favicon";
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Favicon url="/images/menu-logo.jpg" />
+    <Favicon animated="true" animationDelay="300" url="/images/menu-logo.png" />
   </React.StrictMode>,
   document.getElementById("root")
 );

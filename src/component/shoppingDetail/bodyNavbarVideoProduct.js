@@ -18,7 +18,7 @@ export class BodyNavbarVideoProduct extends Component {
             <HomeIcon style={{ position: "relative", float: "right" }} />
             <i></i> <span>خانه</span>
           </Link>
-          <a href="#" className="breadcrumb-seperator " style={{ width: 15 }}>
+          <a href="/" className="breadcrumb-seperator " style={{ width: 15 }}>
             <ChevronLeftIcon
               style={{ position: "relative", top: "5px", width: "auto" }}
             />
@@ -31,7 +31,11 @@ export class BodyNavbarVideoProduct extends Component {
             <ShopIcon style={{ position: "relative", float: "right" }} />
             <p style={{ paddingRight: 10, width: 110 }}>{"فروشگاه سامانه"}</p>
           </Link>
-          <a href="#" className="breadcrumb-seperator" style={{ width: 15 }}>
+          <a
+            href="/videos"
+            className="breadcrumb-seperator"
+            style={{ width: 15 }}
+          >
             <ChevronLeftIcon
               style={{ position: "relative", top: "5px", width: "auto" }}
             />

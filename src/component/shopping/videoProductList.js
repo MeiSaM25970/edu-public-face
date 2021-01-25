@@ -14,6 +14,8 @@ export function VideoProductList(props) {
               <VideoProduct data={data} />
             </div>
           );
+        } else {
+          return undefined;
         }
       })}
     </div>

@@ -14,3 +14,5 @@ export * from "./shopping";
 export * from "./shoppingDetail";
 export * from "./teacherDetailPage";
 export * from "./invitedToCooperatePage";
+export * from "./exam";
+export * from "./examDetailPage";

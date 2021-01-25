@@ -4,7 +4,8 @@ import numeral from "numeral";
 import { SumPeriod } from "./sumPeriod";
 import * as userInfo from "../../component/detail/service";
 import moment from "moment-jalaali";
-// const momentTimeZone = require("moment-timezone");
+import momentTimeZone from "moment-timezone";
+
 export class ProductDetail extends Component {
   state = {
     url: "",
@@ -15,7 +16,22 @@ export class ProductDetail extends Component {
   };
   id = this.props.data._id || "";
   token = this.props.userInfo.token || "";
-  timeIsOver2() {
+  type = "course";
+  // timeIsOver2() {
+  //   if (this.props.data.schedules.length) {
+  //     const lastIndex = this.props.data.schedules.length - 1;
+  //     const lastSchedule = this.props.data.schedules[lastIndex];
+  //     const date = lastSchedule.date;
+
+  //     let currentDate = moment().format("YYYY/MM/DD");
+
+  //     if (moment(currentDate) > moment(date)) {
+  //       this.setState({ timeIsOver: true });
+  //     }
+  //   }
+  // }
+
+  async timeIsOver2() {
     if (this.props.data.schedules.length) {
       const lastIndex = this.props.data.schedules.length - 1;
       const lastSchedule = this.props.data.schedules[lastIndex];
@@ -25,55 +41,35 @@ export class ProductDetail extends Component {
 
       if (moment(currentDate) > moment(date)) {
         this.setState({ timeIsOver: true });
+      } else {
+        if (moment(currentDate).isSame(date)) {
+          const currentHour = Number(
+            await momentTimeZone().tz("Asia/Tehran").format("HH")
+          );
+          const currentMinutes = Number(
+            await momentTimeZone().tz("Asia/Tehran").format("mm")
+          );
+          const totalCurrentMinutes = currentHour * 60 + currentMinutes;
+
+          const time = lastSchedule.time;
+          const period = Number(lastSchedule.period) * 60;
+          //calculate total amount of  schedule start time in minuets.
+          const scheduleHour = Number(moment(time, "LT").format("HH"));
+          const scheduleMinutes = Number(moment(time, "LT").format("mm"));
+          const totalStartScheduleMinuts = scheduleHour * 60 + scheduleMinutes;
+          const allowedTime = totalStartScheduleMinuts + period;
+          if (totalCurrentMinutes > allowedTime) {
+            this.setState({ timeIsOver: true });
+          } else {
+            this.setState({ timeIsOver: false });
+          }
+        } else {
+          this.setState({ timeIsOver: false });
+          return false;
+        }
       }
     }
   }
-
-  // async timeIsOver2() {
-  //   const lastIndex = this.props.data.schedules.length - 1;
-  //   const lastSchedule = this.props.data.schedules[lastIndex];
-  //   const date = lastSchedule.date;
-
-  //   let currentDate = moment().format("YYYY/MM/DD");
-
-  //   if (moment(currentDate) > moment(date)) {
-  //     this.setState({ timeIsOverLoading: false });
-  //     return true;
-  //   }
-  //   else {
-  //     if (moment(currentDate).isSame(date)) {
-  //       console.log("hear");
-  //       const currentHour = Number(
-  //         await momentTimeZone().tz("Asia/Tehran").format("HH")
-  //       );
-  //       const currentMinutes = Number(
-  //         await momentTimeZone().tz("Asia/Tehran").format("mm")
-  //       );
-  //       const totalCurrentMinutes = currentHour * 60 + currentMinutes;
-
-  //       const time = lastSchedule.time;
-  //       const period = Number(lastSchedule.period) * 60;
-  //       //calculate total amount of  schedule start time in minuets.
-  //       const scheduleHour = Number(moment(time, "LT").format("HH"));
-  //       const scheduleMinutes = Number(moment(time, "LT").format("mm"));
-  //       const totalStartScheduleMinuts = scheduleHour * 60 + scheduleMinutes;
-  //       const allowedTime = totalStartScheduleMinuts + period;
-  //       if (totalCurrentMinutes > allowedTime) {
-  //         console.log("2");
-
-  //         this.setState({ timeIsOverLoading: false });
-
-  //         return true;
-  //       } else {
-  //         this.setState({ timeIsOverLoading: false });
-  //         return false;
-  //       }
-  //     } else {
-  //       this.setState({ timeIsOverLoading: false });
-  //       return false;
-  //     }
-  //   }
-  // }
   // async timeIsOver2() {
   //   const lastIndex = this.props.data.schedules.length - 1;
   //   const lastSchedule = this.props.data.schedules[lastIndex];
@@ -111,7 +107,7 @@ export class ProductDetail extends Component {
     }
 
     if (!this.props.userInfo.token) {
-      return this.setState({ url: "http://dashboard.learningpage.ir/login" });
+      return this.setState({ url: "https://dashboard.edu.tad-group.ir/login" });
     } else if (this.props.participant.isParticipant) {
       return this.setClassLink();
     } else {
@@ -120,13 +116,14 @@ export class ProductDetail extends Component {
   }
 
   participantsLink() {
-    this.paymentLink(this.id, this.token);
+    this.paymentLink(this.type, this.id, this.token);
     this.setState({ disableButton: true });
   }
-  paymentLink(id, token) {
+  paymentLink(type, id, token) {
     userInfo
-      .getPaymentLink(id, token)
-      .then((response) => (window.location.href = response.data.url));
+      .getPaymentLink(type, id, token)
+      .then((response) => (window.location.href = response.data.url))
+      .catch((err) => console.log(err));
   }
   //  timeIsOver() {
   //   const dateAndTime = Date();
@@ -159,48 +156,63 @@ export class ProductDetail extends Component {
     });
   };
   createButton() {
-    if (!this.props.userInfo.token) {
+    if (this.props.data.isExpired && this.state.timeIsOver) {
       return (
-        <a className="btn-pricing" href={this.state.url}>
-          <span>
-            {this.props.data.price === 0
-              ? " رایگان "
-              : numeral(this.props.data.price).format(0, 0)}
-          </span>
-          ثبت نام
-        </a>
-      );
-    } else if (this.props.participant.isParticipant) {
-      return this.props.data.isOffline ? (
-        ""
-      ) : (
-        <a className="btn-pricing" href={this.state.url}>
-          ورود به کلاس
-        </a>
+        <span
+          style={{ marginRight: "50%", display: "block" }}
+          className="btn-pricing"
+        >
+          دوره به اتمام رسید.
+        </span>
       );
     } else {
-      return (
-        <button
-          disabled={this.state.disableButton}
-          className="btn-pricing"
-          onClick={() => {
-            if (this.state.checkPaymentLink) {
-              this.participantsLink();
-            }
-          }}
-        >
-          {this.state.disableButton ? (
-            "لطفا صبر کنید"
-          ) : (
+      if (!this.props.userInfo.token) {
+        return (
+          <a className="btn-pricing" href={this.state.url}>
             <span>
               {this.props.data.price === 0
                 ? " رایگان "
                 : numeral(this.props.data.price).format(0, 0)}
             </span>
-          )}
-          {this.state.disableButton ? "" : " ثبت نام "}
-        </button>
-      );
+            {!this.props.data.isOffline ? "  ثبت نام  " : " خرید "}
+          </a>
+        );
+      } else if (this.props.participant.isParticipant) {
+        return this.props.data.isOffline ? (
+          ""
+        ) : (
+          <a className="btn-pricing" href={this.state.url}>
+            ورود به کلاس
+          </a>
+        );
+      } else {
+        return (
+          <button
+            disabled={this.state.disableButton}
+            className="btn-pricing"
+            onClick={() => {
+              if (this.state.checkPaymentLink) {
+                this.participantsLink();
+              }
+            }}
+          >
+            {this.state.disableButton ? (
+              "لطفا صبر کنید"
+            ) : (
+              <span>
+                {this.props.data.price === 0
+                  ? " رایگان "
+                  : numeral(this.props.data.price).format(0, 0)}
+              </span>
+            )}
+            {this.state.disableButton
+              ? ""
+              : !this.props.data.isOffline
+              ? "  ثبت نام  "
+              : " خرید "}
+          </button>
+        );
+      }
     }
   }
   // isExpired() {

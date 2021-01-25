@@ -41,7 +41,7 @@ export class InvitedToCooperateForm extends Component {
     await event.preventDefault();
     await this.validationInput();
     if (this.state.chooseFile && this.state.selectedFile !== null) {
-      this.setState({ resumeError: false, load: false });
+      this.setState({ resumeError: false });
       await this.uploadFile();
     } else {
       this.setState({ resumeError: true, isValid: false, load: false });
@@ -106,7 +106,7 @@ export class InvitedToCooperateForm extends Component {
 
     await userService
       .uploadResume(uploadData)
-      .then((res) => this.setState({ load: false, resume: res.data.path }))
+      .then((res) => this.setState({ resume: res.data.path }))
       .catch((e) => {
         console.log(e);
         this.setState({ load: false });
@@ -233,6 +233,7 @@ export class InvitedToCooperateForm extends Component {
                 ""
               )}
             </div>
+            <br />
             <div
               className={
                 this.state.resumeError
@@ -284,7 +285,7 @@ export class InvitedToCooperateForm extends Component {
                 placeholder="توضیحات"
                 aria-describedby="sizing-addon2 "
                 name="description"
-                rows="3"
+                rows="1"
                 style={{ width: "100%" }}
                 onChange={this.changeHandler.bind(this)}
               ></textarea>

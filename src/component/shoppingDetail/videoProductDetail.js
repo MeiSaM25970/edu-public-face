@@ -7,7 +7,7 @@ import { DownloadLinks } from "./downloadLinks";
 const data = {
   isParticipant: true,
   urls: [
-    { url: "http://www.learningpage.ir" },
+    { url: "http://www.Tad-Group.ir" },
     { url: "http://www.google.com" },
     { url: "http://www.msn.com" },
   ],
@@ -32,7 +32,7 @@ export class VideoProductDetail extends Component {
 
   componentDidMount() {
     if (!this.props.userInfo.token) {
-      return this.setState({ url: "http://dashboard.learningpage.ir/login" });
+      return this.setState({ url: "https://dashboard.edu.tad-group.ir/login" });
     } else if (this.props.participant.isParticipant) {
       return this.setState({ isParticipant: true });
     } else {
@@ -61,7 +61,7 @@ export class VideoProductDetail extends Component {
               ? "رایگان"
               : numeral(this.props.data.price).format(0, 0)}
           </span>
-          ثبت نام
+          {this.props.data.price === 0 ? " نمایش لینک " : " خرید "}
         </a>
       );
     } else if (this.props.participant.isParticipant) {

@@ -9,8 +9,8 @@ export class BodyButtons extends Component {
           title="عضویت متقاضی و یا مدرسین در برگ دانش"
           href={
             this.props.userLocalStorage.token
-              ? "http://dashboard.learningpage.ir/login"
-              : "http://dashboard.learningpage.ir/login"
+              ? "https://dashboard.edu.tad-group.ir/login"
+              : "https://dashboard.edu.tad-group.ir/login"
           }
           className="btn btn-success"
           style={{ fontSize: 16 }}
@@ -29,7 +29,11 @@ export class BodyButtons extends Component {
             (محصولات : آموزشی ، علمی و فرهنگی )
           </h4>
         </Link>
-        <Link title="بزودی..." to="/coming-soon" className="btn btn-success">
+        <Link
+          title="راهنمای صدور گواهی داخلی"
+          to="/certificate"
+          className="btn btn-success"
+        >
           <h4 style={{ fontSize: 16, display: "block" }}>صدور گواهی داخلی </h4>
         </Link>
       </div>

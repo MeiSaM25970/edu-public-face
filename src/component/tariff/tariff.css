@@ -1,0 +1,19 @@
+.tariff-subtitle {
+  font-size: bolder;
+  margin-bottom: 45px;
+}
+.tariff-price {
+  font-size: 20px;
+  margin-bottom: 55px;
+}
+.tariff-desc {
+  margin-bottom: 45px;
+}
+
+.direction-rtl {
+  direction: rtl;
+}
+
+.direction-ltr {
+  direction: ltr;
+}

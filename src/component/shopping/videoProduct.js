@@ -58,7 +58,7 @@ export function VideoProduct(props) {
                 <br />
                 <span className="value">
                   <i className="zmdi zmdi-movie" style={{ marginTop: 30 }}></i>
-                  فیلم آموزشی{" "}
+                  فایل آموزشی{" "}
                 </span>
               </p>
             </div>

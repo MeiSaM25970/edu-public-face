@@ -72,7 +72,7 @@ export class Home extends Component {
             <Horizontal />
             <ShowMore />
             <TeacherList />
-            <Horizontal text=" Learningpage  پیشتاز در بستر آموزش مجازی ، چرا؟ " />
+            <Horizontal text=" Tad-Group  پیشتاز در بستر آموزش مجازی ، چرا؟ " />
             <WhyUs />{" "}
           </div>
         </div>

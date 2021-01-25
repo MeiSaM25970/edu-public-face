@@ -24,11 +24,11 @@ export class Footer extends Component {
                 <Link to="/">
                   <div
                     className="no-text-decoration-white col-xs-6 onlineamoozan-footer-logo"
-                    style={{ marginTop: "50px", width: 150, height: 145 }}
+                    style={{ marginTop: "50px", width: 165 }}
                   >
                     <img
                       className="footer-logo"
-                      src="/images/menu-logo.jpg"
+                      src="/images/menu-logo.png"
                       alt="learning-page"
                     />
                   </div>
@@ -37,12 +37,12 @@ export class Footer extends Component {
               <ul className="contactinfo">
                 <li className="address">
                   <strong>آدرس: </strong>
-                  خراسان جنوبی – مرکز رشد واحدهای فناور
+                  مازندران-ساری
                 </li>
                 <li className="phone">
                   <span>
-                    تلفن پشتیبانی : 09335456570 <br /> اس ام اس پنل :
-                    100009335456570
+                    تلفن پشتیبانی : 09116805530 <br />
+                    011-33363656
                   </span>
                 </li>
                 {/* <li className="phone">
@@ -59,24 +59,28 @@ export class Footer extends Component {
                     title="کانال تلگرام"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://telegram.me/"
+                    href="https://telegram.me/tadgroup"
                     style={{
                       backgroundImage: 'url("/images/telegram.png")',
                       backgroundSize: "cover",
                     }}
-                  ></a>
+                  >
+                    {""}
+                  </a>
                 </li>
                 <li>
                   <a
                     title="اینستاگرام"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://instagram.com/"
+                    href="https://instagram.com/tadgroup"
                     style={{
                       backgroundImage: 'url("/images/instagram.png")',
                       backgroundSize: "cover",
                     }}
-                  ></a>
+                  >
+                    {""}
+                  </a>
                 </li>
                 <li>
                   <a
@@ -88,7 +92,9 @@ export class Footer extends Component {
                       backgroundImage: 'url("/images/aparat.png")',
                       backgroundSize: "cover",
                     }}
-                  ></a>
+                  >
+                    {""}
+                  </a>
                 </li>
               </ul>
             </div>
@@ -96,8 +102,13 @@ export class Footer extends Component {
               <h6>راهنمای سایت</h6>
               <ul className="information">
                 <li>
-                  <Link to="/loginhelp">
-                    <div>راهنمای ورود به کلاس برای متقاضی</div>
+                  <Link to="/help">
+                    <div>راهنمای ورود و ثبت نام</div>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/certificate">
+                    <div>راهنمای دریافت گواهی داخلی</div>
                   </Link>
                 </li>
                 <li>
@@ -117,7 +128,7 @@ export class Footer extends Component {
                   <Link to="/videos">فروشگاه سامانه</Link>
                 </li>
                 <li>
-                  <Link to="/coming-soon">آزمون های آنلاین</Link>
+                  <Link to="/onlineExam">آزمون های آنلاین</Link>
                 </li>
                 <li>
                   <Link to="/teachers">مدرسان ما</Link>

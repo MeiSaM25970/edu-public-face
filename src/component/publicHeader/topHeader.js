@@ -31,7 +31,7 @@ export class TopHeader extends Component {
             className="zmdi zmdi-account"
             style={{ transform: "translateY(3px)" }}
           ></i>{" "}
-          <a href="http://dashboard.learningpage.ir/login">ورود/عضویت</a>
+          <a href="https://dashboard.edu.tad-group.ir/login">ورود/عضویت</a>
         </div>
       );
     } else {
@@ -57,17 +57,19 @@ export class TopHeader extends Component {
             </li>
             <li>
               {" "}
-              <a href="http://dashboard.learningpage.ir/user/edit-user-info">
+              <a href="https://dashboard.edu.tad-group.ir/user/edit-user-info">
                 پروفایل من
               </a>
             </li>
             <li>
               {" "}
-              <a href="http://dashboard.learningpage.ir/courses">دوره های من</a>
+              <a href="https://dashboard.edu.tad-group.ir/courses">
+                دوره های من
+              </a>
             </li>
             <li>
               {" "}
-              <a href="http://dashboard.learningpage.ir/user/change-password">
+              <a href="https://dashboard.edu.tad-group.ir/user/change-password">
                 تغییر پسورد
               </a>
             </li>
@@ -89,22 +91,18 @@ export class TopHeader extends Component {
             <Link to="/">
               <div
                 className="no-text-decoration-white"
-                style={{ marginTop: 0, padding: 0, height: 52 }}
+                style={{ marginTop: 5, padding: 0, height: 52 }}
               >
                 <img
-                  width="55"
-                  height="12"
-                  src="/images/menu-logo.jpg"
+                  width="60"
+                  src="/images/menu-logo.png"
                   alt="لوگو"
                   style={{
-                    minHeight: 12,
-                    maxHeight: 52,
                     marginTop: 0,
                     top: 0,
-                    height: 49,
                   }}
                 />
-                <span> Learning Page</span>
+                <span> Tad-Group </span>
               </div>
             </Link>
           </h1>

@@ -12,19 +12,23 @@ export class TariffPage extends Component {
   }
   componentDidMount() {
     this.fetchData();
+    this.scrollToY();
   }
+  scrollToY = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return !this.state.data ? (
       <Loading />
     ) : (
-      <div className="tariff-background" style={{ marginTop: 100 }}>
+      <div className="tariff-background">
         <BodyNavbarTariff />
-        <div
-          className="section-heading text-center tariff container"
-          style={{ marginTop: 20, minHeight: 500 }}
-        >
+        <div className="section-heading text-center tariff container">
           <h2>تعرفه های Learningpage.ir</h2>
-          <div style={{ marginTop: 50 }}>
+          <div>
             <TariffList data={this.state.data} />
           </div>
         </div>

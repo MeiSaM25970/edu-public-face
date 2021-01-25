@@ -10,9 +10,9 @@ export class ShowMore extends Component {
           style={{ transform: "translateY(17px)" }}
         >
           <div className="col-sm-10 col-sm-offset-1 text-center">
-            <h3 className="section-title">برخی از مدرسان Learningpage</h3>
+            <h3 className="section-title">برخی از مدرسان Tad-Group</h3>
             <p className="section-description ">
-              همه شما مدرسین محترم هم می توانید با ثبت نام در Learningpage به
+              همه شما مدرسین محترم هم می توانید با ثبت نام در Tad-Group به
               برگزاری دوره های مختلف در زمینه هایی که در آن ها تخصص دارید،
               بپردازید.
             </p>

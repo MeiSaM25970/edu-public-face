@@ -49,7 +49,7 @@ export class BottomHeader extends Component {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/coming-soon" onClick={this.click.bind(this)}>
+                  <Link to="/onlineExam" onClick={this.click.bind(this)}>
                     آزمون های آنلاین
                   </Link>
                 </li>
@@ -82,12 +82,14 @@ export class BottomHeader extends Component {
                     title="کانال تلگرام برگ دانش"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://telegram.me/learningpage_ir"
+                    href="https://telegram.me/Tad-Group_ir"
                     style={{
                       backgroundImage: "url('/images/telegram.png')",
                       backgroundSize: "cover",
                     }}
-                  ></a>
+                  >
+                    {""}
+                  </a>
                 </li>
                 <li>
                   <a
@@ -99,7 +101,9 @@ export class BottomHeader extends Component {
                       backgroundImage: "url('/images/instagram.png')",
                       backgroundSize: "cover",
                     }}
-                  ></a>
+                  >
+                    {""}
+                  </a>
                 </li>
                 <li>
                   <a
@@ -111,7 +115,9 @@ export class BottomHeader extends Component {
                       backgroundImage: "url('/images/aparat.png')",
                       backgroundSize: "cover",
                     }}
-                  ></a>
+                  >
+                    {""}
+                  </a>
                 </li>
               </ul>
             </div>

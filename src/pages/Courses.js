@@ -26,10 +26,14 @@ export class CoursesPage extends Component {
         this.setState({ loading: false, error: true });
       });
   }
-  handlePageChange(pageNumber) {
-    this.setState({ ...this.state, activePage: pageNumber });
-    this.fetchData(pageNumber, 12, "");
-    this.props.history.push("/courses?page=" + pageNumber);
+  async handlePageChange(pageNumber) {
+    await this.setState({
+      ...this.state,
+      activePage: pageNumber,
+      loading: true,
+    });
+    await this.fetchData(pageNumber, 12, "");
+    await this.props.history.push("/courses?page=" + pageNumber);
   }
   componentDidMount() {
     this.scrollTop();

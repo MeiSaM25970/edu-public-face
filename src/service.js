@@ -9,7 +9,7 @@ export function getAllTeacher() {
   return axios.get(apiAddress + "teachers");
 }
 export function getLimitTeachers() {
-  return axios.get(apiAddress + "teachers" + "?items_limit=8");
+  return axios.get(apiAddress + "teachers?items_limit=8");
 }
 
 export function getProducts(type) {
@@ -44,4 +44,17 @@ export function uploadResume(data) {
 }
 export function addITC(data) {
   return axios.post(API_SERVER_ADDRESS + "job-request/add", data);
+}
+export function fetchExam() {
+  return axios.get(API_SERVER_ADDRESS + "exam");
+}
+export function fetchExamById(id) {
+  return axios.get(API_SERVER_ADDRESS + "exam/info/" + id);
+}
+export function participantExam(examId, token) {
+  return axios.get(API_SERVER_ADDRESS + "exam/check-participant/" + examId, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
 }

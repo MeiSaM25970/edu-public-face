@@ -42,7 +42,7 @@ export class About extends Component {
 
         <h3 style={{ marginTop: 40 }}>
           {" "}
-          Learningpage، پیشتاز در ارائه خدمات و بستر آموزشی آنلاین
+          Tad-Group، پیشتاز در ارائه خدمات و بستر آموزشی آنلاین
         </h3>
         <br />
         <p style={{ lineHeight: 2 }}>
@@ -59,7 +59,7 @@ export class About extends Component {
           نمام نمایند و در کلاسهای اینترنتی همزمان شرکت نمایند .
         </p>
 
-        <h3 className="titr"> Learningage ، چیست؟</h3>
+        <h3 className="titr"> Tad-Group ، چیست؟</h3>
         <p>
           سامانه ما ، یک سایت اینترنت است که بستری ایجاد کرده تا در آن تمامی
           ارائه دهندگان خدمات آموزشی از جمله معلمان، دبیران، اساتید، متخصصان،

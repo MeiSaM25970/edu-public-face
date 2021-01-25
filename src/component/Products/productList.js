@@ -19,6 +19,8 @@ export function ProductList(props) {
             <Product data={data} />
           </div>
         );
+      } else {
+        return undefined;
       }
     });
   }

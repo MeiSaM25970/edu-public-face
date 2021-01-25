@@ -4,7 +4,7 @@ export class TariffList extends Component {
   state = {};
   render() {
     return this.props.data.map((item, index) => (
-      <Tariff data={item} key={index} />
+      <Tariff data={item} index={index} key={index} />
     ));
   }
 }

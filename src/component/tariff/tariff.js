@@ -1,49 +1,82 @@
 import React, { Component } from "react";
+import "./tariff.css";
 
 export class Tariff extends Component {
-  state = { mouseHover: false };
-  initialClass = "col-md-4 col-sm-6 col-xs-12 ";
-  hoverClass = "col-md-4 col-sm-6 col-xs-12 tariff-hover";
+  colors = [
+    "primary",
+    "success",
+    "danger",
+    "info",
+    "warning",
+    "primary",
+    "success",
+    "danger",
+    "info",
+    "warning",
+    "primary",
+    "success",
+    "danger",
+    "info",
+    "warning",
+    "primary",
+    "success",
+    "danger",
+    "info",
+    "warning",
+  ];
 
   render() {
+    const colors = this.colors;
     return (
-      <div
-        className="col-md-4 col-sm-6 col-xs-12 "
-        style={{ marginTop: 20, marginBottom: 20 }}
-      >
-        <div
-          className="tariff-items ir-r position-product"
-          onMouseEnter={() => this.setState({ mouseHover: true })}
-          onMouseLeave={() => this.setState({ mouseHover: false })}
-        >
+      <div className="col-md-4 col-sm-6 col-xs-12 mb-5">
+        <div className="card text-center">
           <div
-            className="category-with-bg "
-            style={{ minHeight: "250px", height: 350 }}
+            className={`card-header btn-${
+              colors[this.props.index]
+                ? colors[this.props.index]
+                : colors[this.props.index]
+            }`}
+            style={{
+              fontWeight: "bold",
+              padding: "10px 0 10px 0",
+            }}
           >
-            <h5
-              style={
-                this.state.mouseHover
-                  ? { backgroundColor: "#ccc", transition: "0.5s" }
-                  : { backgroundColor: "#fff", transition: "0.5s" }
-              }
-              title={this.props.data.title}
-            >
-              {this.props.data.title}
-            </h5>
-            <p style={{ rotate: "" }}>
-              <span className="value">{this.props.data.price}</span>
-            </p>
-            <p>
-              <span className="sub">{this.props.data.subtitle}</span>
-            </p>
-            <p>
-              <span className="des text-muted">
-                {this.props.data.description}
-              </span>
-            </p>
-            <p>
-              <span className="offer">{this.props.data.offer}</span>
-            </p>
+            <p style={{ marginTop: "0" }}>{this.props.data.title}</p>
+          </div>
+          <div
+            className="card-body mb-0 direction-rtl"
+            style={{ padding: "0 10px 0 10px" }}
+          >
+            <div className="tariff-subtitle">
+              <div
+                className="card-subtitle text-muted"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  marginTop: "22px",
+                }}
+              >
+                {this.props.data.subtitle}
+              </div>
+            </div>
+            <div className="tariff-price">
+              <strong>{this.props.data.price}</strong>
+            </div>
+            <div className="tariff-desc">
+              <span>{this.props.data.description}</span>
+            </div>
+            <div className="tariff-offer">
+              <div
+                className="card-subtitle text-muted"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  marginBottom: "27px",
+                }}
+              >
+                {this.props.data.offer}
+              </div>
+            </div>
           </div>
         </div>
       </div>

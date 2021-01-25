@@ -1,12 +1,11 @@
 import React from "react";
-
+export const scrollTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 export function ComingSoon() {
-  const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
   return (
     <div className="coming-soon" style={{ minHeight: 300 }}>
       {scrollTop()}

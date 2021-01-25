@@ -6,3 +6,4 @@ export * from "./productDetail";
 export * from "./description";
 export * from "./period";
 export * from "./periodList";
+export * from "./suggestedCourse";
