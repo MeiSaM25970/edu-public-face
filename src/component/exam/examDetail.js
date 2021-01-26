@@ -49,6 +49,9 @@ export class ExamDetail extends Component {
       url: `https://exam.tad360.ir/exam/start/${id}?token=${token}`,
       disableButton: false,
     });
+    console.log({
+      url: `https://exam.tad360.ir/exam/start/${id}?token=${token}`,
+    });
   }
   setInitialState() {
     this.setState({
